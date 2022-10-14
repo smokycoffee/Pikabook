@@ -11,7 +11,7 @@ import SwiftUI
 struct Poke_companionApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
