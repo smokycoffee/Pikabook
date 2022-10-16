@@ -7,6 +7,21 @@
 
 import Foundation
 
-struct Pokemon {
+struct Pokemon: Codable, Hashable {
+    let id: Int
+    let name: String
+    let sprites: Sprites?
+    let types: [type]?
+}
+
+struct Sprites: Codable, Hashable {
+    let frontDefault: String
+}
+
+struct type: Codable, Hashable {
+    let type: OfType
     
+    struct OfType: Codable, Hashable {
+        let name: String
+    }
 }

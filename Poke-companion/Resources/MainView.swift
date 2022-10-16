@@ -19,12 +19,10 @@ struct MainView: View {
                 .tag(0)
             FavouritesView()
                 .tabItem {
-                    Image(systemName: "star")
-                        .font(.system(size: 20))
-                        .foregroundColor(.black)
-                    Text("Fav").foregroundColor(.white)
+                    Label("Fav", systemImage: "star")
+                        .foregroundColor(.white)
+                    
                 }
-                .foregroundColor(.white)
                 .tag(1)
             TeamBuilderView()
                 .tabItem {

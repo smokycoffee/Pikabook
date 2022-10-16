@@ -7,6 +7,18 @@
 
 import Foundation
 
-struct Pokedex {
-    
+// test with Decodable later
+
+struct Pokedex: Codable, Hashable {
+    let count: Int
+    let results: [PokedexResults]
+}
+
+struct PokedexResults: Codable, Hashable {
+    let name: String
+    let url: String
+}
+
+struct testModel: Codable {
+    let url: String
 }
