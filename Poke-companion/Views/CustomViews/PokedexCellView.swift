@@ -13,7 +13,7 @@ struct PokedexCellView: View {
     
     var body: some View {
         HStack {
-            VStack {
+            VStack(alignment: .leading){
                 Text(pokemon.name)
                     .font(.system(.title2, design: .rounded))
                     .bold()
@@ -22,24 +22,46 @@ struct PokedexCellView: View {
                 //                    Text(pokemon)
                 //                }
                 //            }
-                Text("Fire example")
-                    .padding(5)
-                    .foregroundColor(.white)
-                    .background(Color.red)
-                    .cornerRadius(50)
+                HStack {
+                    ForEach(pokemon.types!, id: \.self) { i in
+                        Text(i.type.name)
+                            .padding(5)
+                            .foregroundColor(.white)
+                            .background(Color.red)
+                            .cornerRadius(50)
+                    }
+                }
             }
             Spacer()
-            Image(systemName: "person")
-                .font(.system(size: 50))
-                .controlSize(.large)
-                .padding()
+//            pokemon.sprites?.frontDefault
+            AsyncImage(url: URL(string: pokemon.sprites?.frontDefault ?? "ss")) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .interpolation(.none)
+                        .scaledToFit()
+                        .frame(width: 90, height: 90)
+                case .failure:
+                    Image(systemName: "photo")
+                        .resizable()
+                        .interpolation(.none)
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                @unknown default:
+                    EmptyView()
+                }
+            }
         }
         .padding()
     }
 }
 
+
 struct PokedexCellView_Previews: PreviewProvider {
     static var previews: some View {
-        PokedexCellView(pokemon: Pokemon(id: 1, name: "Charizard", sprites: nil, types: nil)).previewLayout(.sizeThatFits)
+        PokedexCellView(pokemon: Pokemon(id: 1, name: "charmander", sprites: nil, types: [])).previewLayout(.sizeThatFits)
     }
 }

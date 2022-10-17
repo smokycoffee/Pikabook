@@ -60,7 +60,7 @@ class PokedexViewModel: ObservableObject {
                 print(completion)
             } receiveValue: { [unowned self] pokemon in
                 pokemonDataToView.append(pokemon)
-
+//                print(pokemon.types)
 //                print(pokemonDataToView!)
 //                print(pokemonDataToView.name)
 //                print(pokemonDataToView.sprites?.frontDefault ?? "no image")

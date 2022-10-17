@@ -18,7 +18,3 @@ struct PokedexResults: Codable, Hashable {
     let name: String
     let url: String
 }
-
-struct testModel: Codable {
-    let url: String
-}
