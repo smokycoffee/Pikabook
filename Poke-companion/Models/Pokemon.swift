@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Pokemon: Codable, Hashable {
+struct Pokemon: Codable, Hashable, Identifiable {
     let id: Int
     let name: String
     let sprites: Sprites?

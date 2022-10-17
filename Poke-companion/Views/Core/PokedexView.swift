@@ -10,19 +10,21 @@ import SwiftUI
 struct PokedexView: View {
     
     var pokeDex = [Pokedex]()
+    @State var loadPokemons = true
 
     @StateObject private var pokemonVM = PokedexViewModel()
-    @StateObject private var pokemonDetailVM = PokemonViewModel()
     
     var body: some View {
         VStack {
-//            List(pokemonDetailVM.pokemonDataToView, id: \.self) { poke in
-//                Text(poke.name)
-//            }
+            List(pokemonVM.pokemonDataToView) { poke in
+                PokedexCellView(pokemon: poke)
+            }
         }
         .onAppear {
-            pokemonVM.fetchPokemons()
-            fetchPokemons()
+            if loadPokemons == true {
+                pokemonVM.fetchPokemons()
+                loadPokemons = false
+            }
         }
     }
     

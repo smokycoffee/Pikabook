@@ -22,7 +22,6 @@
 		E2B47EFA28FAEEE700F2882F /* PokemonTypeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EF928FAEEE700F2882F /* PokemonTypeCellView.swift */; };
 		E2B47EFC28FAF32100F2882F /* PokedexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EFB28FAF32100F2882F /* PokedexViewModel.swift */; };
 		E2B47EFE28FAF65B00F2882F /* ErrorAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EFD28FAF65B00F2882F /* ErrorAlerts.swift */; };
-		E2B47F0028FAFA3900F2882F /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EFF28FAFA3900F2882F /* PokemonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +41,6 @@
 		E2B47EF928FAEEE700F2882F /* PokemonTypeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeCellView.swift; sourceTree = "<group>"; };
 		E2B47EFB28FAF32100F2882F /* PokedexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexViewModel.swift; sourceTree = "<group>"; };
 		E2B47EFD28FAF65B00F2882F /* ErrorAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlerts.swift; sourceTree = "<group>"; };
-		E2B47EFF28FAFA3900F2882F /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				E2B47EFB28FAF32100F2882F /* PokedexViewModel.swift */,
-				E2B47EFF28FAFA3900F2882F /* PokemonViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -244,7 +241,6 @@
 				E27379B028F9F6630013303B /* TeamBuilderView.swift in Sources */,
 				E2B47EF828FAD73C00F2882F /* PokedexCellView.swift in Sources */,
 				E2B47EFE28FAF65B00F2882F /* ErrorAlerts.swift in Sources */,
-				E2B47F0028FAFA3900F2882F /* PokemonViewModel.swift in Sources */,
 				E24A298328F9D4510019429A /* MainView.swift in Sources */,
 				E2B47EFA28FAEEE700F2882F /* PokemonTypeCellView.swift in Sources */,
 				E2B47EFC28FAF32100F2882F /* PokedexViewModel.swift in Sources */,
