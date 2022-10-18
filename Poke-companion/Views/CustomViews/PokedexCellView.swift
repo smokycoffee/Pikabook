@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct PokedexCellView: View {
     
@@ -33,8 +34,8 @@ struct PokedexCellView: View {
                 }
             }
             Spacer()
-//            pokemon.sprites?.frontDefault
-            AsyncImage(url: URL(string: pokemon.sprites?.frontDefault ?? "ss")) { phase in
+            
+            CachedAsyncImage(url: URL(string: pokemon.sprites?.other.officialArwork.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
                 switch phase {
                 case .empty:
                     ProgressView()
@@ -64,4 +65,9 @@ struct PokedexCellView_Previews: PreviewProvider {
     static var previews: some View {
         PokedexCellView(pokemon: Pokemon(id: 1, name: "charmander", sprites: nil, types: [])).previewLayout(.sizeThatFits)
     }
+}
+
+extension URLCache {
+    
+    static let imageCache = URLCache(memoryCapacity: 512*1000*1000, diskCapacity: 10*1000*1000*1000)
 }

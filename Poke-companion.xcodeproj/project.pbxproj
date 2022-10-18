@@ -22,6 +22,7 @@
 		E2B47EFA28FAEEE700F2882F /* PokemonTypeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EF928FAEEE700F2882F /* PokemonTypeCellView.swift */; };
 		E2B47EFC28FAF32100F2882F /* PokedexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EFB28FAF32100F2882F /* PokedexViewModel.swift */; };
 		E2B47EFE28FAF65B00F2882F /* ErrorAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EFD28FAF65B00F2882F /* ErrorAlerts.swift */; };
+		E2CE641828FED28E00DAFA26 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = E2CE641728FED28E00DAFA26 /* CachedAsyncImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2CE641828FED28E00DAFA26 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +182,9 @@
 			dependencies = (
 			);
 			name = "Poke-companion";
+			packageProductDependencies = (
+				E2CE641728FED28E00DAFA26 /* CachedAsyncImage */,
+			);
 			productName = "Poke-companion";
 			productReference = E24A297D28F9D4510019429A /* Poke-companion.app */;
 			productType = "com.apple.product-type.application";
@@ -208,6 +213,9 @@
 				Base,
 			);
 			mainGroup = E24A297428F9D4510019429A;
+			packageReferences = (
+				E2CE641628FED28E00DAFA26 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			productRefGroup = E24A297E28F9D4510019429A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -455,6 +463,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E2CE641628FED28E00DAFA26 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E2CE641728FED28E00DAFA26 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2CE641628FED28E00DAFA26 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E24A297528F9D4510019429A /* Project object */;
 }
