@@ -16,20 +16,18 @@ struct PokedexCellView: View {
         HStack {
             VStack(alignment: .leading){
                 Text(pokemon.name)
-                    .font(.system(.title2, design: .rounded))
+                    .font(.system(.title2, design: .monospaced))
                     .bold()
-                //            List {
-                //                ForEach(pokemon.types, id: \.self) { pokemon in
-                //                    Text(pokemon)
-                //                }
-                //            }
+                    .padding(.bottom)
                 HStack {
                     ForEach(pokemon.types!, id: \.self) { i in
                         Text(i.type.name)
-                            .padding(5)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 2)
                             .foregroundColor(.white)
-                            .background(Color.red)
-                            .cornerRadius(50)
+                            .font(.system(.body, design: .default, weight: .medium))
+                            .background(i.type.typeColor)
+                            .cornerRadius(5)
                     }
                 }
             }
@@ -46,11 +44,12 @@ struct PokedexCellView: View {
                         .scaledToFit()
                         .frame(width: 90, height: 90)
                 case .failure:
-                    Image(systemName: "photo")
+                    Image(systemName: "questionmark")
                         .resizable()
                         .interpolation(.none)
                         .scaledToFit()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 90, height: 90)
+                        .foregroundColor(.gray)
                 @unknown default:
                     EmptyView()
                 }

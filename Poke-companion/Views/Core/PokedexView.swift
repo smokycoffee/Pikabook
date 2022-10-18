@@ -27,13 +27,6 @@ struct PokedexView: View {
             }
         }
     }
-    
-    func fetchPokemons() {
-//        print(pokemonVM.dataToView)
-//        for i in pokemonVM.dataToView {
-//            pokemonDetailVM.fetchPokemonInfo(for: i)
-//        }
-    }
 }
 
 struct PokedexView_Previews: PreviewProvider {
