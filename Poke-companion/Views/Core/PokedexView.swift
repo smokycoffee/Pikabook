@@ -11,13 +11,18 @@ struct PokedexView: View {
     
     var pokeDex = [Pokedex]()
     @State var loadPokemons = true
-
     @StateObject private var pokemonVM = PokedexViewModel()
     
     var body: some View {
-        VStack {
+        NavigationStack {
             List(pokemonVM.pokemonDataToView) { poke in
-                PokedexCellView(pokemon: poke)
+                NavigationLink(value: poke) {
+                    PokedexCellView(pokemon: poke)
+                }
+            }
+            .navigationTitle("Pokemon")
+            .navigationDestination(for: Pokemon.self) { pokemon in
+                PokedexCellView(pokemon: pokemon)
             }
         }
         .onAppear {
