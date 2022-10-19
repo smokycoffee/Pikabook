@@ -37,6 +37,7 @@ struct PokedexCellView: View {
                 switch phase {
                 case .empty:
                     ProgressView()
+                        .frame(width: 90, height: 90)
                 case .success(let image):
                     image
                         .resizable()
@@ -64,9 +65,4 @@ struct PokedexCellView_Previews: PreviewProvider {
     static var previews: some View {
         PokedexCellView(pokemon: Pokemon(id: 1, name: "charmander", sprites: nil, types: [])).previewLayout(.sizeThatFits)
     }
-}
-
-extension URLCache {
-    
-    static let imageCache = URLCache(memoryCapacity: 512*1000*1000, diskCapacity: 10*1000*1000*1000)
 }

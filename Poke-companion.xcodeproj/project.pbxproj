@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E223C9292900AF020050AD94 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E223C9282900AF020050AD94 /* Extensions.swift */; };
 		E24A298128F9D4510019429A /* Poke_companionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A298028F9D4510019429A /* Poke_companionApp.swift */; };
 		E24A298328F9D4510019429A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A298228F9D4510019429A /* MainView.swift */; };
 		E24A298528F9D4520019429A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E24A298428F9D4520019429A /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E223C9282900AF020050AD94 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E24A297D28F9D4510019429A /* Poke-companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Poke-companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E24A298028F9D4510019429A /* Poke_companionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poke_companionApp.swift; sourceTree = "<group>"; };
 		E24A298228F9D4510019429A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		E27379A128F9F4BF0013303B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E223C9282900AF020050AD94 /* Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				E2B47EFE28FAF65B00F2882F /* ErrorAlerts.swift in Sources */,
 				E24A298328F9D4510019429A /* MainView.swift in Sources */,
 				E2B47EFA28FAEEE700F2882F /* PokemonTypeCellView.swift in Sources */,
+				E223C9292900AF020050AD94 /* Extensions.swift in Sources */,
 				E2B47EFC28FAF32100F2882F /* PokedexViewModel.swift in Sources */,
 				E27379B428F9F6EA0013303B /* FavouritesView.swift in Sources */,
 				E27379B828FA163B0013303B /* Pokedex.swift in Sources */,

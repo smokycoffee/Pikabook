@@ -9,20 +9,25 @@ import SwiftUI
 
 struct PokedexView: View {
     
-    var pokeDex = [Pokedex]()
     @State var loadPokemons = true
     @StateObject private var pokemonVM = PokedexViewModel()
     
     var body: some View {
         NavigationStack {
             List(pokemonVM.pokemonDataToView) { poke in
-                NavigationLink(value: poke) {
+                ZStack {
                     PokedexCellView(pokemon: poke)
+                    NavigationLink(value: poke) {
+                        EmptyView()
+                    }
+                    .opacity(0)
                 }
+                .listRowSeparator(.hidden)
             }
-            .navigationTitle("Pokemon")
+            .listStyle(.inset)
+            .navigationTitle("Pokemons")
             .navigationDestination(for: Pokemon.self) { pokemon in
-                PokedexCellView(pokemon: pokemon)
+                PokemonTypeCellView(pokemon: pokemon)
             }
         }
         .onAppear {
