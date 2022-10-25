@@ -26,7 +26,7 @@ struct PokedexView: View {
             }
             .listStyle(.inset)
             .navigationTitle("Pokemons")
-            .navigationDestination(for: PokemonDetail.self) { pokemon in
+            .navigationDestination(for: Pokemon.self) { pokemon in
                 PokemonDetailsView(pokemon: pokemon)
             }
         }

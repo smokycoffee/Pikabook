@@ -12,7 +12,7 @@ import SwiftUI
 class PokedexViewModel: ObservableObject {
     @Published var dataToView =  [String]()
     @Published var errorForAlert: ErrorAlerts?
-    @Published var pokemonDataToView = [PokemonDetail]()
+    @Published var pokemonDataToView = [Pokemon]()
     
     var cancellables: Set<AnyCancellable> = []
     
@@ -43,11 +43,11 @@ class PokedexViewModel: ObservableObject {
         let url = URL(string: pokemonUrl)!
         
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
+//        decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
-            .decode(type: PokemonDetail.self, decoder: decoder)
+            .decode(type: Pokemon.self, decoder: decoder)
             .receive(on: RunLoop.main)
             .sink { completion in
                 print(completion)

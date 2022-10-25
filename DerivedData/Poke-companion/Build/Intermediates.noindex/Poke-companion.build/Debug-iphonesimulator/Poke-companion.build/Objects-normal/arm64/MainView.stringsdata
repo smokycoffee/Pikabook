@@ -1,0 +1,24 @@
+{
+  "source": "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Resources/MainView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Pokédex"
+      },
+      {
+        "comment": "",
+        "key": "Fav"
+      },
+      {
+        "comment": "",
+        "key": "Team"
+      },
+      {
+        "comment": "",
+        "key": "Settings"
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,12 @@
+{
+  "source": "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Views/Core/PokedexView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Pokemons"
+      }
+    ]
+  },
+  "version": 1
+}

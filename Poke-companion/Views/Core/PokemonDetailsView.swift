@@ -12,7 +12,7 @@ struct PokemonDetailsView: View {
     
     @Environment(\.dismiss) var dismiss
 
-    var pokemon: PokemonDetail
+    var pokemon: Pokemon
 
     var body: some View {
             VStack {
@@ -27,7 +27,7 @@ struct PokemonDetailsView: View {
                     //                        .frame(width: 200, height: 200)
                     //                        .padding(.top, 20)
                     
-                    CachedAsyncImage(url: URL(string: pokemon.sprites!.other?.officialArtwork.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
+                    CachedAsyncImage(url: URL(string: pokemon.sprites!.other?.officialArtwork!.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
                         switch phase {
                         case .empty:
                             ProgressView()
@@ -263,6 +263,6 @@ struct AppBar: View {
 
 struct PokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailsView(pokemon: PokemonDetail(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []))
+        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []))
     }
 }

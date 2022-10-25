@@ -12,19 +12,18 @@
 		E24A298328F9D4510019429A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A298228F9D4510019429A /* MainView.swift */; };
 		E24A298528F9D4520019429A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E24A298428F9D4520019429A /* Assets.xcassets */; };
 		E24A298828F9D4520019429A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E24A298728F9D4520019429A /* Preview Assets.xcassets */; };
-		E255700F29075D16002D5095 /* PokemonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255700E29075D16002D5095 /* PokemonDetail.swift */; };
+		E255700F29075D16002D5095 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255700E29075D16002D5095 /* Pokemon.swift */; };
 		E27379AC28F9F6400013303B /* PokedexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27379AB28F9F6400013303B /* PokedexView.swift */; };
 		E27379B028F9F6630013303B /* TeamBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27379AF28F9F6630013303B /* TeamBuilderView.swift */; };
 		E27379B228F9F6B50013303B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27379B128F9F6B50013303B /* SettingsView.swift */; };
 		E27379B428F9F6EA0013303B /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27379B328F9F6EA0013303B /* FavouritesView.swift */; };
 		E27379B628FA14560013303B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E27379B528FA14560013303B /* Launch Screen.storyboard */; };
 		E27379B828FA163B0013303B /* Pokedex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27379B728FA163B0013303B /* Pokedex.swift */; };
-		E27379BA28FA16720013303B /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27379B928FA16720013303B /* Pokemon.swift */; };
+		E27E4E85290821FB00FAA964 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = E27E4E84290821FB00FAA964 /* CachedAsyncImage */; };
 		E2B47EF828FAD73C00F2882F /* PokedexCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EF728FAD73C00F2882F /* PokedexCellView.swift */; };
 		E2B47EFA28FAEEE700F2882F /* PokemonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EF928FAEEE700F2882F /* PokemonDetailsView.swift */; };
 		E2B47EFC28FAF32100F2882F /* PokedexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EFB28FAF32100F2882F /* PokedexViewModel.swift */; };
 		E2B47EFE28FAF65B00F2882F /* ErrorAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EFD28FAF65B00F2882F /* ErrorAlerts.swift */; };
-		E2CE641828FED28E00DAFA26 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = E2CE641728FED28E00DAFA26 /* CachedAsyncImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,14 +33,13 @@
 		E24A298228F9D4510019429A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E24A298428F9D4520019429A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E24A298728F9D4520019429A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E255700E29075D16002D5095 /* PokemonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetail.swift; sourceTree = "<group>"; };
+		E255700E29075D16002D5095 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		E27379AB28F9F6400013303B /* PokedexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexView.swift; sourceTree = "<group>"; };
 		E27379AF28F9F6630013303B /* TeamBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderView.swift; sourceTree = "<group>"; };
 		E27379B128F9F6B50013303B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E27379B328F9F6EA0013303B /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		E27379B528FA14560013303B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E27379B728FA163B0013303B /* Pokedex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex.swift; sourceTree = "<group>"; };
-		E27379B928FA16720013303B /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		E2B47EF728FAD73C00F2882F /* PokedexCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexCellView.swift; sourceTree = "<group>"; };
 		E2B47EF928FAEEE700F2882F /* PokemonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsView.swift; sourceTree = "<group>"; };
 		E2B47EFB28FAF32100F2882F /* PokedexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexViewModel.swift; sourceTree = "<group>"; };
@@ -53,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2CE641828FED28E00DAFA26 /* CachedAsyncImage in Frameworks */,
+				E27E4E85290821FB00FAA964 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,9 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				E27379B728FA163B0013303B /* Pokedex.swift */,
-				E27379B928FA16720013303B /* Pokemon.swift */,
 				E2B47EFD28FAF65B00F2882F /* ErrorAlerts.swift */,
-				E255700E29075D16002D5095 /* PokemonDetail.swift */,
+				E255700E29075D16002D5095 /* Pokemon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,7 +186,7 @@
 			);
 			name = "Poke-companion";
 			packageProductDependencies = (
-				E2CE641728FED28E00DAFA26 /* CachedAsyncImage */,
+				E27E4E84290821FB00FAA964 /* CachedAsyncImage */,
 			);
 			productName = "Poke-companion";
 			productReference = E24A297D28F9D4510019429A /* Poke-companion.app */;
@@ -220,7 +217,7 @@
 			);
 			mainGroup = E24A297428F9D4510019429A;
 			packageReferences = (
-				E2CE641628FED28E00DAFA26 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				E27E4E83290821FB00FAA964 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 			);
 			productRefGroup = E24A297E28F9D4510019429A /* Products */;
 			projectDirPath = "";
@@ -250,8 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E27379B228F9F6B50013303B /* SettingsView.swift in Sources */,
-				E27379BA28FA16720013303B /* Pokemon.swift in Sources */,
-				E255700F29075D16002D5095 /* PokemonDetail.swift in Sources */,
+				E255700F29075D16002D5095 /* Pokemon.swift in Sources */,
 				E27379AC28F9F6400013303B /* PokedexView.swift in Sources */,
 				E27379B028F9F6630013303B /* TeamBuilderView.swift in Sources */,
 				E2B47EF828FAD73C00F2882F /* PokedexCellView.swift in Sources */,
@@ -473,7 +469,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E2CE641628FED28E00DAFA26 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+		E27E4E83290821FB00FAA964 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
 			requirement = {
@@ -484,9 +480,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E2CE641728FED28E00DAFA26 /* CachedAsyncImage */ = {
+		E27E4E84290821FB00FAA964 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E2CE641628FED28E00DAFA26 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			package = E27E4E83290821FB00FAA964 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;
 		};
 /* End XCSwiftPackageProductDependency section */

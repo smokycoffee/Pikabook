@@ -1,0 +1,19 @@
+version: "Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)"
+options: "5091c801de7b92340d25e23f43334ee8eb6d12d6339cc785e4245672f4157f22"
+build_start_time: [1666705515, 338600158]
+build_end_time: [1666705519, 692906856]
+inputs:
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Extensions/Extensions.swift": [1666217863, 537872791]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Models/ErrorAlerts.swift": [1665848562, 418428659]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Models/Pokedex.swift": [1666018770, 764143705]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Models/Pokemon.swift": [1666655717, 238820075]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Models/PokemonDetail.swift": [1666704605, 802433490]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Resources/MainView.swift": [1666106178, 200861930]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Resources/Poke_companionApp.swift": [1665777321, 164988517]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/ViewModels/PokedexViewModel.swift": [1666657748, 449079513]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Views/Core/FavouritesView.swift": [1665785880, 118858337]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Views/Core/PokedexView.swift": [1666657312, 325510025]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Views/Core/PokemonDetailsView.swift": [1666705348, 436735868]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Views/Core/SettingsView.swift": [1665832485, 983110427]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Views/Core/TeamBuilderView.swift": [1665956376, 415244102]
+  "/Users/tsenguun/Developer/Poke-companion/Poke-companion/Views/CustomViews/PokedexCellView.swift": [1666705470, 263839721]
