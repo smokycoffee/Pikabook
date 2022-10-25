@@ -12,7 +12,7 @@ import SwiftUI
 class PokedexViewModel: ObservableObject {
     @Published var dataToView =  [String]()
     @Published var errorForAlert: ErrorAlerts?
-    @Published var pokemonDataToView = [Pokemon]()
+    @Published var pokemonDataToView = [PokemonDetail]()
     
     var cancellables: Set<AnyCancellable> = []
     
@@ -37,7 +37,7 @@ class PokedexViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-        
+    
     func fetchPokemonInfo(for pokemonUrl: String) {
         
         let url = URL(string: pokemonUrl)!
@@ -47,7 +47,7 @@ class PokedexViewModel: ObservableObject {
         
         URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
-            .decode(type: Pokemon.self, decoder: decoder)
+            .decode(type: PokemonDetail.self, decoder: decoder)
             .receive(on: RunLoop.main)
             .sink { completion in
                 print(completion)

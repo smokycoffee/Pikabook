@@ -10,7 +10,7 @@ import CachedAsyncImage
 
 struct PokedexCellView: View {
     
-    var pokemon: Pokemon
+    var pokemon: PokemonDetail
     
     var body: some View {
         HStack {
@@ -33,7 +33,7 @@ struct PokedexCellView: View {
             }
             Spacer()
             
-            CachedAsyncImage(url: URL(string: pokemon.sprites?.other.officialArwork.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
+            CachedAsyncImage(url: URL(string: pokemon.sprites?.other?.officialArtwork.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
                 switch phase {
                 case .empty:
                     ProgressView()
@@ -63,6 +63,6 @@ struct PokedexCellView: View {
 
 struct PokedexCellView_Previews: PreviewProvider {
     static var previews: some View {
-        PokedexCellView(pokemon: Pokemon(id: 1, name: "charmander", sprites: nil, types: [])).previewLayout(.sizeThatFits)
+        PokedexCellView(pokemon: PokemonDetail(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: [])).previewLayout(.sizeThatFits)
     }
 }

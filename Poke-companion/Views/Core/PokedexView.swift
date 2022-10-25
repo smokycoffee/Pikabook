@@ -14,7 +14,7 @@ struct PokedexView: View {
     
     var body: some View {
         NavigationStack {
-            List(pokemonVM.pokemonDataToView) { poke in
+            List(pokemonVM.pokemonDataToView, id: \.id) { poke in
                 ZStack {
                     PokedexCellView(pokemon: poke)
                     NavigationLink(value: poke) {
@@ -26,8 +26,8 @@ struct PokedexView: View {
             }
             .listStyle(.inset)
             .navigationTitle("Pokemons")
-            .navigationDestination(for: Pokemon.self) { pokemon in
-                PokemonTypeCellView(pokemon: pokemon)
+            .navigationDestination(for: PokemonDetail.self) { pokemon in
+                PokemonDetailsView(pokemon: pokemon)
             }
         }
         .onAppear {
