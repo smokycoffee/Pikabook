@@ -27,7 +27,7 @@ struct PokemonDetailsView: View {
                     //                        .frame(width: 200, height: 200)
                     //                        .padding(.top, 20)
                     
-                    CachedAsyncImage(url: URL(string: pokemon.sprites!.other?.officialArtwork!.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
+                    CachedAsyncImage(url: URL(string: pokemon.sprites?.other?.officialArtwork?.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
                         switch phase {
                         case .empty:
                             ProgressView()
@@ -55,9 +55,9 @@ struct PokemonDetailsView: View {
                     Text("Bulbasaur can be seen napping in bright sunlight.\nThere is a seed on its back. By soaking up the sun’s rays,\nthe seed grows progressively larger.")
                         .padding()
                 } // Group
-                PokemonControlTabsView()
                 
-                Spacer()
+                PokemonControlTabsView(pokemon: pokemon)
+                
             }
             .ignoresSafeArea(.all, edges: .top)
             .navigationBarBackButtonHidden(true)
@@ -77,6 +77,9 @@ struct PokemonDetailsView: View {
 }
 
 struct PokemonControlTabsView: View {
+    
+    var pokemon: Pokemon
+    
     @State var index = 1
     @State var offset: CGFloat = UIScreen.main.bounds.width
     
@@ -89,7 +92,7 @@ struct PokemonControlTabsView: View {
             GeometryReader { g in
                 HStack(spacing: 0) {
                     
-                    PokemonAboutDescriptionView()
+                    PokemonAboutDescriptionView(pokemon: pokemon)
                         .frame(width: g.frame(in: .global).width)
                     
                     PokemonStatsView()
@@ -144,17 +147,61 @@ struct PokemonControlTabsView: View {
 }
 
 struct PokemonAboutDescriptionView: View {
+    
+    let pokemon: Pokemon
+    
     var body: some View {
         GeometryReader { _ in
-            VStack {
-                Text("About Description View")
+            VStack(alignment: .leading) {
+                HStack {
+                    
+                    VStatLayout(bodyType: 50, placeholder: "Weight")
+                    
+                    Spacer()
+                    
+                    Capsule()
+                        .frame(width: 2, height: 40)
+                        .foregroundColor(.white)
+                    
+                    Spacer()
+//                    ForEach(pokemon.types!, id: \.self) { i in
+//                        Text(i.type.name)
+//                            .padding(.horizontal, 2)
+//                            .padding(.vertical, 2)
+//                            .foregroundColor(.white)
+//                            .font(.system(.body, design: .default, weight: .medium))
+//                            .background(i.type.typeColor)
+//                            .cornerRadius(5)
+//                    }
+                    Text("types here")
+                    Spacer()
+                    Capsule()
+                        .frame(width: 2, height: 40)
+                        .foregroundColor(.white)
+                    Spacer()
+                    VStatLayout(bodyType: 50, placeholder: "Height")
+                    
+                }
+                .frame(height: 40)
+                
+                HStatLayout(typeTitle: "Species:", assignment: "Fire Pokemon", titleWidth: 70)
+                    .padding(.vertical, 2)
+                    .padding(.top, 10)
+                
+                HStatLayout(typeTitle: "Ability:", assignment: "Swish Swish", titleWidth: 70)
+                    .padding(.vertical, 2)
+                
+                HStatLayout(typeTitle: "Encounters:", assignment: "Kanto", titleWidth: 100)
+                    .padding(.vertical, 2)
+                
+                
                 Spacer()
             }
+            .padding()
         }
-        .background(.white)
+        .background(Color(red: 237/255, green: 219/255, blue: 192/255))
     }
 }
-
 
 struct PokemonStatsView: View {
     var body: some View {
@@ -163,7 +210,7 @@ struct PokemonStatsView: View {
                 Text("Stats View")
             }
         }
-        .background(.white)
+        .background(Color(red: 237/255, green: 219/255, blue: 192/255))
     }
 }
 
@@ -174,7 +221,7 @@ struct PokemonMovesView: View {
                 Text("pokemon moves View")
             }
         }
-        .background(.white)
+        .background(Color(red: 237/255, green: 219/255, blue: 192/255))
     }
 }
 
@@ -185,7 +232,7 @@ struct PokemonGenerationView: View {
                 Text("gen View")
             }
         }
-        .background(.white)
+        .background(Color(red: 237/255, green: 219/255, blue: 192/255))
     }
 }
 
@@ -259,6 +306,38 @@ struct AppBar: View {
     }
 }
 
+struct VStatLayout: View {
+    
+    let bodyType: Int
+    let placeholder: String
+    
+    var body: some View {
+        VStack {
+            Text(String(bodyType))
+                .font(.system(.title, design: .rounded, weight: .semibold))
+                .frame(width: 100)
+            Text(placeholder)
+                .font(.system(.caption, design: .rounded, weight: .regular))
+        }
+    }
+}
+
+struct HStatLayout: View {
+    
+    let typeTitle: String
+    let assignment: String
+    var titleWidth: CGFloat
+    
+    var body: some View {
+        HStack {
+            Text(typeTitle)
+                .font(.system(.body, design: .default, weight: .bold))
+                .frame(width: titleWidth, alignment: .leading)
+            Text(assignment) // change this
+                .font(.system(.body, design: .default, weight: .regular))
+        }
+    }
+}
 
 
 struct PokemonDetailsView_Previews: PreviewProvider {
