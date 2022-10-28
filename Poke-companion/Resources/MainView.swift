@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
+    
     @State private var selection = 0
+    
     var body: some View {
         TabView(selection: $selection) {
             PokedexView()
@@ -39,6 +41,7 @@ struct MainView: View {
                 .tag(3)
                 .accentColor(.white)
         }
+//        .frame(height: 150)
         .accentColor(Color(red: 219/255, green: 200/255, blue: 172/255))
         .onAppear {
             let appearance = UITabBarAppearance()

@@ -22,11 +22,6 @@ struct PokemonDetailsView: View {
                         .font(.system(.largeTitle))
                     Text(String(pokemon.id))
                     
-                    //                    Image(systemName: "person")
-                    //                        .resizable()
-                    //                        .frame(width: 200, height: 200)
-                    //                        .padding(.top, 20)
-                    
                     CachedAsyncImage(url: URL(string: pokemon.sprites?.other?.officialArtwork?.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
                         switch phase {
                         case .empty:
@@ -53,6 +48,7 @@ struct PokemonDetailsView: View {
                         }
                     }
                     Text("Bulbasaur can be seen napping in bright sunlight.\nThere is a seed on its back. By soaking up the sun’s rays,\nthe seed grows progressively larger.")
+                        .multilineTextAlignment(.center)
                         .padding()
                 } // Group
                 
@@ -119,7 +115,7 @@ struct PokemonControlTabsView: View {
             }
         }
         .animation(.default, value: offset)
-        .edgesIgnoringSafeArea(.all)
+//        .edgesIgnoringSafeArea(.all)
     }
     
     func changeView(left: Bool) {
@@ -160,7 +156,7 @@ struct PokemonAboutDescriptionView: View {
                     Spacer()
                     
                     Capsule()
-                        .frame(width: 2, height: 40)
+                        .frame(width: 2, height: 35)
                         .foregroundColor(.white)
                     
                     Spacer()
@@ -176,13 +172,13 @@ struct PokemonAboutDescriptionView: View {
                     Text("types here")
                     Spacer()
                     Capsule()
-                        .frame(width: 2, height: 40)
+                        .frame(width: 2, height: 35)
                         .foregroundColor(.white)
                     Spacer()
                     VStatLayout(bodyType: 50, placeholder: "Height")
                     
                 }
-                .frame(height: 40)
+                .frame(height: 35)
                 
                 HStatLayout(typeTitle: "Species:", assignment: "Fire Pokemon", titleWidth: 70)
                     .padding(.vertical, 2)
@@ -194,8 +190,14 @@ struct PokemonAboutDescriptionView: View {
                 HStatLayout(typeTitle: "Encounters:", assignment: "Kanto", titleWidth: 100)
                     .padding(.vertical, 2)
                 
+                Spacer()
+                
+                Text("Evolutions:")
+                    .padding(.bottom, 5)
+                Text("Evolutions images here")
                 
                 Spacer()
+                
             }
             .padding()
         }
@@ -314,7 +316,7 @@ struct VStatLayout: View {
     var body: some View {
         VStack {
             Text(String(bodyType))
-                .font(.system(.title, design: .rounded, weight: .semibold))
+                .font(.system(.title2, design: .rounded, weight: .semibold))
                 .frame(width: 100)
             Text(placeholder)
                 .font(.system(.caption, design: .rounded, weight: .regular))
@@ -344,4 +346,10 @@ struct PokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []))
     }
+}
+
+extension UIScreen {
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
 }
