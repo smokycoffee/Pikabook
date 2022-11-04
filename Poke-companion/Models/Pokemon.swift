@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Welcome
+// MARK: - Pokemon
 struct Pokemon: Codable, Hashable, Identifiable {
     
     let id: Int
