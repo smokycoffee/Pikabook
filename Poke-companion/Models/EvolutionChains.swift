@@ -8,17 +8,17 @@
 import Foundation
 
 // MARK: - EvolutionChains
-struct EvolutionChains: Codable {
+struct EvolutionChains: Codable, Identifiable, Hashable {
 //    let babyTriggerItem: JSONNull?
-    let chain: Chain
+    let chain: Chain?
     let id: Int
 
 }
 
 // MARK: - Chain
-struct Chain: Codable {
+struct Chain: Codable, Hashable {
 //    let evolutionDetails: [EvolutionDetail]?
-    let evolvesTo: [Chain]?
+    let evolvesTo: [EvolvesTo]?
     let isBaby: Bool
     let species: SpeciesDuplicate
 
@@ -30,11 +30,11 @@ struct Chain: Codable {
     }
 }
 
-struct EvolvesTo: Codable {
+struct EvolvesTo: Codable, Hashable {
 //    let evolutionDetails: [EvolutionDetail]?
-    let evolvesTo: [EvolvesToTwo]?
+    let evolvesTo: [EvolvesToTwo]
     let isBaby: Bool
-    let species: Species
+    let species: SpeciesDuplicate
 
     enum CodingKeys: String, CodingKey {
 //        case evolutionDetails = "evolution_details"
@@ -44,11 +44,11 @@ struct EvolvesTo: Codable {
     }
 }
 
-struct EvolvesToTwo: Codable {
+struct EvolvesToTwo: Codable, Hashable {
 //    let evolutionDetails: [EvolutionDetail]?
     let evolvesTo: [EvolvesToThree]?
     let isBaby: Bool
-    let species: Species
+    let species: SpeciesDuplicate
 
     enum CodingKeys: String, CodingKey {
 //        case evolutionDetails = "evolution_details"
@@ -58,11 +58,11 @@ struct EvolvesToTwo: Codable {
     }
 }
 
-struct EvolvesToThree: Codable {
+struct EvolvesToThree: Codable, Hashable {
 //    let evolutionDetails: [EvolutionDetail]?
 //    let evolvesTo: []?
     let isBaby: Bool?
-    let species: Species?
+    let species: SpeciesDuplicate?
 
     enum CodingKeys: String, CodingKey {
 //        case evolutionDetails = "evolution_details"
@@ -111,7 +111,7 @@ struct EvolvesToThree: Codable {
 
 
 // MARK: - Species
-struct SpeciesDuplicate: Codable {
+struct SpeciesDuplicate: Codable, Hashable {
     let name: String
     let url: String
 }

@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 class PokedexViewModel: ObservableObject {
-    @Published var dataToView =  [String]()
+//    @Published var dataToView =  [String]()
     @Published var errorForAlert: ErrorAlerts?
     @Published var pokemonDataToView = [Pokemon]()
     
@@ -27,7 +27,7 @@ class PokedexViewModel: ObservableObject {
             .decode(type: Pokedex.self, decoder: decoder)
             .receive(on: RunLoop.main)
             .sink { completion in
-                print(completion)
+//                print(completion)
             } receiveValue: { [unowned self] pokedex in
                 
                 let temp = pokedex.results
@@ -50,7 +50,7 @@ class PokedexViewModel: ObservableObject {
             .decode(type: Pokemon.self, decoder: decoder)
             .receive(on: RunLoop.main)
             .sink { completion in
-                print(completion)
+//                print(completion)
             } receiveValue: { [unowned self] pokemon in
                 pokemonDataToView.append(pokemon)
             }

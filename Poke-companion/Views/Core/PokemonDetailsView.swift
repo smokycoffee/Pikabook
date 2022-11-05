@@ -17,8 +17,11 @@ struct PokemonDetailsView: View {
     var body: some View {
             VStack {
                 Group {
+                    Rectangle()
+                        .fill(.clear)
+                        .frame(height: 30)
                     Text(pokemon.name)
-                        .padding(.top, 60)
+//                        .padding(.top, 60)
                         .font(.system(.largeTitle))
                     Text(String(pokemon.id))
                     
@@ -27,14 +30,14 @@ struct PokemonDetailsView: View {
                         case .empty:
                             ProgressView()
                                 .frame(width: 200, height: 200)
-                                .padding(.top, 20)
+                                .padding(.top)
                         case .success(let image):
                             image
                                 .resizable()
                                 .interpolation(.none)
                                 .scaledToFit()
                                 .frame(width: 200, height: 200)
-                                .padding(.top, 20)
+                                .padding(.top)
                         case .failure:
                             Image(systemName: "questionmark")
                                 .resizable()
@@ -42,18 +45,20 @@ struct PokemonDetailsView: View {
                                 .scaledToFit()
                                 .frame(width: 200, height: 200)
                                 .foregroundColor(.gray)
-                                .padding(.top, 20)
+                                .padding(.top)
                         @unknown default:
                             EmptyView()
                         }
                     }
                     Text("Bulbasaur can be seen napping in bright sunlight.\nThere is a seed on its back. By soaking up the sun’s rays,\nthe seed grows progressively larger.")
+                        .font(.system(.caption))
                         .multilineTextAlignment(.center)
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.bottom, 5)
                 } // Group
-                
+                Spacer()
+
                 PokemonControlTabsView(pokemon: pokemon)
-                
             }
             .ignoresSafeArea(.all, edges: .top)
             .navigationBarBackButtonHidden(true)
@@ -145,6 +150,10 @@ struct PokemonControlTabsView: View {
 struct PokemonAboutDescriptionView: View {
     
     let pokemon: Pokemon
+        
+    @StateObject private var pokemonSpeciesVM = PokemonSpeciesViewModel()
+    @StateObject private var evolutionChain = PokemonEvolutionChainViewModel()
+    
     
     var body: some View {
         GeometryReader { _ in
@@ -196,12 +205,36 @@ struct PokemonAboutDescriptionView: View {
                     .padding(.bottom, 5)
                 Text("Evolutions images here")
                 
+//                HStack {
+//                    ForEach(pokemon.types!, id: \.self) { i in
+//                        Text(i.type.name)
+//                            .padding(.horizontal, 10)
+//                            .padding(.vertical, 2)
+//                            .foregroundColor(.white)
+//                            .font(.system(.body, design: .default, weight: .medium))
+//                            .background(i.type.typeColor)
+//                            .cornerRadius(5)
+//                    }
+//                }
+//
+//                HStack {
+//                    Text((evolutionChain.pokemonDataToView. ?? "nil"))
+//                }
+                ForEach(pokemonSpeciesVM.pokemonEvolutionChain) { poke in
+                    Text((poke.chain?.species.name)!)
+                    
+                }
+
                 Spacer()
                 
             }
             .padding()
+            .onAppear {
+                pokemonSpeciesVM.fetchPokemonSpecies(for: pokemon.species?.url ?? "ss")
+            }
         }
         .background(Color(red: 237/255, green: 219/255, blue: 192/255))
+        
     }
 }
 
@@ -255,7 +288,7 @@ struct AppBar: View {
                     
                     VStack(spacing: 8) {
                         HStack(spacing:12) {
-                            Image("person")
+                            Image(systemName: "person")
                                 .foregroundColor(self.index == 1 ? .white : Color.white.opacity(0.7))
                             Text("About")
                                 .foregroundColor(self.index == 1 ? .white : Color.white.opacity(0.7))

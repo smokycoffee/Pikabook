@@ -27,6 +27,7 @@
 		E2B47EFA28FAEEE700F2882F /* PokemonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EF928FAEEE700F2882F /* PokemonDetailsView.swift */; };
 		E2B47EFC28FAF32100F2882F /* PokedexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EFB28FAF32100F2882F /* PokedexViewModel.swift */; };
 		E2B47EFE28FAF65B00F2882F /* ErrorAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B47EFD28FAF65B00F2882F /* ErrorAlerts.swift */; };
+		E2CA875C2916A24E00A442B3 /* PokemonSpeciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CA875B2916A24E00A442B3 /* PokemonSpeciesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		E2B47EF928FAEEE700F2882F /* PokemonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsView.swift; sourceTree = "<group>"; };
 		E2B47EFB28FAF32100F2882F /* PokedexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexViewModel.swift; sourceTree = "<group>"; };
 		E2B47EFD28FAF65B00F2882F /* ErrorAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlerts.swift; sourceTree = "<group>"; };
+		E2CA875B2916A24E00A442B3 /* PokemonSpeciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSpeciesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			children = (
 				E2B47EFB28FAF32100F2882F /* PokedexViewModel.swift */,
 				E2AE3EAD290C88EE005A78F5 /* PokemonEvolutionChainViewModel.swift */,
+				E2CA875B2916A24E00A442B3 /* PokemonSpeciesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				E2AE3EAE290C88EE005A78F5 /* PokemonEvolutionChainViewModel.swift in Sources */,
 				E2B47EFC28FAF32100F2882F /* PokedexViewModel.swift in Sources */,
 				E27379B428F9F6EA0013303B /* FavouritesView.swift in Sources */,
+				E2CA875C2916A24E00A442B3 /* PokemonSpeciesViewModel.swift in Sources */,
 				E27379B828FA163B0013303B /* Pokedex.swift in Sources */,
 				E24A298128F9D4510019429A /* Poke_companionApp.swift in Sources */,
 			);

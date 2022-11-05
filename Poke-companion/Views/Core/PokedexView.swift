@@ -11,6 +11,7 @@ struct PokedexView: View {
     
     @State var loadPokemons = true
     @StateObject private var pokemonVM = PokedexViewModel()
+    @StateObject private var pokemonSpeciesVM = PokemonSpeciesViewModel()
     
     var body: some View {
         NavigationStack {

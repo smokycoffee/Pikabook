@@ -13,13 +13,13 @@ struct PokemonSpecies: Codable {
     let color: Colour
     let eggGroups: [Colour]
     let evolutionChain: EvolutionChain
-    let evolvesFromSpecies: Colour
+    let evolvesFromSpecies: Colour?
     let flavorTextEntries: [FlavorTextEntry]
 //    let formDescriptions: [Any]?
     let formsSwitchable: Bool
     let genderRate: Int
     let genera: [Genus]
-    let generation, growthRate, habitat: Colour
+    let generation, growthRate, habitat: Colour?
     let hasGenderDifferences: Bool
     let hatchCounter, id: Int
     let isBaby, isLegendary, isMythical: Bool

@@ -10,15 +10,32 @@ import Combine
 import SwiftUI
 
 class PokemonEvolutionChainViewModel: ObservableObject {
-    @Published var dataToView =  [String]()
     @Published var errorForAlert: ErrorAlerts?
     @Published var pokemonDataToView = [EvolutionChains]()
     
     var cancellables: Set<AnyCancellable> = []
     
-    func fetchEvolutionChain(for pokemon: String) {
-        let baseURL = URL(string: "https://pokeapi.co/api/v2/evolution-chain/1/")
-    }
+//    func fetchEvolutionChain(for pokemon: String) {
+//        
+//        let url = URL(string: pokemon)!
+//        
+//        let decoder = JSONDecoder()
+//        //        decoder.keyDecodingStrategy = .convertFromSnakeCase
+//        
+//        URLSession.shared.dataTaskPublisher(for: url)
+//            .map { $0.data }
+//            .decode(type: EvolutionChains.self, decoder: decoder)
+//            .receive(on: RunLoop.main)
+//            .sink { completion in
+//                print(completion)
+//            } receiveValue: { [unowned self] pokemon in
+////                self.pokemonDataToView = pokemon
+//                pokemonDataToView.append(pokemon)
+//                print(pokemonDataToView)
+//            }
+//            .store(in: &cancellables)
+//        
+//    }
     
 //    func fetchPokemons() {
 //        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=1154")!
