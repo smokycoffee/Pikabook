@@ -10,13 +10,15 @@ import Foundation
 // MARK: - EvolutionChains
 struct EvolutionChains: Codable, Identifiable, Hashable {
 //    let babyTriggerItem: JSONNull?
-    let chain: Chain?
+    let chain: Chain
     let id: Int
 
 }
 
 // MARK: - Chain
-struct Chain: Codable, Hashable {
+struct Chain: Codable, Hashable, Identifiable {
+    let id = UUID()
+
 //    let evolutionDetails: [EvolutionDetail]?
     let evolvesTo: [EvolvesTo]?
     let isBaby: Bool
@@ -30,9 +32,11 @@ struct Chain: Codable, Hashable {
     }
 }
 
-struct EvolvesTo: Codable, Hashable {
+struct EvolvesTo: Codable, Hashable, Identifiable {
+    let id = UUID()
+
 //    let evolutionDetails: [EvolutionDetail]?
-    let evolvesTo: [EvolvesToTwo]
+    let evolvesTo: [EvolvesToTwo]?
     let isBaby: Bool
     let species: SpeciesDuplicate
 
@@ -44,9 +48,10 @@ struct EvolvesTo: Codable, Hashable {
     }
 }
 
-struct EvolvesToTwo: Codable, Hashable {
+struct EvolvesToTwo: Codable, Hashable, Identifiable {
+    let id = UUID()
 //    let evolutionDetails: [EvolutionDetail]?
-    let evolvesTo: [EvolvesToThree]?
+    let evolvesTo: [Chain]
     let isBaby: Bool
     let species: SpeciesDuplicate
 
@@ -113,7 +118,7 @@ struct EvolvesToThree: Codable, Hashable {
 // MARK: - Species
 struct SpeciesDuplicate: Codable, Hashable {
     let name: String
-    let url: String
+    var url: String
 }
 
 

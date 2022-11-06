@@ -10,7 +10,6 @@ import Combine
 import SwiftUI
 
 class PokedexViewModel: ObservableObject {
-//    @Published var dataToView =  [String]()
     @Published var errorForAlert: ErrorAlerts?
     @Published var pokemonDataToView = [Pokemon]()
     
@@ -27,9 +26,7 @@ class PokedexViewModel: ObservableObject {
             .decode(type: Pokedex.self, decoder: decoder)
             .receive(on: RunLoop.main)
             .sink { completion in
-//                print(completion)
             } receiveValue: { [unowned self] pokedex in
-                
                 let temp = pokedex.results
                 for i in temp {
                     self.fetchPokemonInfo(for: i.url)
@@ -43,7 +40,6 @@ class PokedexViewModel: ObservableObject {
         let url = URL(string: pokemonUrl)!
         
         let decoder = JSONDecoder()
-//        decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }

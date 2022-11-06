@@ -107,11 +107,9 @@ struct PokemonControlTabsView: View {
                 .highPriorityGesture(DragGesture()
                     .onEnded({ (value) in
                         if value.translation.width > 50 { // min drag distance
-                            print("right")
                             self.changeView(left: false)
                         }
                         if -value.translation.width > 50 {
-                            print("left")
                             self.changeView(left: true)
                         }
                     })
@@ -150,10 +148,10 @@ struct PokemonControlTabsView: View {
 struct PokemonAboutDescriptionView: View {
     
     let pokemon: Pokemon
+    
         
     @StateObject private var pokemonSpeciesVM = PokemonSpeciesViewModel()
-    @StateObject private var evolutionChain = PokemonEvolutionChainViewModel()
-    
+//    @StateObject private var evolutionChain = PokemonEvolutionChainViewModel()
     
     var body: some View {
         GeometryReader { _ in
@@ -203,28 +201,16 @@ struct PokemonAboutDescriptionView: View {
                 
                 Text("Evolutions:")
                     .padding(.bottom, 5)
-                Text("Evolutions images here")
                 
-//                HStack {
-//                    ForEach(pokemon.types!, id: \.self) { i in
-//                        Text(i.type.name)
-//                            .padding(.horizontal, 10)
-//                            .padding(.vertical, 2)
-//                            .foregroundColor(.white)
-//                            .font(.system(.body, design: .default, weight: .medium))
-//                            .background(i.type.typeColor)
-//                            .cornerRadius(5)
-//                    }
-//                }
-//
-//                HStack {
-//                    Text((evolutionChain.pokemonDataToView. ?? "nil"))
-//                }
-                ForEach(pokemonSpeciesVM.pokemonEvolutionChain) { poke in
-                    Text((poke.chain?.species.name)!)
+                HStack(alignment: .center) {
                     
+                    ForEach(pokemonSpeciesVM.pokemonEvolutions) { poke in
+                        Spacer(minLength: 30)
+                        AsyncImageView(url: (poke.sprites?.other?.officialArtwork?.frontDefault)!)
+                        Spacer(minLength: 30)
+                    }
                 }
-
+                
                 Spacer()
                 
             }
@@ -235,6 +221,36 @@ struct PokemonAboutDescriptionView: View {
         }
         .background(Color(red: 237/255, green: 219/255, blue: 192/255))
         
+    }
+    // func here
+}
+
+struct AsyncImageView: View {
+    let url: String
+    var body: some View {
+        CachedAsyncImage(url: URL(string: url), urlCache: .imageCache) { phase in
+            switch phase {
+            case .empty:
+                ProgressView()
+                    .frame(width: 60, height: 60)
+            case .success(let image):
+                image
+                    .resizable()
+                    .interpolation(.none)
+                    .scaledToFit()
+                    .frame(width: 60, height: 60)
+            case .failure:
+                Image(systemName: "questionmark")
+                    .resizable()
+                    .interpolation(.none)
+                    .scaledToFit()
+                    .frame(width: 60, height: 60)
+                    .foregroundColor(.gray)
+            @unknown default:
+                EmptyView()
+            }
+        }
+
     }
 }
 
@@ -288,8 +304,8 @@ struct AppBar: View {
                     
                     VStack(spacing: 8) {
                         HStack(spacing:12) {
-                            Image(systemName: "person")
-                                .foregroundColor(self.index == 1 ? .white : Color.white.opacity(0.7))
+//                            Image(systemName: "person")
+//                                .foregroundColor(self.index == 1 ? .white : Color.white.opacity(0.7))
                             Text("About")
                                 .foregroundColor(self.index == 1 ? .white : Color.white.opacity(0.7))
                         }
@@ -305,8 +321,8 @@ struct AppBar: View {
                 } label: {
                     VStack(spacing: 8) {
                         HStack(spacing:12) {
-                            Image("person")
-                                .foregroundColor(self.index == 2 ? .white : Color.white.opacity(0.7))
+//                            Image("person")
+//                                .foregroundColor(self.index == 2 ? .white : Color.white.opacity(0.7))
                             Text("Stats")
                                 .foregroundColor(self.index == 2 ? .white : Color.white.opacity(0.7))
                         }
@@ -322,8 +338,8 @@ struct AppBar: View {
                 } label: {
                     VStack(spacing: 8) {
                         HStack(spacing:12) {
-                            Image("person")
-                                .foregroundColor(self.index == 3 ? .white : Color.white.opacity(0.7))
+//                            Image("person")
+//                                .foregroundColor(self.index == 3 ? .white : Color.white.opacity(0.7))
                             Text("Moves")
                                 .foregroundColor(self.index == 3 ? .white : Color.white.opacity(0.7))
                         }
@@ -379,10 +395,4 @@ struct PokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []))
     }
-}
-
-extension UIScreen {
-   static let screenWidth = UIScreen.main.bounds.size.width
-   static let screenHeight = UIScreen.main.bounds.size.height
-   static let screenSize = UIScreen.main.bounds.size
 }
