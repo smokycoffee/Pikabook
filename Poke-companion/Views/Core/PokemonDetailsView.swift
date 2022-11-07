@@ -149,9 +149,9 @@ struct PokemonAboutDescriptionView: View {
     
     let pokemon: Pokemon
     
-        
+    @State var counter: Int = 1
+    
     @StateObject private var pokemonSpeciesVM = PokemonSpeciesViewModel()
-//    @StateObject private var evolutionChain = PokemonEvolutionChainViewModel()
     
     var body: some View {
         GeometryReader { _ in
@@ -167,21 +167,17 @@ struct PokemonAboutDescriptionView: View {
                         .foregroundColor(.white)
                     
                     Spacer()
-//                    ForEach(pokemon.types!, id: \.self) { i in
-//                        Text(i.type.name)
-//                            .padding(.horizontal, 2)
-//                            .padding(.vertical, 2)
-//                            .foregroundColor(.white)
-//                            .font(.system(.body, design: .default, weight: .medium))
-//                            .background(i.type.typeColor)
-//                            .cornerRadius(5)
-//                    }
+                    
                     Text("types here")
+                    
                     Spacer()
+                    
                     Capsule()
                         .frame(width: 2, height: 35)
                         .foregroundColor(.white)
+                    
                     Spacer()
+                    
                     VStatLayout(bodyType: 50, placeholder: "Height")
                     
                 }
@@ -203,13 +199,24 @@ struct PokemonAboutDescriptionView: View {
                     .padding(.bottom, 5)
                 
                 HStack(alignment: .center) {
-                    
+                    Spacer()
                     ForEach(pokemonSpeciesVM.pokemonEvolutions) { poke in
-                        Spacer(minLength: 30)
+                        Spacer()
                         AsyncImageView(url: (poke.sprites?.other?.officialArtwork?.frontDefault)!)
-                        Spacer(minLength: 30)
+                        Spacer()
+                        if poke != pokemonSpeciesVM.pokemonEvolutions.last {
+                            Image(systemName: "arrow.forward.circle")
+//                                .foregroundColor(.yellow)
+                                .foregroundColor(pokemon.types![0].type.typeColor)
+                                .font(.title2)
+                        }
+                        
+                        
+                        Spacer()
                     }
+                    Spacer()
                 }
+                .frame(width: UIScreen.screenWidth)
                 
                 Spacer()
                 

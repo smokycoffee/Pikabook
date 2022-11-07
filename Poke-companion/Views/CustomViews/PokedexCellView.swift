@@ -11,52 +11,60 @@ import CachedAsyncImage
 struct PokedexCellView: View {
     
     var pokemon: Pokemon
-    
     var body: some View {
-        HStack {
-            VStack(alignment: .leading){
-                Text(pokemon.name)
-                    .font(.system(.title2, design: .monospaced))
-                    .bold()
-                    .padding(.bottom)
-                HStack {
-                    ForEach(pokemon.types!, id: \.self) { i in
-                        Text(i.type.name)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 2)
-                            .foregroundColor(.white)
-                            .font(.system(.body, design: .default, weight: .medium))
-                            .background(i.type.typeColor)
-                            .cornerRadius(5)
+        ZStack {
+            RoundedRectangle(cornerRadius: 20)
+                .fill(pokemon.types![0].type.typeColor.opacity(0.3))
+                .frame(width: UIScreen.screenWidth - 20, height: 80, alignment: .center)
+                .padding(.horizontal)
+            HStack {
+                VStack(alignment: .leading){
+                    Text(pokemon.name.capitalizingFirstLetter())
+                        .font(.system(.title3, design: .monospaced))
+                        .bold()
+                        .padding(.top, 10)
+//                        .padding(.bottom)
+                    HStack {
+                        ForEach(pokemon.types!, id: \.self) { i in
+                            Text(i.type.name)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 2)
+                                .foregroundColor(.white)
+                                .font(.system(.headline, design: .default, weight: .medium))
+                                .background(i.type.typeColor)
+                                .cornerRadius(5)
+                        }
+                    }
+                }
+                .padding(.leading, 20)
+                Spacer()
+                
+                CachedAsyncImage(url: URL(string: pokemon.sprites?.other?.officialArtwork!.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                            .frame(width: 120, height: 120)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .interpolation(.none)
+                            .scaledToFit()
+                            .frame(width: 120, height: 120)
+                    case .failure:
+                        Image(systemName: "questionmark")
+                            .resizable()
+                            .interpolation(.none)
+                            .scaledToFit()
+                            .frame(width: 120, height: 120)
+                            .foregroundColor(.gray)
+                    @unknown default:
+                        EmptyView()
                     }
                 }
             }
-            Spacer()
-            
-            CachedAsyncImage(url: URL(string: pokemon.sprites?.other?.officialArtwork!.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView()
-                        .frame(width: 90, height: 90)
-                case .success(let image):
-                    image
-                        .resizable()
-                        .interpolation(.none)
-                        .scaledToFit()
-                        .frame(width: 90, height: 90)
-                case .failure:
-                    Image(systemName: "questionmark")
-                        .resizable()
-                        .interpolation(.none)
-                        .scaledToFit()
-                        .frame(width: 90, height: 90)
-                        .foregroundColor(.gray)
-                @unknown default:
-                    EmptyView()
-                }
-            }
+//            .frame(height: 100)
+            .padding(.horizontal)
         }
-        .padding()
     }
 }
 
