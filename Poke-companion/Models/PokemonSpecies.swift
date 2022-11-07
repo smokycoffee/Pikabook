@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Welcome
-struct PokemonSpecies: Codable {
+struct PokemonSpecies: Codable, Identifiable {
     let baseHappiness, captureRate: Int
     let color: Colour
     let eggGroups: [Colour]
@@ -59,9 +59,15 @@ struct PokemonSpecies: Codable {
 }
 
 // MARK: - Color
-struct Colour: Codable {
+struct Colour: Codable, Hashable, Identifiable {
     let name: String
     let url: String
+    let id = UUID()
+    
+    enum CodingKeys: CodingKey {
+        case name
+        case url
+    }
 }
 
 // MARK: - EvolutionChain

@@ -118,7 +118,6 @@ struct PokemonControlTabsView: View {
             }
         }
         .animation(.default, value: offset)
-//        .edgesIgnoringSafeArea(.all)
     }
     
     func changeView(left: Bool) {
@@ -145,20 +144,26 @@ struct PokemonControlTabsView: View {
     }
 }
 
+extension Double {
+    var clean: String {
+       return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
+
+}
+
 struct PokemonAboutDescriptionView: View {
     
     let pokemon: Pokemon
-    
-    @State var counter: Int = 1
-    
+        
     @StateObject private var pokemonSpeciesVM = PokemonSpeciesViewModel()
+    @State var loaded = false
     
     var body: some View {
         GeometryReader { _ in
             VStack(alignment: .leading) {
                 HStack {
                     
-                    VStatLayout(bodyType: 50, placeholder: "Weight")
+                    VStatLayout(bodyType: String(Double(pokemon.weight) * 0.1), placeholder: "Weight", typeofScale: "Kg")
                     
                     Spacer()
                     
@@ -178,17 +183,46 @@ struct PokemonAboutDescriptionView: View {
                     
                     Spacer()
                     
-                    VStatLayout(bodyType: 50, placeholder: "Height")
+                    VStatLayout(bodyType: Double(pokemon.height * 10).clean, placeholder: "Height", typeofScale: "cm")
                     
                 }
                 .frame(height: 35)
                 
-                HStatLayout(typeTitle: "Species:", assignment: "Fire Pokemon", titleWidth: 70)
-                    .padding(.vertical, 2)
-                    .padding(.top, 10)
+//                HStatLayout(typeTitle: "Species:", assignment: "Fire Pokemon", titleWidth: 70)
+//                    .padding(.vertical, 2)
+//                    .padding(.top, 10)
                 
-                HStatLayout(typeTitle: "Ability:", assignment: "Swish Swish", titleWidth: 70)
-                    .padding(.vertical, 2)
+                HStack(spacing: 0) {
+                    Text("Species:")
+                        .font(.system(.body, design: .default, weight: .bold))
+                        .frame(width: 70, alignment: .leading)
+                    
+                    ForEach(pokemonSpeciesVM.dataToView) { poke in
+                        ForEach(poke.eggGroups) { type in
+                            Text(type.name)
+                            if type != poke.eggGroups.last {
+                                Text(",")
+                                    .padding(.trailing, 2)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 5)
+                }
+                
+                
+                HStack(spacing: 0) {
+                    Text("Ability:")
+                        .font(.system(.body, design: .default, weight: .bold))
+                        .frame(width: 70, alignment: .leading)
+                    
+                    ForEach(pokemon.abilities) { ability in
+                        Text(ability.ability.name + ", ")
+                    }
+                }
+                .padding(.vertical, 2)
+                
+//                HStatLayout(typeTitle: "Ability:", assignment: "Swish Swish", titleWidth: 70)
+//                    .padding(.vertical, 2)
                 
                 HStatLayout(typeTitle: "Encounters:", assignment: "Kanto", titleWidth: 100)
                     .padding(.vertical, 2)
@@ -203,6 +237,7 @@ struct PokemonAboutDescriptionView: View {
                     ForEach(pokemonSpeciesVM.pokemonEvolutions) { poke in
                         Spacer()
                         AsyncImageView(url: (poke.sprites?.other?.officialArtwork?.frontDefault)!)
+                        
                         Spacer()
                         if poke != pokemonSpeciesVM.pokemonEvolutions.last {
                             Image(systemName: "arrow.forward.circle")
@@ -210,7 +245,6 @@ struct PokemonAboutDescriptionView: View {
                                 .foregroundColor(pokemon.types![0].type.typeColor)
                                 .font(.title2)
                         }
-                        
                         
                         Spacer()
                     }
@@ -223,7 +257,10 @@ struct PokemonAboutDescriptionView: View {
             }
             .padding()
             .onAppear {
-                pokemonSpeciesVM.fetchPokemonSpecies(for: pokemon.species?.url ?? "ss")
+                if loaded == false {
+                    pokemonSpeciesVM.fetchPokemonSpecies(for: pokemon.species?.url ?? "ss")
+                    loaded = true
+                }
             }
         }
         .background(Color(red: 237/255, green: 219/255, blue: 192/255))
@@ -366,14 +403,19 @@ struct AppBar: View {
 
 struct VStatLayout: View {
     
-    let bodyType: Int
+    let bodyType: String
     let placeholder: String
+    let typeofScale: String
     
     var body: some View {
-        VStack {
-            Text(String(bodyType))
-                .font(.system(.title2, design: .rounded, weight: .semibold))
-                .frame(width: 100)
+        VStack(alignment: .center) {
+            HStack(alignment: .center, spacing: 2) {
+                Text(String(bodyType))
+                    .font(.system(.title3, design: .rounded, weight: .semibold))
+                Text(typeofScale)
+                    .font(.system(.subheadline, design: .rounded))
+            }
+            .frame(width: 100)
             Text(placeholder)
                 .font(.system(.caption, design: .rounded, weight: .regular))
         }
@@ -387,7 +429,7 @@ struct HStatLayout: View {
     var titleWidth: CGFloat
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             Text(typeTitle)
                 .font(.system(.body, design: .default, weight: .bold))
                 .frame(width: titleWidth, alignment: .leading)

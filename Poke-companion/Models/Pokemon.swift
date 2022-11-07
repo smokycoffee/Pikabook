@@ -44,10 +44,11 @@ struct Pokemon: Codable, Hashable, Identifiable {
 }
 
 // MARK: - Ability
-struct Ability: Codable, Hashable {
+struct Ability: Codable, Hashable, Identifiable {
     let isHidden: Bool?
     let slot: Int
     let ability: Species
+    let id = UUID()
 
     enum CodingKeys: String, CodingKey {
         case isHidden = "is_hidden"

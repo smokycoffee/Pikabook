@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 class PokemonSpeciesViewModel: ObservableObject {
-    @Published var dataToView =  [String]()
+    @Published var dataToView = [PokemonSpecies]()
     @Published var errorForAlert: ErrorAlerts?
     @Published var pokemonDataToView = [String]()
     @Published var pokemonEvolutionChainURL: String?
@@ -33,7 +33,7 @@ class PokemonSpeciesViewModel: ObservableObject {
             } receiveValue: { [unowned self] pokemon in
                 pokemonEvolutionChainURL = pokemon.evolutionChain.url
                 fetchEvolutionChain(for: pokemonEvolutionChainURL!)
-                
+                dataToView.append(pokemon)
             }
             .store(in: &cancellables)
     }
