@@ -13,13 +13,13 @@ struct PokemonDetailsView: View {
     @Environment(\.dismiss) var dismiss
 
     var pokemon: Pokemon
-
+    
     var body: some View {
             VStack {
                 Group {
                     Rectangle()
                         .fill(.clear)
-                        .frame(height: 30)
+                        .frame(height: 5)
                     Text(pokemon.name)
 //                        .padding(.top, 60)
                         .font(.system(.largeTitle))
@@ -60,21 +60,39 @@ struct PokemonDetailsView: View {
 
                 PokemonControlTabsView(pokemon: pokemon)
             }
-            .ignoresSafeArea(.all, edges: .top)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        // nav back
-                        dismiss()
-                    }) {
-                        Image(systemName: "chevron.left.circle.fill")
-                            .font(.title)
-                            .foregroundColor(.gray)
+            .overlay(content: {
+                HStack {
+                    Spacer()
+
+                    VStack {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "chevron.down.circle.fill")
+                                .font(.largeTitle)
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.trailing, 10)
+                        .padding(.top, 10)
+                        Spacer()
                     }
                 }
-            }
-            .background(pokemon.types![0].type.typeColor.opacity(0.5))
+            })
+            .ignoresSafeArea(.all, edges: .top)
+            .navigationBarBackButtonHidden(true)
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button(action: {
+//                        // nav back
+//                        dismiss()
+//                    }) {
+//                        Image(systemName: "chevron.left.circle.fill")
+//                            .font(.title)
+//                            .foregroundColor(.gray)
+//                    }
+//                }
+//            }
+            .background(pokemon.types![0].type.typeColor.opacity(0.6)) // cause canvas crash as its from api
     }
 }
 
@@ -149,7 +167,6 @@ extension Double {
     var clean: String {
        return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
-
 }
 
 struct PokemonAboutDescriptionView: View {
@@ -228,7 +245,7 @@ struct PokemonAboutDescriptionView: View {
                 HStatLayout(typeTitle: "Encounters:", assignment: "Kanto", titleWidth: 100)
                     .padding(.vertical, 2)
                 
-                Spacer()
+//                Spacer()
                 
                 Text("Evolutions:")
                     .padding(.bottom, 5)
@@ -266,7 +283,7 @@ struct PokemonAboutDescriptionView: View {
         }
         .background(Color(red: 237/255, green: 219/255, blue: 192/255))
         .cornerRadius(20)
-        
+        .ignoresSafeArea()
     }
     // func here
 }
@@ -339,7 +356,7 @@ struct SelectedTab: View {
     var body: some View {
         Circle()
             .trim(from: 0.5, to: 1)
-            .stroke(highlighted, lineWidth: 25)
+            .stroke(highlighted, lineWidth: 30)
             .frame(width: 50)
             .offset(y: 20)
     }
