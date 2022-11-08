@@ -204,7 +204,8 @@ struct PokemonAboutDescriptionView: View {
                     VStatLayout(bodyType: Double(pokemon.height * 10).clean, placeholder: "Height", typeofScale: "cm")
                     
                 }
-                .frame(height: 35)
+                .frame(height: 30)
+                .padding(.bottom, 10)
                 
 //                HStatLayout(typeTitle: "Species:", assignment: "Fire Pokemon", titleWidth: 70)
 //                    .padding(.vertical, 2)
@@ -236,6 +237,7 @@ struct PokemonAboutDescriptionView: View {
                     ForEach(pokemon.abilities) { ability in
                         Text(ability.ability.name + ", ")
                     }
+                    .padding(.horizontal, 5)
                 }
                 .padding(.vertical, 2)
                 
@@ -248,6 +250,7 @@ struct PokemonAboutDescriptionView: View {
 //                Spacer()
                 
                 Text("Evolutions:")
+                    .font(.system(.body, design: .default, weight: .bold))
                     .padding(.bottom, 5)
                 
                 HStack(alignment: .center) {
