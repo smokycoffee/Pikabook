@@ -83,6 +83,7 @@ class PokemonSpeciesViewModel: ObservableObject {
             .sink { completion in
             } receiveValue: { [unowned self] pokemon in
                 pokemonEvolutions.append(pokemon)
+//                print(pokemon.sprites?.versions?.generationV.blackWhite.animated.frontDefault)
             }
             .store(in: &cancellables)
     }

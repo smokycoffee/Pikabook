@@ -171,7 +171,7 @@ struct TypeElement: Codable, Hashable {
 
 // MARK: - GenerationV
 struct GenerationV: Codable, Hashable {
-    let blackWhite: AnimatedSprites
+    let blackWhite: AnimaImages
 
     enum CodingKeys: String, CodingKey {
         case blackWhite = "black-white"
@@ -259,7 +259,40 @@ struct AnimatedSprites: Codable, Hashable {
     let backShiny: String?
     let frontDefault: String?
     let frontShiny: String?
+
+    
+    enum CodingKeys: String, CodingKey {
+        case backDefault = "back_default"
+        case backShiny = "back_shiny"
+        case frontDefault = "front_default"
+        case frontShiny = "front_shiny"
+    }
 }
+struct AnimImages: Codable, Hashable {
+    let frontDefault: String
+    
+    enum CodingKeys: String, CodingKey {
+        case frontDefault = "front_default"
+    }
+}
+
+struct AnimaImages: Codable, Hashable {
+    let backDefault: String?
+    let backShiny: String?
+    let frontDefault: String?
+    let frontShiny: String?
+    let animated: AnimImages
+
+    
+    enum CodingKeys: String, CodingKey {
+        case backDefault = "back_default"
+        case backShiny = "back_shiny"
+        case frontDefault = "front_default"
+        case frontShiny = "front_shiny"
+        case animated
+    }
+}
+
 
 // MARK: - GenerationI
 struct GenerationI: Codable, Hashable {

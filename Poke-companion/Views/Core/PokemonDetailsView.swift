@@ -56,7 +56,7 @@ struct PokemonDetailsView: View {
                         .padding(.horizontal)
                         .padding(.bottom, 5)
                 } // Group
-                Spacer()
+//                Spacer()
 
                 PokemonControlTabsView(pokemon: pokemon)
             }
@@ -74,6 +74,7 @@ struct PokemonDetailsView: View {
                     }
                 }
             }
+            .background(pokemon.types![0].type.typeColor.opacity(0.5))
     }
 }
 
@@ -236,7 +237,7 @@ struct PokemonAboutDescriptionView: View {
                     Spacer()
                     ForEach(pokemonSpeciesVM.pokemonEvolutions) { poke in
                         Spacer()
-                        AsyncImageView(url: (poke.sprites?.other?.officialArtwork?.frontDefault)!)
+                        AsyncImageView(url: (poke.sprites?.frontDefault)!)
                         
                         Spacer()
                         if poke != pokemonSpeciesVM.pokemonEvolutions.last {
@@ -264,6 +265,7 @@ struct PokemonAboutDescriptionView: View {
             }
         }
         .background(Color(red: 237/255, green: 219/255, blue: 192/255))
+        .cornerRadius(20)
         
     }
     // func here
@@ -331,11 +333,24 @@ struct PokemonGenerationView: View {
     }
 }
 
+struct SelectedTab: View {
+    var highlighted: Color
+    
+    var body: some View {
+        Circle()
+            .trim(from: 0.5, to: 1)
+            .stroke(highlighted, lineWidth: 25)
+            .frame(width: 50)
+            .offset(y: 20)
+    }
+}
+
 struct AppBar: View {
     @Binding var index: Int
     @Binding var offset: CGFloat
     var width = UIScreen.main.bounds.width
-    
+    var tempColor = Color(red: 183/255, green: 62/255, blue: 62/255)
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -346,58 +361,80 @@ struct AppBar: View {
                     
                 } label: {
                     
-                    VStack(spacing: 8) {
-                        HStack(spacing:12) {
-//                            Image(systemName: "person")
-//                                .foregroundColor(self.index == 1 ? .white : Color.white.opacity(0.7))
-                            Text("About")
-                                .foregroundColor(self.index == 1 ? .white : Color.white.opacity(0.7))
+                    ZStack {
+                        SelectedTab(highlighted: self.index == 1 ? tempColor : Color.clear)
+                        VStack(spacing: 8) {
+                            HStack(spacing:12) {
+                                Text("About")
+                                    .foregroundColor(self.index == 1 ? .white : Color.white)
+                                    .fontWeight(.semibold)
+                            }
+//                            Capsule()
+//                                .fill(self.index == 1 ? Color.white : Color.clear)
+//                                .frame(height: 4)
                         }
-                        Capsule()
-                            .fill(self.index == 1 ? Color.white : Color.clear)
-                            .frame(height: 4)
                     }
                 }
+                Spacer()
+
                 
+//                Circle()
+//                    .trim(from: 0.5, to: 1)
+//                    .stroke(.purple, lineWidth: 20)
+//                    .frame(width: 40)
+//
+//
                 Button {
                     self.index = 2
                     self.offset = 0
                 } label: {
-                    VStack(spacing: 8) {
-                        HStack(spacing:12) {
-//                            Image("person")
-//                                .foregroundColor(self.index == 2 ? .white : Color.white.opacity(0.7))
-                            Text("Stats")
-                                .foregroundColor(self.index == 2 ? .white : Color.white.opacity(0.7))
+                    ZStack {
+                        SelectedTab(highlighted: self.index == 2 ? tempColor : Color.clear)
+                        VStack(spacing: 8) {
+                            HStack(spacing:12) {
+    //                            Image("person")
+    //                                .foregroundColor(self.index == 2 ? .white : Color.white.opacity(0.7))
+                                Text("Stats")
+                                    .foregroundColor(self.index == 2 ? .white : Color.white)
+                                    .fontWeight(.semibold)
+                            }
+//                            Capsule()
+//                                .fill(self.index == 2 ? Color.white : Color.clear)
+//                                .frame(height: 4)
                         }
-                        Capsule()
-                            .fill(self.index == 2 ? Color.white : Color.clear)
-                            .frame(height: 4)
                     }
                 }
-                
+                Spacer()
+
                 Button {
                     self.index = 3
                     self.offset = -self.width
                 } label: {
-                    VStack(spacing: 8) {
-                        HStack(spacing:12) {
-//                            Image("person")
-//                                .foregroundColor(self.index == 3 ? .white : Color.white.opacity(0.7))
-                            Text("Moves")
-                                .foregroundColor(self.index == 3 ? .white : Color.white.opacity(0.7))
+                    ZStack {
+                        SelectedTab(highlighted: self.index == 3 ? tempColor : Color.clear)
+                        VStack(spacing: 8) {
+                            HStack(spacing:12) {
+    //                            Image("person")
+    //                                .foregroundColor(self.index == 3 ? .white : Color.white.opacity(0.7))
+                                Text("Moves")
+                                    .foregroundColor(self.index == 3 ? .white : Color.white)
+                                    .fontWeight(.semibold)
+                            }
+//                            Capsule()
+//                                .fill(self.index == 3 ? Color.white : Color.clear)
+//                                .frame(height: 4)
                         }
-                        Capsule()
-                            .fill(self.index == 3 ? Color.white : Color.clear)
-                            .frame(height: 4)
                     }
                 }
+
             } // HStack end
+            .padding(.horizontal)
         }
-        .padding(.top, 15)
+//        .padding(.top, 15)
         .padding(.horizontal)
-        .padding(.bottom, 8)
-        .background(Color(red: 183/255, green: 62/255, blue: 62/255))
+//        .background(Color(red: 183/255, green: 62/255, blue: 62/255))
+//        .background(Color(red: 237/255, green: 219/255, blue: 192/255))
+        .background(.clear)
     }
 }
 
