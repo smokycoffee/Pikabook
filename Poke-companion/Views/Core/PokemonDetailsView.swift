@@ -14,16 +14,21 @@ struct PokemonDetailsView: View {
 
     var pokemon: Pokemon
     
+    @State var gradientColor: Color = .gray
+//    let gradient = Gradient(colors: [])
+
+    
     var body: some View {
             VStack {
                 Group {
                     Rectangle()
                         .fill(.clear)
                         .frame(height: 5)
-                    Text(pokemon.name)
+                    Text(pokemon.name.capitalizingFirstLetter())
 //                        .padding(.top, 60)
-                        .font(.system(.largeTitle))
-                    Text(String(pokemon.id))
+                        .font(.system(.largeTitle, design: .rounded, weight: .medium))
+                    Text("#" + String(pokemon.id))
+                        .font(.system(.body, design: .rounded, weight: .regular))
                     
                     CachedAsyncImage(url: URL(string: pokemon.sprites?.other?.officialArtwork?.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
                         switch phase {
@@ -51,13 +56,16 @@ struct PokemonDetailsView: View {
                         }
                     }
                     Text("Bulbasaur can be seen napping in bright sunlight.\nThere is a seed on its back. By soaking up the sun’s rays,\nthe seed grows progressively larger.")
-                        .font(.system(.caption))
+                        .font(.system(.footnote))
                         .multilineTextAlignment(.center)
-                        .padding(.horizontal)
-                        .padding(.bottom, 5)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 5)
+                        .background(gradientColor.opacity(0.8))
+                        .cornerRadius(20)
+                    
                 } // Group
-//                Spacer()
-
+                .foregroundColor(.white)
+                
                 PokemonControlTabsView(pokemon: pokemon)
             }
             .overlay(content: {
@@ -92,7 +100,12 @@ struct PokemonDetailsView: View {
 //                    }
 //                }
 //            }
-            .background(pokemon.types![0].type.typeColor.opacity(0.6)) // cause canvas crash as its from api
+//            .background(pokemon.types![0].type.typeColor.opacity(0.6)) // cause canvas crash as its from api
+//            .background(LinearGradient(colors: [gradientColor, gradientColor.opacity(0.5), gradientColor], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.6), gradientColor], center: .center, startRadius: 1, endRadius: UIScreen.screenWidth - 100))
+            .onAppear {
+                gradientColor = pokemon.types![0].type.typeColor
+            }
     }
 }
 
@@ -285,7 +298,8 @@ struct PokemonAboutDescriptionView: View {
             }
         }
         .background(Color(red: 237/255, green: 219/255, blue: 192/255))
-        .cornerRadius(20)
+        .cornerRadius(20, corners: .topLeft)
+        .cornerRadius(20, corners: .topRight)
         .ignoresSafeArea()
     }
     // func here
