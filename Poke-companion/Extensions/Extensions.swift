@@ -8,16 +8,19 @@
 import Foundation
 import SwiftUI
 
+// MARK: Cache images from api
 extension URLCache {
     static let imageCache = URLCache(memoryCapacity: 512*1000*1000, diskCapacity: 10*1000*1000*1000)
 }
 
+// MARK: Screen sizes
 extension UIScreen {
    static let screenWidth = UIScreen.main.bounds.size.width
    static let screenHeight = UIScreen.main.bounds.size.height
    static let screenSize = UIScreen.main.bounds.size
 }
 
+// MARK: Capitalize Pokemon names etc...
 extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).capitalized + dropFirst()
@@ -46,3 +49,10 @@ extension View {
     }
 }
 // MARK: End
+
+// MARK: Converting Pokemon Stats
+extension Double {
+    var clean: String {
+       return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
+}

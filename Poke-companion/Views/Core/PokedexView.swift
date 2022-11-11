@@ -38,7 +38,7 @@ struct PokedexView: View {
 //            })
             .sheet(item: $selectedPokemon, content: { poke in
                 PokemonDetailsView(pokemon: poke)
-                    .presentationDetents([.medium, .large,])
+                    .presentationDetents([.large])
             })
             .navigationTitle("Pokemons")
 //            .navigationDestination(for: Pokemon.self) { pokemon in
