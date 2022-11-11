@@ -45,10 +45,6 @@ struct AboutDescriptionView: View {
                 .frame(height: 30)
                 .padding(.bottom, 10)
                 
-//                HStatLayout(typeTitle: "Species:", assignment: "Fire Pokemon", titleWidth: 70)
-//                    .padding(.vertical, 2)
-//                    .padding(.top, 10)
-                
                 HStack(spacing: 0) {
                     Text("Species:")
                         .font(.system(.body, design: .default, weight: .bold))
@@ -79,13 +75,9 @@ struct AboutDescriptionView: View {
                 }
                 .padding(.vertical, 2)
                 
-//                HStatLayout(typeTitle: "Ability:", assignment: "Swish Swish", titleWidth: 70)
-//                    .padding(.vertical, 2)
-                
                 HStatLayout(typeTitle: "Encounters:", assignment: "Kanto", titleWidth: 100)
                     .padding(.vertical, 2)
                 
-//                Spacer()
                 
                 Text("Evolutions:")
                     .font(.system(.body, design: .default, weight: .bold))
@@ -100,7 +92,6 @@ struct AboutDescriptionView: View {
                         Spacer()
                         if poke != pokemonSpeciesVM.pokemonEvolutions.last {
                             Image(systemName: "arrow.forward.circle")
-//                                .foregroundColor(.yellow)
                                 .foregroundColor(pokemon.types![0].type.typeColor)
                                 .font(.title2)
                         }
@@ -134,5 +125,44 @@ struct AboutDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
         AboutDescriptionView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: [])).previewLayout(.sizeThatFits)
             .frame(height: 400)
+    }
+}
+
+
+struct VStatLayout: View {
+    
+    let bodyType: String
+    let placeholder: String
+    let typeofScale: String
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            HStack(alignment: .center, spacing: 2) {
+                Text(String(bodyType))
+                    .font(.system(.title3, design: .rounded, weight: .semibold))
+                Text(typeofScale)
+                    .font(.system(.subheadline, design: .rounded))
+            }
+            .frame(width: 100)
+            Text(placeholder)
+                .font(.system(.caption, design: .rounded, weight: .regular))
+        }
+    }
+}
+
+struct HStatLayout: View {
+    
+    let typeTitle: String
+    let assignment: String
+    var titleWidth: CGFloat
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            Text(typeTitle)
+                .font(.system(.body, design: .default, weight: .bold))
+                .frame(width: titleWidth, alignment: .leading)
+            Text(assignment) // change this
+                .font(.system(.body, design: .default, weight: .regular))
+        }
     }
 }

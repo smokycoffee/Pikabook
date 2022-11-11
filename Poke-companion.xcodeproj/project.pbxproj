@@ -33,6 +33,8 @@
 		E2F87768291F07FF008E26C5 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F87767291F07FF008E26C5 /* StatsView.swift */; };
 		E2F8776A291F0810008E26C5 /* MovesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F87769291F0810008E26C5 /* MovesView.swift */; };
 		E2F8776D291F0851008E26C5 /* GenerationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8776C291F0851008E26C5 /* GenerationsView.swift */; };
+		E2F87771291F0B52008E26C5 /* SelectedTabSemiCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F87770291F0B52008E26C5 /* SelectedTabSemiCircle.swift */; };
+		E2F87773291F0B99008E26C5 /* TabsAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F87772291F0B99008E26C5 /* TabsAppBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		E2F87767291F07FF008E26C5 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		E2F87769291F0810008E26C5 /* MovesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovesView.swift; sourceTree = "<group>"; };
 		E2F8776C291F0851008E26C5 /* GenerationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationsView.swift; sourceTree = "<group>"; };
+		E2F87770291F0B52008E26C5 /* SelectedTabSemiCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTabSemiCircle.swift; sourceTree = "<group>"; };
+		E2F87772291F0B99008E26C5 /* TabsAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsAppBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 		E27379A428F9F4D40013303B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E2F8776E291F095F008E26C5 /* CustomViews */,
 				E2F87760291F03D0008E26C5 /* Cells */,
 				E27379A728F9F5110013303B /* PokemonDetails */,
 				E27379A628F9F50B0013303B /* Core */,
@@ -176,8 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				E2F87761291F049D008E26C5 /* AboutDescriptionView.swift */,
-				E2F87763291F05F6008E26C5 /* ControlTabsView.swift */,
-				E2F87765291F07C9008E26C5 /* AsyncImageView.swift */,
 				E2F87767291F07FF008E26C5 /* StatsView.swift */,
 				E2F87769291F0810008E26C5 /* MovesView.swift */,
 				E2F8776C291F0851008E26C5 /* GenerationsView.swift */,
@@ -202,6 +205,17 @@
 				E2B47EF728FAD73C00F2882F /* PokedexCellView.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		E2F8776E291F095F008E26C5 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				E2F87765291F07C9008E26C5 /* AsyncImageView.swift */,
+				E2F87763291F05F6008E26C5 /* ControlTabsView.swift */,
+				E2F87770291F0B52008E26C5 /* SelectedTabSemiCircle.swift */,
+				E2F87772291F0B99008E26C5 /* TabsAppBar.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,11 +308,13 @@
 				E2F8776D291F0851008E26C5 /* GenerationsView.swift in Sources */,
 				E2F87764291F05F6008E26C5 /* ControlTabsView.swift in Sources */,
 				E2B47EFA28FAEEE700F2882F /* PokemonDetailsView.swift in Sources */,
+				E2F87771291F0B52008E26C5 /* SelectedTabSemiCircle.swift in Sources */,
 				E223C9292900AF020050AD94 /* Extensions.swift in Sources */,
 				E276179A290C7B1B0094973D /* EvolutionChains.swift in Sources */,
 				E2B47EFC28FAF32100F2882F /* PokedexViewModel.swift in Sources */,
 				E27379B428F9F6EA0013303B /* FavouritesView.swift in Sources */,
 				E2CA875C2916A24E00A442B3 /* PokemonSpeciesViewModel.swift in Sources */,
+				E2F87773291F0B99008E26C5 /* TabsAppBar.swift in Sources */,
 				E2F87766291F07C9008E26C5 /* AsyncImageView.swift in Sources */,
 				E2F87762291F049D008E26C5 /* AboutDescriptionView.swift in Sources */,
 				E27379B828FA163B0013303B /* Pokedex.swift in Sources */,

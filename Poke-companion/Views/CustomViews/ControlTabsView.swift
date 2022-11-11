@@ -17,7 +17,7 @@ struct ControlTabsView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            AppBar(index: self.$index, offset: self.$offset)
+            TabsAppBar(index: self.$index, offset: self.$offset)
             
             GeometryReader { g in
                 HStack(spacing: 0) {
