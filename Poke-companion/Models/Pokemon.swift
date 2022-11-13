@@ -420,7 +420,8 @@ struct OfficialArtwork: Codable, Hashable {
 }
 
 // MARK: - Stat
-struct Stat: Codable, Hashable {
+struct Stat: Codable, Hashable, Identifiable {
+    let id = UUID()
     let baseStat, effort: Int?
     let stat: Species
 
@@ -429,3 +430,12 @@ struct Stat: Codable, Hashable {
         case effort, stat
     }
 }
+
+let MockStatDataSet = [
+    Stat(baseStat: 20, effort: 0, stat: .init(name: "HP", url: "ss")),
+    Stat(baseStat: 40, effort: 0, stat: .init(name: "SP", url: "ss")),
+    Stat(baseStat: 50, effort: 0, stat: .init(name: "HdP", url: "ss")),
+    Stat(baseStat: 10, effort: 0, stat: .init(name: "HsP", url: "ss")),
+    Stat(baseStat: 80, effort: 0, stat: .init(name: "HsP", url: "ss")),
+    Stat(baseStat: 30, effort: 0, stat: .init(name: "HsP", url: "ss"))
+]

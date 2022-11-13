@@ -25,7 +25,7 @@ struct ControlTabsView: View {
                     AboutDescriptionView(pokemon: pokemon)
                         .frame(width: g.frame(in: .global).width)
                     
-                    StatsView()
+                    StatsView(pokemon: pokemon)
                         .frame(width: g.frame(in: .global).width)
                     
                     MovesView()
