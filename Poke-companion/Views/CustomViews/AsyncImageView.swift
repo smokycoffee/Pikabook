@@ -17,19 +17,19 @@ struct AsyncImageView: View {
             switch phase {
             case .empty:
                 ProgressView()
-                    .frame(width: 60, height: 60)
+                    .frame(width: 80)
             case .success(let image):
                 image
                     .resizable()
                     .interpolation(.none)
                     .scaledToFit()
-                    .frame(width: 60, height: 60)
+                    .frame(width: 80)
             case .failure:
                 Image(systemName: "questionmark")
                     .resizable()
                     .interpolation(.none)
                     .scaledToFit()
-                    .frame(width: 60, height: 60)
+                    .frame(width: 80)
                     .foregroundColor(.gray)
             @unknown default:
                 EmptyView()

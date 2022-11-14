@@ -88,14 +88,12 @@ struct AboutDescriptionView: View {
                     ForEach(pokemonSpeciesVM.pokemonEvolutions) { poke in
                         Spacer()
                         AsyncImageView(url: (poke.sprites?.frontDefault)!)
-                        
                         Spacer()
                         if poke != pokemonSpeciesVM.pokemonEvolutions.last {
                             Image(systemName: "arrow.forward.circle")
                                 .foregroundColor(pokemon.types![0].type.typeColor)
                                 .font(.title2)
                         }
-                        
                         Spacer()
                     }
                     Spacer()
@@ -103,7 +101,6 @@ struct AboutDescriptionView: View {
                 .frame(width: UIScreen.screenWidth)
                 
                 Spacer()
-                
             }
             .padding()
             .onAppear {

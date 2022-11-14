@@ -13,6 +13,8 @@ class PokedexViewModel: ObservableObject {
     @Published var errorForAlert: ErrorAlerts?
     @Published var pokemonDataToView = [Pokemon]()
     
+    var loading = true
+    
     var cancellables: Set<AnyCancellable> = []
     
     func fetchPokemons() {
@@ -27,13 +29,18 @@ class PokedexViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .sink { completion in
             } receiveValue: { [unowned self] pokedex in
-                let temp = pokedex.results
+                let temp =  pokedex.results
                 for i in temp {
                     self.fetchPokemonInfo(for: i.url)
+                    loading = false
                 }
-//                print(pokemonDataToView)
+                //                print(pokemonDataToView)
             }
             .store(in: &cancellables)
+    }
+    
+    func displayAllpokemons() {
+        
     }
     
     func fetchPokemonInfo(for pokemonUrl: String) {
@@ -47,9 +54,11 @@ class PokedexViewModel: ObservableObject {
             .decode(type: Pokemon.self, decoder: decoder)
             .receive(on: RunLoop.main)
             .sink { completion in
-//                print(completion)
+                //                print(completion)
             } receiveValue: { [unowned self] pokemon in
-                pokemonDataToView.append(pokemon)
+                if loading == false {
+                    pokemonDataToView.append(pokemon)
+                }
             }
             .store(in: &cancellables)
     }
