@@ -47,7 +47,7 @@ struct AboutDescriptionView: View {
                 
                 HStack(spacing: 0) {
                     Text("Species:")
-                        .font(.system(.body, design: .default, weight: .bold))
+                        .font(.system(.body, design: .default, weight: .semibold))
                         .frame(width: 70, alignment: .leading)
                     
                     ForEach(pokemonSpeciesVM.dataToView) { poke in
@@ -65,7 +65,7 @@ struct AboutDescriptionView: View {
                 
                 HStack(spacing: 0) {
                     Text("Ability:")
-                        .font(.system(.body, design: .default, weight: .bold))
+                        .font(.system(.body, design: .default, weight: .semibold))
                         .frame(width: 70, alignment: .leading)
                     
                     ForEach(pokemon.abilities) { ability in
@@ -80,7 +80,7 @@ struct AboutDescriptionView: View {
                 
                 
                 Text("Evolutions:")
-                    .font(.system(.body, design: .default, weight: .bold))
+                    .font(.system(.body, design: .default, weight: .semibold))
                     .padding(.bottom, 5)
                 
                 HStack(alignment: .center) {
@@ -139,7 +139,7 @@ struct VStatLayout: View {
         VStack(alignment: .center) {
             HStack(alignment: .center, spacing: 2) {
                 Text(String(bodyType))
-                    .font(.system(.title3, design: .rounded, weight: .semibold))
+                    .font(.system(.body, design: .rounded, weight: .semibold))
                 Text(typeofScale)
                     .font(.system(.subheadline, design: .rounded))
             }
@@ -159,7 +159,7 @@ struct HStatLayout: View {
     var body: some View {
         HStack(spacing: 0) {
             Text(typeTitle)
-                .font(.system(.body, design: .default, weight: .bold))
+                .font(.system(.body, design: .default, weight: .semibold))
                 .frame(width: titleWidth, alignment: .leading)
             Text(assignment) // change this
                 .font(.system(.body, design: .default, weight: .regular))

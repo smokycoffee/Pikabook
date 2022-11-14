@@ -31,7 +31,7 @@ class PokedexViewModel: ObservableObject {
                 for i in temp {
                     self.fetchPokemonInfo(for: i.url)
                 }
-                print(pokemonDataToView)
+//                print(pokemonDataToView)
             }
             .store(in: &cancellables)
     }
