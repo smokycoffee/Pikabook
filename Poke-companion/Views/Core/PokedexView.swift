@@ -17,7 +17,7 @@ struct PokedexView: View {
     
     var body: some View {
         NavigationStack {
-            List(pokemonVM.pokemonDataToView, id: \.id) { poke in
+            List(pokemonVM.pokemonListArray, id: \.id) { poke in
                 ZStack {
                     PokedexCellView(pokemon: poke)
                         .onTapGesture {
@@ -31,31 +31,24 @@ struct PokedexView: View {
                 .listRowSeparator(.hidden)
             }
             .listStyle(.inset)
-//            .sheet(isPresented: $showPokemonDetails, content: {
-//                if let selectedPokemon = self.selectedPokemon {
-//                    PokemonDetailsView(pokemon: selectedPokemon)
-//                }
-//            })
             .sheet(item: $selectedPokemon, content: { poke in
                 PokemonDetailsView(pokemon: poke)
                     .presentationDetents([.large])
             })
             .navigationTitle("Pokemons")
-//            .navigationDestination(for: Pokemon.self) { pokemon in
-//                PokemonDetailsView(pokemon: pokemon)
-//            }
         }
         .onAppear {
             if loadPokemons == true {
-                pokemonVM.fetchPokemons()
+//                pokemonVM.fetchPokemons()
                 loadPokemons = false
+                pokemonVM.testPokemons()
             }
         }
     }
 }
-
-struct PokedexView_Previews: PreviewProvider {
-    static var previews: some View {
-        PokedexView()
+    
+    struct PokedexView_Previews: PreviewProvider {
+        static var previews: some View {
+            PokedexView()
+        }
     }
-}

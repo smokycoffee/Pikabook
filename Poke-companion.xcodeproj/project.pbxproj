@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2202C9B2923044600104E2C /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2202C9A2923044500104E2C /* Api.swift */; };
 		E223C9292900AF020050AD94 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E223C9282900AF020050AD94 /* Extensions.swift */; };
 		E24A298128F9D4510019429A /* Poke_companionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A298028F9D4510019429A /* Poke_companionApp.swift */; };
 		E24A298328F9D4510019429A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A298228F9D4510019429A /* MainView.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E2202C9A2923044500104E2C /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		E223C9282900AF020050AD94 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E24A297D28F9D4510019429A /* Poke-companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Poke-companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E24A298028F9D4510019429A /* Poke_companionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poke_companionApp.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2202C992923042200104E2C /* ApiService */ = {
+			isa = PBXGroup;
+			children = (
+				E2202C9A2923044500104E2C /* Api.swift */,
+			);
+			path = ApiService;
+			sourceTree = "<group>";
+		};
 		E24A297428F9D4510019429A = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +111,7 @@
 		E24A297F28F9D4510019429A /* Poke-companion */ = {
 			isa = PBXGroup;
 			children = (
+				E2202C992923042200104E2C /* ApiService */,
 				E27379A128F9F4BF0013303B /* Extensions */,
 				E27379A228F9F4C70013303B /* Models */,
 				E27379A528F9F4E00013303B /* ViewModels */,
@@ -304,6 +315,7 @@
 				E27379AC28F9F6400013303B /* PokedexView.swift in Sources */,
 				E27379B028F9F6630013303B /* TeamBuilderView.swift in Sources */,
 				E2F87768291F07FF008E26C5 /* StatsView.swift in Sources */,
+				E2202C9B2923044600104E2C /* Api.swift in Sources */,
 				E26AD0652921A41A006FE268 /* BarChartCell.swift in Sources */,
 				E2AE3EB1290C8B83005A78F5 /* PokemonSpecies.swift in Sources */,
 				E2B47EF828FAD73C00F2882F /* PokedexCellView.swift in Sources */,
