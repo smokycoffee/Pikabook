@@ -9,12 +9,13 @@ import SwiftUI
 
 struct PokedexView: View {
     
-    @State var loadPokemons = true
     @StateObject private var pokemonVM = PokedexViewModel()
     @StateObject private var pokemonSpeciesVM = PokemonSpeciesViewModel()
     
     @State var selectedPokemon: Pokemon?
-    
+
+    @State var loaded = false
+
     var body: some View {
         NavigationStack {
             List(pokemonVM.pokemonListArray, id: \.id) { poke in
@@ -38,17 +39,18 @@ struct PokedexView: View {
             .navigationTitle("Pokemons")
         }
         .onAppear {
-            if loadPokemons == true {
-//                pokemonVM.fetchPokemons()
-                loadPokemons = false
+//            pokemonVM.testPokemons()
+            if loaded == false {
                 pokemonVM.testPokemons()
+                loaded = true
             }
         }
     }
 }
-    
-    struct PokedexView_Previews: PreviewProvider {
-        static var previews: some View {
-            PokedexView()
+
+
+struct PokedexView_Previews: PreviewProvider {
+    static var previews: some View {
+        PokedexView()
         }
     }

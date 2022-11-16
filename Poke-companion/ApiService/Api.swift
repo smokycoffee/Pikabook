@@ -24,37 +24,38 @@ class PokemonSelectedApi  {
     }
 }
 
-func loadPokemons() -> AnyPublisher<PokedexResults, Error> {
-    let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=151")!
-    
-    return URLSession.shared.dataTaskPublisher(for: url)
-        .tryMap { result in
-            guard let httpResponse = result.response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                throw URLError(.badServerResponse)
-            }
-            return result.data
-        }
-        .decode(type: PokedexResults.self, decoder: JSONDecoder())
-        .receive(on: RunLoop.main)
-        .eraseToAnyPublisher()
-}
-
-func loadPokemonDetails(pokemon: PokedexResults) -> AnyPublisher<[Pokemon], Error> {
-    let url = URL(string: pokemon.url)!
-    
-    return URLSession.shared.dataTaskPublisher(for: url)
-        .tryMap { result in
-            guard let httpResponse = result.response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                throw URLError(.badServerResponse)
-            }
-            print(result.data)
-
-            return result.data
-        }
-        .decode(type: [Pokemon].self, decoder: JSONDecoder())
-        .receive(on: RunLoop.main)
-        .eraseToAnyPublisher()
-}
+//func loadPokemons() -> AnyPublisher<PokedexResults, Error> {
+//    let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=1154")!
+//    
+//    return URLSession.shared.dataTaskPublisher(for: url)
+//        .tryMap { result in
+//            guard let httpResponse = result.response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+//                throw URLError(.badServerResponse)
+//            }
+//            print(result.data.count)
+//            return result.data
+//        }
+//        .decode(type: PokedexResults.self, decoder: JSONDecoder())
+//        .receive(on: RunLoop.main)
+//        .eraseToAnyPublisher()
+//}
+//
+//func loadPokemonDetails(pokemon: PokedexResults) -> AnyPublisher<Pokemon, Error> {
+//    let url = URL(string: pokemon.url)!
+//    
+//    return URLSession.shared.dataTaskPublisher(for: url)
+//        .tryMap { result in
+//            guard let httpResponse = result.response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+//                throw URLError(.badServerResponse)
+//            }
+//            print(result.data)
+//
+//            return result.data
+//        }
+//        .decode(type: Pokemon.self, decoder: JSONDecoder())
+//        .receive(on: RunLoop.main)
+//        .eraseToAnyPublisher()
+//}
 
 /// Fetch a pokemon from URL
 /// - Parameter urlString: URL of the pokemon

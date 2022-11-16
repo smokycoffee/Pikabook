@@ -17,6 +17,8 @@ class PokemonSpeciesViewModel: ObservableObject {
     @Published var pokemonEvolutions = [Pokemon]()
     @Published var pokemonEvolutionChain = [EvolutionChains]()
     
+    @Published var testt = [PokedexResults]()
+    
     var cancellables: Set<AnyCancellable> = []
     
     func fetchPokemonSpecies(for pokemonSpecies: String) {
@@ -87,4 +89,5 @@ class PokemonSpeciesViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
+    
 }
