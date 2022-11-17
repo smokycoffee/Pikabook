@@ -13,17 +13,17 @@ struct PokemonDetailsView: View {
     @Environment(\.dismiss) var dismiss
 
     var pokemon: Pokemon
-    
+        
     @State var gradientColor: Color = .gray
-
+    
     var body: some View {
+        ScrollView {
             VStack {
                 Group {
                     Rectangle()
                         .fill(.clear)
                         .frame(height: 5)
                     Text(pokemon.name.capitalizingFirstLetter())
-//                        .padding(.top, 60)
                         .font(.system(.largeTitle, design: .rounded, weight: .medium))
                     Text("#" + String(pokemon.id))
                         .font(.system(.body, design: .rounded, weight: .regular))
@@ -32,23 +32,20 @@ struct PokemonDetailsView: View {
                         switch phase {
                         case .empty:
                             ProgressView()
-                                .frame(width: 200, height: 200)
-                                .padding(.top)
+                                .frame(maxWidth: 200)
                         case .success(let image):
                             image
                                 .resizable()
-                                .interpolation(.none)
+                            //                                .interpolation(.none)
                                 .scaledToFit()
-                                .frame(width: 200, height: 200)
-                                .padding(.top)
+                                .frame(maxWidth: 200)
                         case .failure:
                             Image(systemName: "questionmark")
                                 .resizable()
-                                .interpolation(.none)
+                            //                                .interpolation(.none)
                                 .scaledToFit()
-                                .frame(width: 200, height: 200)
+                                .frame(maxWidth: 200)
                                 .foregroundColor(.gray)
-                                .padding(.top)
                         @unknown default:
                             EmptyView()
                         }
@@ -65,31 +62,35 @@ struct PokemonDetailsView: View {
                 .foregroundColor(.white)
                 
                 ControlTabsView(pokemon: pokemon)
+                    .frame(height: UIScreen.screenHeight/2)
             }
-            .overlay(content: {
-                HStack {
-                    Spacer()
-
-                    VStack {
-                        Button {
-                            dismiss()
-                        } label: {
-                            Image(systemName: "chevron.down.circle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.white)
-                        }
-                        .padding(.trailing, 10)
-                        .padding(.top, 10)
-                        Spacer()
+            
+        } // scroll view end
+        .overlay(content: {
+            HStack {
+                Spacer()
+                
+                VStack {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
                     }
+                    .padding(.trailing, 10)
+                    .padding(.top, 10)
+                    Spacer()
                 }
-            })
-            .ignoresSafeArea(.all, edges: .top)
-            .navigationBarBackButtonHidden(true)
-            .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.6), gradientColor], center: .center, startRadius: 100, endRadius: UIScreen.screenWidth - 150))
-            .onAppear {
-                gradientColor = pokemon.types![0].type.typeColor
             }
+        })
+        .ignoresSafeArea(.all, edges: .all)
+        .navigationBarBackButtonHidden(true)
+        .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.6), gradientColor], center: .center, startRadius: 100, endRadius: UIScreen.screenWidth - 150))
+        .onAppear {
+            gradientColor = pokemon.types![0].type.typeColor
+        }
+        
     }
 }
 

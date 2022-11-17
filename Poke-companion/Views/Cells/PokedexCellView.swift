@@ -47,13 +47,13 @@ struct PokedexCellView: View {
                     case .success(let image):
                         image
                             .resizable()
-                            .interpolation(.none)
+//                            .interpolation(.none)
                             .scaledToFit()
                             .frame(width: 120, height: 120)
                     case .failure:
                         Image(systemName: "questionmark")
                             .resizable()
-                            .interpolation(.none)
+//                            .interpolation(.none)
                             .scaledToFit()
                             .frame(width: 120, height: 120)
                             .foregroundColor(.gray)

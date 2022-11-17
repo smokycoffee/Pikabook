@@ -15,6 +15,9 @@ struct MovesView: View {
             }
         }
         .background(Color(red: 237/255, green: 219/255, blue: 192/255))
+        .cornerRadius(20, corners: .topLeft)
+        .cornerRadius(20, corners: .topRight)
+        .ignoresSafeArea()
     }
 }
 

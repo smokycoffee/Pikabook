@@ -15,7 +15,7 @@ struct BarChartCell: View {
     var body: some View {
         VStack(alignment: .leading) {
             ZStack(alignment: .leading) {
-                
+                    
                 RoundedRectangle(cornerRadius: 5)
                     .fill(.gray.opacity(0.6))
                     .frame(width: 100 * 2, height: 10)
@@ -25,7 +25,6 @@ struct BarChartCell: View {
                     .frame(width: value, height: 10)
             }
         }
-        
     }
 }
 

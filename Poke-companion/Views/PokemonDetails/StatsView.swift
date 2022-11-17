@@ -33,6 +33,7 @@ struct StatsView: View {
             .padding(.top, 10)
             .padding(.horizontal)
         }
+//        .frame(maxHeight: .infinity)
         .background(Color(red: 237/255, green: 219/255, blue: 192/255))
     }
 }

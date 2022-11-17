@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import SwiftUI
+import DataCache
 
 class PokedexViewModel: ObservableObject {
     @Published var errorForAlert: ErrorAlerts?
@@ -18,8 +19,9 @@ class PokedexViewModel: ObservableObject {
     var cancellables: Set<AnyCancellable> = []
     
     let limit = 151
-    var page = 0
     
+    var page = 0
+        
     /// Fetch a pokemon from URL
     /// - Parameter urlString: URL of the pokemon
     /// - Returns: A publisher with output PokemonDetailResponse
@@ -49,7 +51,6 @@ class PokedexViewModel: ObservableObject {
     func getPokemonListWithDetails() -> AnyPublisher<[Pokemon], Error> {
         
         let offset = page * limit
-        // https://pokeapi.co/api/v2/pokemon/?offset=0&limit=99999999
         return getPokemonList(urlString: "https://pokeapi.co/api/v2/pokemon?limit=\(limit)&offset=\(offset)")
             .tryMap(\.results)
             .flatMap {
@@ -64,16 +65,61 @@ class PokedexViewModel: ObservableObject {
     }
     
     func testPokemons() {
+//        let data = UserDefaults.standard.get(forKey: "pokemonList")
+//        if data == nil || data!.count < 200 {
+//
+//            getPokemonListWithDetails()
+//                .sink { (completion) in
+//                    print("done")
+//                } receiveValue: { (pokemons) in
+//                    self.pokemonListArray = pokemons
+//                    UserDefaults.standard.set(pokemons, forKey: "pokemonList")
+        //                    print("data from pokeapi")
+        //                    self.page += 1
+        //                }
+        //                .store(in: &cancellables)
+        //        } else {
+        //            self.pokemonListArray = data!
+        //            print("data from userDefaults")
+        //        }
         getPokemonListWithDetails()
             .sink { (completion) in
                 print("done")
             } receiveValue: { (pokemons) in
-//                self.pokemonListArray.append(contentsOf: pokemons)
                 self.pokemonListArray = pokemons
                 self.page += 1
-                print(self.pokemonListArray.count)
             }
             .store(in: &cancellables)
+
+//        do {
+//            var object: [Pokemon]? = try DataCache.instance.readCodable(forKey: "myKey")
+//
+//            if object == nil {
+//                getPokemonListWithDetails()
+//                    .sink { (completion) in
+//                        print("done")
+//                    } receiveValue: { (pokemons) in
+//                        self.pokemonListArray = pokemons
+//                        object = self.pokemonListArray
+//                        print("data from pokeapi")
+//                        self.page += 1
+//                        do {
+//                            try DataCache.instance.write(codable: object, forKey: "myKey")
+//                        } catch {
+//                            print("Write error \(error.localizedDescription)")
+//                        }
+//                    }
+//                    .store(in: &cancellables)
+//            } else {
+//                print("data from datacache")
+//                self.pokemonListArray = object!
+//            }
+//        } catch {
+//            print("Read error \(error.localizedDescription)")
+//        }
+        
+        
+        
     }
     
     //MARK: Testing api beyond
@@ -90,12 +136,11 @@ class PokedexViewModel: ObservableObject {
                 })
             }
             .sink { poke in
-//                print("done")
+                //                print("done")
             } receiveValue: { pokmons in
-//                print(pokmons.name)
+                //                print(pokmons.name)
                 self.pokemonListArray.append(pokmons)
                 self.page += 1
-//                print(self.pokemonListArray.count)
             }
             .store(in: &cancellables)
     }
@@ -130,3 +175,4 @@ class PokedexViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
 }
+

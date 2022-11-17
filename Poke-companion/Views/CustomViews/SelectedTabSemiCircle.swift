@@ -14,7 +14,7 @@ struct SelectedTabSemiCircle: View {
         Circle()
             .trim(from: 0.5, to: 1)
             .stroke(highlighted, lineWidth: 30)
-            .frame(width: 50)
+            .frame(maxWidth: 50)
             .offset(y: 20)
     }
 }

@@ -15,6 +15,9 @@ struct PokedexView: View {
     @State var selectedPokemon: Pokemon?
 
     @State var loaded = false
+    
+    @State var testPokemonList = [Pokemon]()
+
 
     var body: some View {
         NavigationStack {
@@ -39,7 +42,6 @@ struct PokedexView: View {
             .navigationTitle("Pokemons")
         }
         .onAppear {
-//            pokemonVM.testPokemons()
             if loaded == false {
                 pokemonVM.testPokemons()
                 loaded = true

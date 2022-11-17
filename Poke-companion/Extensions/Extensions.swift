@@ -56,3 +56,19 @@ extension Double {
        return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
 }
+
+
+// MARK: Cache pokemnos list
+extension UserDefaults {
+    func get(forKey defaultName: String) -> [Pokemon]? {
+        guard let data = data(forKey: defaultName) else { return nil }
+        do {
+            return try JSONDecoder().decode([Pokemon].self, from: data)
+        } catch { print(error); return nil }
+    }
+
+    func set(_ value: [Pokemon], forKey defaultName: String) {
+        let data = try? JSONEncoder().encode(value)
+        set(data, forKey: defaultName)
+    }
+}

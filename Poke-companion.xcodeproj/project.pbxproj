@@ -13,6 +13,7 @@
 		E24A298328F9D4510019429A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A298228F9D4510019429A /* MainView.swift */; };
 		E24A298528F9D4520019429A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E24A298428F9D4520019429A /* Assets.xcassets */; };
 		E24A298828F9D4520019429A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E24A298728F9D4520019429A /* Preview Assets.xcassets */; };
+		E24EBA612926BABF00473F3D /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = E24EBA602926BABF00473F3D /* DataCache */; };
 		E255700F29075D16002D5095 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255700E29075D16002D5095 /* Pokemon.swift */; };
 		E26AD0652921A41A006FE268 /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26AD0642921A41A006FE268 /* BarChartCell.swift */; };
 		E27379AC28F9F6400013303B /* PokedexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27379AB28F9F6400013303B /* PokedexView.swift */; };
@@ -78,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E27E4E85290821FB00FAA964 /* CachedAsyncImage in Frameworks */,
+				E24EBA612926BABF00473F3D /* DataCache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +252,7 @@
 			name = "Poke-companion";
 			packageProductDependencies = (
 				E27E4E84290821FB00FAA964 /* CachedAsyncImage */,
+				E24EBA602926BABF00473F3D /* DataCache */,
 			);
 			productName = "Poke-companion";
 			productReference = E24A297D28F9D4510019429A /* Poke-companion.app */;
@@ -281,6 +284,7 @@
 			mainGroup = E24A297428F9D4510019429A;
 			packageReferences = (
 				E27E4E83290821FB00FAA964 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				E24EBA5F2926BABF00473F3D /* XCRemoteSwiftPackageReference "DataCache" */,
 			);
 			productRefGroup = E24A297E28F9D4510019429A /* Products */;
 			projectDirPath = "";
@@ -545,6 +549,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E24EBA5F2926BABF00473F3D /* XCRemoteSwiftPackageReference "DataCache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huynguyencong/DataCache.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E27E4E83290821FB00FAA964 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
@@ -556,6 +568,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E24EBA602926BABF00473F3D /* DataCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E24EBA5F2926BABF00473F3D /* XCRemoteSwiftPackageReference "DataCache" */;
+			productName = DataCache;
+		};
 		E27E4E84290821FB00FAA964 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E27E4E83290821FB00FAA964 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;

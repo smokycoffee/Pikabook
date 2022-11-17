@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct AboutDescriptionView: View {
     
@@ -24,7 +25,7 @@ struct AboutDescriptionView: View {
                     Spacer()
                     
                     Capsule()
-                        .frame(width: 2, height: 35)
+                        .frame(maxWidth: 2, maxHeight: 35)
                         .foregroundColor(.white)
                     
                     Spacer()
@@ -34,7 +35,7 @@ struct AboutDescriptionView: View {
                     Spacer()
                     
                     Capsule()
-                        .frame(width: 2, height: 35)
+                        .frame(maxWidth: 2, maxHeight: 35)
                         .foregroundColor(.white)
                     
                     Spacer()
@@ -46,9 +47,9 @@ struct AboutDescriptionView: View {
                 .padding(.bottom, 10)
                 
                 HStack(spacing: 0) {
-                    Text("Species:")
+                    Text("Egg Group:")
                         .font(.system(.body, design: .default, weight: .semibold))
-                        .frame(width: 70, alignment: .leading)
+                        .frame(width: 90, alignment: .leading)
                     
                     ForEach(pokemonSpeciesVM.dataToView) { poke in
                         ForEach(poke.eggGroups) { type in
@@ -62,11 +63,10 @@ struct AboutDescriptionView: View {
                     .padding(.horizontal, 5)
                 }
                 
-                
                 HStack(spacing: 0) {
                     Text("Ability:")
                         .font(.system(.body, design: .default, weight: .semibold))
-                        .frame(width: 70, alignment: .leading)
+                        .frame(width: 90, alignment: .leading)
                     
                     ForEach(pokemon.abilities) { ability in
                         Text(ability.ability.name + ", ")
@@ -87,7 +87,8 @@ struct AboutDescriptionView: View {
                     Spacer()
                     ForEach(pokemonSpeciesVM.pokemonEvolutions) { poke in
                         Spacer()
-                        AsyncImageView(url: (poke.sprites?.frontDefault)!)
+                        CachedAsyncImage(url: URL(string: (poke.sprites?.frontDefault)!))
+                            .frame(minWidth: 25)
                         Spacer()
                         if poke != pokemonSpeciesVM.pokemonEvolutions.last {
                             Image(systemName: "arrow.forward.circle")
@@ -98,7 +99,8 @@ struct AboutDescriptionView: View {
                     }
                     Spacer()
                 }
-                .frame(width: UIScreen.screenWidth)
+                .frame(maxWidth: UIScreen.screenWidth)
+                .padding(.horizontal, 5)
                 
                 Spacer()
             }
