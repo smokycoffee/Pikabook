@@ -64,7 +64,13 @@ struct PokemonDetailsView: View {
                 ControlTabsView(pokemon: pokemon)
                     .frame(height: UIScreen.screenHeight/2)
             }
-            
+//            .safeAreaInset(edge: .bottom) {
+//                HStack {
+//                    Rectangle()
+//                        .fill(Color.clear)
+//                }
+//                .background(.white)
+//            }
         } // scroll view end
         .overlay(content: {
             HStack {
@@ -90,7 +96,6 @@ struct PokemonDetailsView: View {
         .onAppear {
             gradientColor = pokemon.types![0].type.typeColor
         }
-        
     }
 }
 
