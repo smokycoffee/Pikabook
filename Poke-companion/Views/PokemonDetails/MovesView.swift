@@ -17,16 +17,16 @@ struct MovesView: View {
                 VStack {
                     ScrollView {
                         VStack(alignment: .leading) {
-                            Text("pokemon moves View")
                             
                             ForEach(pokemon.moves) { moves in
-                                Text(moves.move.name)
+                                MovesCellView(pokemon: moves)
+                                    .padding(.horizontal)
                             }
                         }
                     }
                     .padding(.bottom, 50)
-
                     .frame(maxHeight: UIScreen.screenHeight / 2)
+                    .padding(.top, 10)
                 }
             }
             
