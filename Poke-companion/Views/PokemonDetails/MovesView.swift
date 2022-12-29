@@ -8,12 +8,30 @@
 import SwiftUI
 
 struct MovesView: View {
+
+    let pokemon: Pokemon
+    
     var body: some View {
         GeometryReader { _ in
-            VStack {
-                Text("pokemon moves View")
+            ZStack {
+                VStack {
+                    ScrollView {
+                        VStack(alignment: .leading) {
+                            Text("pokemon moves View")
+                            
+                            ForEach(pokemon.moves) { moves in
+                                Text(moves.move.name)
+                            }
+                        }
+                    }
+                    .padding(.bottom, 50)
+
+                    .frame(maxHeight: UIScreen.screenHeight / 2)
+                }
             }
+            
         }
+        .frame(minHeight: 1000)
         .background(Color(red: 237/255, green: 219/255, blue: 192/255))
         .cornerRadius(20, corners: .topLeft)
         .cornerRadius(20, corners: .topRight)
@@ -23,6 +41,6 @@ struct MovesView: View {
 
 struct PokemonMovesView_Previews: PreviewProvider {
     static var previews: some View {
-        MovesView()
+        MovesView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []))
     }
 }

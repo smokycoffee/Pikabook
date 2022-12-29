@@ -28,7 +28,7 @@ struct ControlTabsView: View {
                     StatsView(pokemon: pokemon)
                         .frame(width: g.frame(in: .global).width)
                     
-                    MovesView()
+                    MovesView(pokemon: pokemon)
                         .frame(width: g.frame(in: .global).width)
                     
                 }

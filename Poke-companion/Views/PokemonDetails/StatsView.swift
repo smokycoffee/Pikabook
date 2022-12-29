@@ -19,11 +19,11 @@ struct StatsView: View {
                 ForEach(pokemon.stats) { stats in
                     VStack {
                         HStack {
-                            Text(stats.stat.name)
-                                .font(.system(.caption))
-                                .frame(width: UIScreen.screenWidth / 4, alignment: .trailing)
+                            Text(stats.stat.name.capitalized)
+                                .font(.system(.subheadline))
+                                .frame(width: UIScreen.screenWidth / 3, alignment: .trailing)
 
-                            BarChartCell(value: CGFloat(stats.baseStat!), barColor: .green)
+                            BarChartCell(value: CGFloat(stats.baseStat!), barColor: .green.opacity(0.7))
                                 .frame(alignment: .leading)
                         }
                     }
@@ -33,7 +33,7 @@ struct StatsView: View {
             .padding(.top, 10)
             .padding(.horizontal)
         }
-//        .frame(maxHeight: .infinity)
+        .frame(minHeight: 1000)
         .background(Color(red: 237/255, green: 219/255, blue: 192/255))
         .cornerRadius(20, corners: .topLeft)
         .cornerRadius(20, corners: .topRight)

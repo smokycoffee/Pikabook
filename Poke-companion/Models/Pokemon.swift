@@ -135,7 +135,8 @@ struct VersionDetail: Codable, Hashable {
 }
 
 // MARK: - Move
-struct Move: Codable, Hashable {
+struct Move: Codable, Hashable, Identifiable {
+    let id = UUID()
     let move: Species
     let versionGroupDetails: [VersionGroupDetail]?
 

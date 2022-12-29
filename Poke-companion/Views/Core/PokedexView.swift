@@ -26,6 +26,7 @@ struct PokedexView: View {
                     PokedexCellView(pokemon: poke)
                         .onTapGesture {
                             self.selectedPokemon = poke
+                            print(selectedPokemon?.moves ?? "no moves")
                         }
                     NavigationLink(value: poke) {
                         EmptyView()
