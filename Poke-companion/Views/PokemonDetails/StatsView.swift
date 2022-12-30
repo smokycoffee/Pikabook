@@ -17,9 +17,11 @@ struct StatsView: View {
             VStack(alignment: .leading) {
                 
                 ForEach(pokemon.stats) { stats in
+                    
+                    
                     VStack {
                         HStack {
-                            Text(stats.stat.name.capitalized)
+                            Text(stats.stat.name.capitalized.replacingOccurrences(of: "-", with: " "))
                                 .font(.system(.subheadline))
                                 .frame(width: UIScreen.screenWidth / 3, alignment: .trailing)
 

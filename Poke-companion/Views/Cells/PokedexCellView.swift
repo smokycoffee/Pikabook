@@ -37,6 +37,7 @@ struct PokedexCellView: View {
                     }
                 }
                 .padding(.leading, 20)
+                
                 Spacer()
                 
                 CachedAsyncImage(url: URL(string: pokemon.sprites?.other?.officialArtwork?.frontDefault ?? "ss"), urlCache: .imageCache) { phase in

@@ -72,3 +72,13 @@ extension UserDefaults {
         set(data, forKey: defaultName)
     }
 }
+
+// MARK: random color generator
+extension UIColor {
+    static var random: UIColor {
+        return UIColor(red: .random(in: 0.4...1),
+                       green: .random(in: 0.4...1),
+                       blue: .random(in: 0.4...1),
+                       alpha: 0.4)
+    }
+}

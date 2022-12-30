@@ -11,11 +11,11 @@ struct MovesCellView: View {
     let pokemon: Move?
     var body: some View {
         HStack {
-            Text(pokemon?.move.name ?? "nil")
+            Text(pokemon?.move.name.capitalized.replacingOccurrences(of: "-", with: " ") ?? "nil")
             Spacer()
         }
         .padding()
-        .background()
+        .background(Color(.random))
         .cornerRadius(10)
     }
 }
@@ -25,3 +25,5 @@ struct MovesCellView_Previews: PreviewProvider {
         MovesCellView(pokemon: nil)
     }
 }
+
+

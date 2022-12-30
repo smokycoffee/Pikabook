@@ -92,7 +92,7 @@ struct PokemonDetailsView: View {
         })
         .ignoresSafeArea(.all, edges: .all)
         .navigationBarBackButtonHidden(true)
-        .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.6), gradientColor], center: .center, startRadius: 100, endRadius: UIScreen.screenWidth - 150))
+        .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.8), gradientColor], center: .center, startRadius: 100, endRadius: UIScreen.screenWidth - 150))
         .onAppear {
             gradientColor = pokemon.types![0].type.typeColor
         }
