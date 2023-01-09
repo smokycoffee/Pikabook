@@ -17,11 +17,19 @@ struct PokedexView: View {
     @State var loaded = false
     
     @State var testPokemonList = [Pokemon]()
-
-
+    @State private var searchText = ""
+    
+    var pokedexData: [Pokemon] {
+        if searchText.isEmpty {
+            return pokemonVM.pokemonListArray
+        } else {
+            return pokemonVM.searchResults
+        }
+    }
+    
     var body: some View {
         NavigationStack {
-            List(pokemonVM.pokemonListArray, id: \.id) { poke in
+            List(pokedexData, id: \.id) { poke in
                 ZStack {
                     PokedexCellView(pokemon: poke)
                         .onTapGesture {
@@ -41,6 +49,14 @@ struct PokedexView: View {
                     .presentationDetents([.large])
             })
             .navigationTitle("Pokemons")
+            .searchable(text: $searchText)
+            .onChange(of: searchText) { searchText in
+                pokemonVM.searchResults = pokemonVM.pokemonListArray.filter({ index in
+                    index.name.lowercased().contains(searchText.lowercased())
+                })
+            }
+            .animation(.default, value: searchText)
+            
         }
         .onAppear {
             if loaded == false {
@@ -48,7 +64,10 @@ struct PokedexView: View {
                 loaded = true
             }
         }
+
     }
+    // func , pokemonListArray = [Pokemon]()
+    
 }
 
 

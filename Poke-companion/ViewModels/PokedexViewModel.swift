@@ -16,6 +16,8 @@ class PokedexViewModel: ObservableObject {
     @Published var pokemonURL = [PokedexResults]()
     @Published var pokemonListArray = [Pokemon]()
     
+    @Published var searchResults = [Pokemon]()
+    
     var cancellables: Set<AnyCancellable> = []
     
     let limit = 151

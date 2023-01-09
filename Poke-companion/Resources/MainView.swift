@@ -23,7 +23,6 @@ struct MainView: View {
                 .tabItem {
                     Label("Fav", systemImage: "star")
                         .foregroundColor(.white)
-                    
                 }
                 .tag(1)
             TeamBuilderView()

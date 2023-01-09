@@ -9,7 +9,11 @@ import SwiftUI
 
 struct TeamBuilderView: View {
     var body: some View {
-        Text("Team Builder!")
+        VStack {
+            Text("Team Builder!")
+
+            PokemonTeamView()
+        }
     }
 }
 
