@@ -12,6 +12,7 @@ struct MovesCellView: View {
     var body: some View {
         HStack {
             Text(pokemon?.move.name.capitalized.replacingOccurrences(of: "-", with: " ") ?? "nil")
+                .foregroundColor(.black)
             Spacer()
         }
         .padding()

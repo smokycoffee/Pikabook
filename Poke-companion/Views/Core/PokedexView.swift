@@ -45,7 +45,7 @@ struct PokedexView: View {
             }
             .listStyle(.inset)
             .sheet(item: $selectedPokemon, content: { poke in
-                PokemonDetailsView(pokemon: poke)
+                PokemonDetailsView(pokemon: poke, favPokemon: FavouritePokemons())
                     .presentationDetents([.large])
             })
             .navigationTitle("Pokemons")

@@ -15,6 +15,7 @@ struct PokemonDetailsView: View {
     var pokemon: Pokemon
         
     @State var gradientColor: Color = .gray
+    @ObservedObject var favPokemon: FavouritePokemons
     
     var body: some View {
         NavigationView {
@@ -65,26 +66,7 @@ struct PokemonDetailsView: View {
                     ControlTabsView(pokemon: pokemon)
                         .frame(height: UIScreen.screenHeight/2)
                 }
-            } // scroll view end
-            .overlay(content: {
-                HStack {
-                    VStack {
-                        Button {
-                            dismiss()
-                        } label: {
-                            Image(systemName: "chevron.down.circle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.white)
-                        }
-                        .padding(.leading, 10)
-                        .padding(.top, 10)
-                        Spacer()
-                    }
-
-                    Spacer()
-
-                }
-            })
+            }
             .ignoresSafeArea(.all, edges: .all)
             .navigationBarBackButtonHidden(true)
             .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.8), gradientColor], center: .center, startRadius: 100, endRadius: UIScreen.screenWidth - 150))
@@ -92,13 +74,23 @@ struct PokemonDetailsView: View {
                 gradientColor = pokemon.types![0].type.typeColor
             }
             .toolbar(content: {
+                ToolbarItem(placement: .navigation) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .font(.title)
+                            .foregroundColor(.white)
+                    }
+                }
                 ToolbarItemGroup {
                     
                     Button {
                         print("add to fav")
                         
                         // add function to add to favourites
-                        
+                        let newFavPokemon = pokemon
+                        favPokemon.listPokemons.append(newFavPokemon)
                         
                     } label: {
 //                        Label("Fav", systemImage: "star")
@@ -120,12 +112,24 @@ struct PokemonDetailsView: View {
             })
         }
     }
-    
     // funcs here
+    func addPokemonToFav() {
+        do {
+            let encoder = JSONEncoder()
+            
+            let data = try encoder.encode(pokemon)
+            
+            UserDefaults.standard.set(data, forKey: "favPokemon")
+            
+        } catch {
+            print("unable to encode pokemon data")
+        }
+    }
+    
 }
 
 struct PokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []))
+        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []), favPokemon: FavouritePokemons())
     }
 }

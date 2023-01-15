@@ -88,7 +88,9 @@ class PokedexViewModel: ObservableObject {
             .sink { (completion) in
                 print("done")
             } receiveValue: { (pokemons) in
-                self.pokemonListArray = pokemons
+                self.pokemonListArray = pokemons.sorted(by: {
+                    $0.id < $1.id
+                })
                 self.page += 1
             }
             .store(in: &cancellables)
