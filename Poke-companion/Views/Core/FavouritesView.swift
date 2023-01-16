@@ -30,12 +30,13 @@ struct FavouritesView: View {
             }
             .listStyle(.inset)
             .sheet(item: $selectedPokemon, content: { poke in
-                PokemonDetailsView(pokemon: poke, favPokemon: FavouritePokemons())
+                PokemonDetailsView(pokemon: poke, favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel())
                     .presentationDetents([.large])
             })
             .onAppear {
                 favPokemons.loadAllFavourites()
             }
+            .navigationTitle("Favourites")
         }
         
         //        .onAppear {

@@ -13,6 +13,8 @@ struct TeamBuilderView: View {
             Text("Team Builder!")
 
             PokemonTeamView()
+            
+            Spacer()
         }
     }
 }

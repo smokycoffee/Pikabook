@@ -16,6 +16,7 @@ struct PokemonDetailsView: View {
         
     @State var gradientColor: Color = .gray
     @ObservedObject var favPokemon: FavouritePokemons
+    @ObservedObject var teamBuilder: TeamBuilderViewModel
     
     var body: some View {
         NavigationView {
@@ -86,14 +87,20 @@ struct PokemonDetailsView: View {
                 ToolbarItemGroup {
                     
                     Button {
-                        print("add to fav")
                         
                         // add function to add to favourites
                         let newFavPokemon = pokemon
+//                        favPokemon.listPokemons.map { item in
+//                            if item == newFavPokemon {
+//                                print("already added to fav")
+//                            } else {
+//                                print("added to fav")
+//                                return favPokemon.listPokemons.append(newFavPokemon)
+//                            }
+//                        }
                         favPokemon.listPokemons.append(newFavPokemon)
-                        
                     } label: {
-//                        Label("Fav", systemImage: "star")
+                        //                        Label("Fav", systemImage: "star")
                         Image(systemName: "star.fill")
                             .foregroundColor(.white)
                     }
@@ -102,6 +109,12 @@ struct PokemonDetailsView: View {
                         print("add to team")
                         
                         // add to team function to be added here
+                        if (teamBuilder.teamPokemons.count < 6) {
+                            let newTeamPokemon = pokemon
+                            teamBuilder.teamPokemons.append(newTeamPokemon)
+                        } else {
+                            print("already have 6 members")
+                        }
                         
                     } label: {
                         Image(systemName: "person.fill.questionmark")
@@ -130,6 +143,6 @@ struct PokemonDetailsView: View {
 
 struct PokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []), favPokemon: FavouritePokemons())
+        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []), favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel())
     }
 }
