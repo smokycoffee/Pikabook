@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @State private var selection = 0
+    @EnvironmentObject var pokedexImageSetting: PokedexImageSetting
     
     var body: some View {
         TabView(selection: $selection) {
@@ -32,7 +33,7 @@ struct MainView: View {
                     Text("Team")
                 }
                 .tag(2)
-            SettingsView()
+            SettingsView().environmentObject(self.pokedexImageSetting)
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
@@ -53,12 +54,11 @@ struct MainView: View {
             // Use this appearance when scrolled all the way up:
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
-        
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView().environmentObject(PokedexImageSetting())
     }
 }

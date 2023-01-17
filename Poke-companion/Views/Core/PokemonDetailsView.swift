@@ -11,12 +11,14 @@ import CachedAsyncImage
 struct PokemonDetailsView: View {
     
     @Environment(\.dismiss) var dismiss
-
+    
     var pokemon: Pokemon
-        
+    
     @State var gradientColor: Color = .gray
     @ObservedObject var favPokemon: FavouritePokemons
     @ObservedObject var teamBuilder: TeamBuilderViewModel
+    @State var favourited: Bool = false
+    @State var pokemonFav: [Pokemon]?
     
     var body: some View {
         NavigationView {
@@ -73,6 +75,12 @@ struct PokemonDetailsView: View {
             .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.8), gradientColor], center: .center, startRadius: 100, endRadius: UIScreen.screenWidth - 150))
             .onAppear {
                 gradientColor = pokemon.types![0].type.typeColor
+                
+                //                favPokemon.loadAllFavourites()
+                
+                if favPokemon.listPokemons.contains(pokemon) {
+                    favourited.toggle()
+                }
             }
             .toolbar(content: {
                 ToolbarItem(placement: .navigation) {
@@ -88,61 +96,61 @@ struct PokemonDetailsView: View {
                     
                     Button {
                         
-                        // add function to add to favourites
-                        let newFavPokemon = pokemon
-//                        favPokemon.listPokemons.map { item in
-//                            if item == newFavPokemon {
-//                                print("already added to fav")
+//                        let pokeData = favPokemon.listPokemons
+//
+//                        do {
+//                            let decoder = JSONDecoder()
+//                            let favourites = try decoder.decode([Pokemon].self, from: pokeData)
+//
+//                            if favourites.pokemon.name.contains(pokemon) {
+//                                print("already favourited this pokemon")
 //                            } else {
-//                                print("added to fav")
-//                                return favPokemon.listPokemons.append(newFavPokemon)
+//
+//                                let newFavPokemon = pokemon
+//                                favPokemon.listPokemons.append(newFavPokemon)
 //                            }
+//                        } catch {
+//                            print("unable to decode")
 //                        }
+                        
+                        
+
+                    
+                        let newFavPokemon = pokemon
                         favPokemon.listPokemons.append(newFavPokemon)
-                    } label: {
-                        //                        Label("Fav", systemImage: "star")
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.white)
+                    
+                    // add function to add to favourites
+                } label: {
+                    //                        Label("Fav", systemImage: "star")
+                    Image(systemName: favourited ? "star" : "star.fill")
+                        .foregroundColor(.white)
+                }
+                
+                Button {
+                    print("add to team")
+                    
+                    // add to team function to be added here
+                    if (teamBuilder.teamPokemons.count < 6) {
+                        let newTeamPokemon = pokemon
+                        teamBuilder.teamPokemons.append(newTeamPokemon)
+                    } else {
+                        print("already have 6 members")
                     }
                     
-                    Button {
-                        print("add to team")
-                        
-                        // add to team function to be added here
-                        if (teamBuilder.teamPokemons.count < 6) {
-                            let newTeamPokemon = pokemon
-                            teamBuilder.teamPokemons.append(newTeamPokemon)
-                        } else {
-                            print("already have 6 members")
-                        }
-                        
-                    } label: {
-                        Image(systemName: "person.fill.questionmark")
-                            .foregroundColor(.white)
-                    }
-
+                } label: {
+                    Image(systemName: "person.fill.questionmark")
+                        .foregroundColor(.white)
                 }
-            })
+            }
+                     })
         }
     }
     // funcs here
-    func addPokemonToFav() {
-        do {
-            let encoder = JSONEncoder()
-            
-            let data = try encoder.encode(pokemon)
-            
-            UserDefaults.standard.set(data, forKey: "favPokemon")
-            
-        } catch {
-            print("unable to encode pokemon data")
-        }
-    }
     
 }
 
 struct PokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []), favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel())
+        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []), favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel(), favourited: false)
     }
 }

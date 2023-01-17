@@ -8,6 +8,9 @@
 import Foundation
  
 class TeamBuilderViewModel: ObservableObject {
+    
+    @Published var currentPokemon: Pokemon?
+    
     @Published var teamPokemons = [Pokemon](){
         didSet{
             // every time value of lstPeople change, system will save new value

@@ -17,21 +17,11 @@ struct PokemonTeamView: View {
     
     var body: some View {
             VStack {
-                Text("Team 1")
+                Text("My Team")
+                    .font(.system(.title3, design: .rounded, weight: .medium))
                 LazyVGrid(columns: columns) {
                     ForEach(teamPokemons.teamPokemons) { poke in
                         PokemonTeamCell(pokemon: poke)
-                            .contextMenu {
-                                Button(action: {
-                                    // delete the selected restaurant
-                                    self.delete(item: poke)
-                                }) {
-                                    HStack {
-                                        Text("Delete")
-                                        Image(systemName: "trash")
-                                    }
-                                }
-                            }
                             .onTapGesture {
                                 self.showActionSheet.toggle()
                                 self.selectedPokemon = poke
@@ -43,11 +33,22 @@ struct PokemonTeamView: View {
                                     }
                                 }
                             }
-                        //                    .onDrag ({
-    //                        gridData.currentGrid = item
-    //                        return NSItemProvider(object: String(item.gridText) as NSString)
-    //                    })
-    //                    .onDrop(of: [.text], delegate: DropViewDelegate(grid: item, gridData: gridData))
+                            .onDrag({
+                                teamPokemons.currentPokemon = poke
+                                return NSItemProvider(object: String(poke.name) as NSString)
+                            })
+                            .onDrop(of: [.text], delegate: DropViewDelegate(pokemon: poke, pokemonData: teamPokemons))
+                            .contextMenu {
+                                Button(action: {
+                                    // delete the selected restaurant
+                                    self.delete(item: poke)
+                                }) {
+                                    HStack {
+                                        Text("Delete")
+                                        Image(systemName: "trash")
+                                    }
+                                }
+                            }
                     }
                     .animation(.easeInOut, value: teamPokemons.teamPokemons)
                 }

@@ -27,7 +27,6 @@ struct PokemonTeamCell: View {
                         .frame(width: 40, height: 40)
                     Spacer()
                 }
-
             }
         }
     }

@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct Poke_companionApp: App {
+    var pokedexImageSetting = PokedexImageSetting()
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView().environmentObject(pokedexImageSetting)
         }
     }
 }

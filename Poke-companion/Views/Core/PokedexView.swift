@@ -64,7 +64,6 @@ struct PokedexView: View {
                 loaded = true
             }
         }
-
     }
     // func , pokemonListArray = [Pokemon]()
     

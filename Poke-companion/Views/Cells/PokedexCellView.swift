@@ -11,6 +11,10 @@ import CachedAsyncImage
 struct PokedexCellView: View {
     
     var pokemon: Pokemon
+    @EnvironmentObject var pokedexImageSetting: PokedexImageSetting
+    
+    @State var imageUrl: String?
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
@@ -40,7 +44,7 @@ struct PokedexCellView: View {
                 
                 Spacer()
                 
-                CachedAsyncImage(url: URL(string: pokemon.sprites?.other?.officialArtwork?.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
+                CachedAsyncImage(url: URL(string: imageUrl ?? "ss"), urlCache: .imageCache) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
@@ -63,8 +67,21 @@ struct PokedexCellView: View {
                     }
                 }
             }
+            .onAppear {
+                predicate()
+            }
 //            .frame(height: 100)
             .padding(.horizontal)
+        }
+    }
+    
+    func predicate() {
+        if pokedexImageSetting.imageOrder == .Original {
+            imageUrl = pokemon.sprites?.frontDefault
+        } else if pokedexImageSetting.imageOrder == .Official {
+            imageUrl = pokemon.sprites?.other?.officialArtwork?.frontDefault
+        } else {
+            imageUrl = pokemon.sprites?.other?.home?.frontDefault
         }
     }
 }
@@ -72,6 +89,6 @@ struct PokedexCellView: View {
 
 struct PokedexCellView_Previews: PreviewProvider {
     static var previews: some View {
-        PokedexCellView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: [])).previewLayout(.sizeThatFits)
+        PokedexCellView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: [])).previewLayout(.sizeThatFits).environmentObject(PokedexImageSetting())
     }
 }

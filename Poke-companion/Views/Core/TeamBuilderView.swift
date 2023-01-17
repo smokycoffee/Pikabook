@@ -9,12 +9,14 @@ import SwiftUI
 
 struct TeamBuilderView: View {
     var body: some View {
-        VStack {
-            Text("Team Builder!")
-
-            PokemonTeamView()
-            
-            Spacer()
+        NavigationStack {
+            VStack {
+                PokemonTeamView()
+                
+                Spacer()
+            }
+            .navigationTitle("Teams")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
