@@ -29,33 +29,55 @@ struct PokedexView: View {
     
     var body: some View {
         NavigationStack {
-            List(pokedexData, id: \.id) { poke in
-                ZStack {
-                    PokedexCellView(pokemon: poke)
-                        .onTapGesture {
-                            self.selectedPokemon = poke
-//                            print(selectedPokemon?.moves ?? "no moves")
+            ScrollViewReader { proxy in
+                List(pokedexData, id: \.id) { poke in
+                    ZStack {
+                        PokedexCellView(pokemon: poke)
+                            .onTapGesture {
+                                self.selectedPokemon = poke
+                            }
+                        NavigationLink(value: poke) {
+                            EmptyView()
                         }
-                    NavigationLink(value: poke) {
-                        EmptyView()
+                        .opacity(0)
                     }
-                    .opacity(0)
+                    .listRowSeparator(.hidden)
+                    
                 }
-                .listRowSeparator(.hidden)
-            }
-            .listStyle(.inset)
-            .sheet(item: $selectedPokemon, content: { poke in
-                PokemonDetailsView(pokemon: poke, favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel())
-                    .presentationDetents([.large])
-            })
-            .navigationTitle("Pokemons")
-            .searchable(text: $searchText)
-            .onChange(of: searchText) { searchText in
-                pokemonVM.searchResults = pokemonVM.pokemonListArray.filter({ index in
-                    index.name.lowercased().contains(searchText.lowercased())
+                .overlay(content: {
+                            HStack {
+                                Spacer()
+                                VStack {
+                                    Spacer()
+                                    Button {
+                                        withAnimation(.easeInOut) {
+                                            proxy.scrollTo(1)
+                                        }
+                                    } label: {
+                                        Image(systemName: "chevron.up.circle.fill")
+                                            .font(.largeTitle)
+                                            .foregroundColor(.green)
+                                    }
+                                    .padding(.trailing, 10)
+                                    .padding(.top, 10)
+                                    .padding(.bottom, 15)
+                                }
+                            }
+                        })
+                .listStyle(.inset)
+                .sheet(item: $selectedPokemon, content: { poke in
+                    PokemonDetailsView(pokemon: poke, favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel())
+                        .presentationDetents([.large])
                 })
-            }
+                .navigationTitle("Pokemons")
+                .searchable(text: $searchText)
+                .onChange(of: searchText) { searchText in
+                    pokemonVM.searchResults = pokemonVM.pokemonListArray.filter({ index in
+                        index.name.lowercased().contains(searchText.lowercased())
+                    })
+                }
             .animation(.default, value: searchText)
+            }
             
         }
         .onAppear {

@@ -11,8 +11,8 @@ import CachedAsyncImage
 struct PokedexCellView: View {
     
     var pokemon: Pokemon
-    @EnvironmentObject var pokedexImageSetting: PokedexImageSetting
     
+    @EnvironmentObject var pokedexImageSetting: PokedexImageSetting
     @State var imageUrl: String?
 
     var body: some View {
@@ -52,13 +52,11 @@ struct PokedexCellView: View {
                     case .success(let image):
                         image
                             .resizable()
-//                            .interpolation(.none)
                             .scaledToFit()
                             .frame(width: 120, height: 120)
                     case .failure:
                         Image(systemName: "questionmark")
                             .resizable()
-//                            .interpolation(.none)
                             .scaledToFit()
                             .frame(width: 120, height: 120)
                             .foregroundColor(.gray)

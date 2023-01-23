@@ -9,14 +9,29 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State private var selectedOrder = PokedexImageType.Official
+    @State private var selectedOrderFavourites = PokedexImageType.Official
+    @State private var selectedOrderTeam = PokedexImageType.Official
+    @State private var selectedEvolutionImageOrder = PokedexImageType.Official
     @EnvironmentObject var pokedexImageSetting: PokedexImageSetting
     
     var body: some View {
         NavigationStack {
             Form {
                 Section(header: Text("SORT PREFERENCE")) {
-                    Picker(selection: $selectedOrder, label: Text("Pokedex Image Type")) {
+                    
+                    Picker(selection: $selectedOrderFavourites, label: Text("Pokedex Image Type")) {
+                        ForEach(PokedexImageType.allCases, id: \.self) {
+                            imageType in
+                            Text(imageType.text)
+                        }
+                    }
+//                    Picker(selection: $selectedEvolutionImageOrder, labgel: Text("Evolution Image Type")) {
+//                        ForEach(PokedexImageType.allCases, id: \.self) {
+//                            imageType in
+//                            Text(imageType.text)
+//                        }
+//                    }
+                    Picker(selection: $selectedOrderTeam, label: Text("Team Image Type")) {
                         ForEach(PokedexImageType.allCases, id: \.self) {
                             imageType in
                             Text(imageType.text)
@@ -28,7 +43,9 @@ struct SettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        self.pokedexImageSetting.imageOrder = self.selectedOrder
+                        self.pokedexImageSetting.imageOrder = self.selectedOrderFavourites
+                        self.pokedexImageSetting.teamImageOrder = self.selectedOrderTeam
+                        self.pokedexImageSetting.evolutionChainOrderType = self.selectedEvolutionImageOrder
                         
                     } label: {
                         Text("Save")
@@ -37,7 +54,9 @@ struct SettingsView: View {
                 }
             }
             .onAppear {
-                self.selectedOrder = self.pokedexImageSetting.imageOrder
+                self.selectedOrderFavourites = self.pokedexImageSetting.imageOrder
+                self.selectedOrderTeam = self.pokedexImageSetting.teamImageOrder
+                self.selectedEvolutionImageOrder = self.pokedexImageSetting.evolutionChainOrderType
             }
         }
         

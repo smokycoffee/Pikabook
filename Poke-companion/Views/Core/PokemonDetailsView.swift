@@ -18,7 +18,18 @@ struct PokemonDetailsView: View {
     @ObservedObject var favPokemon: FavouritePokemons
     @ObservedObject var teamBuilder: TeamBuilderViewModel
     @State var favourited: Bool = false
-    @State var pokemonFav: [Pokemon]?
+
+    @State var selectedPokemon: Pokemon?
+    @State private var showingAlertFav = false
+    @State private var showingAlertTeam = false
+    @State private var selectedShow: Pokemon?
+    @State private var alertMessage = ""
+    @State private var alertTitle = ""
+    
+    @State private var imageUrl = ""
+    @EnvironmentObject var pokedexImageSetting: PokedexImageSetting
+    
+    @State var pokemons: [Pokemon]?
     
     var body: some View {
         NavigationView {
@@ -33,7 +44,7 @@ struct PokemonDetailsView: View {
                         Text("#" + String(pokemon.id))
                             .font(.system(.body, design: .rounded, weight: .regular))
                         
-                        CachedAsyncImage(url: URL(string: pokemon.sprites?.other?.officialArtwork?.frontDefault ?? "ss"), urlCache: .imageCache) { phase in
+                        CachedAsyncImage(url: URL(string: imageUrl), urlCache: .imageCache) { phase in
                             switch phase {
                             case .empty:
                                 ProgressView()
@@ -70,6 +81,13 @@ struct PokemonDetailsView: View {
                         .frame(height: UIScreen.screenHeight/2)
                 }
             }
+//            .alert("Added \(pokemon.name) to favourites", isPresented: $showingAlertFav) {
+//                        Button("OK", role: .cancel) { }
+//                    }
+            .alert(item: $selectedShow) { pokemon in
+                Alert(title: Text(alertTitle), message: Text(alertMessage))
+            }
+
             .ignoresSafeArea(.all, edges: .all)
             .navigationBarBackButtonHidden(true)
             .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.8), gradientColor], center: .center, startRadius: 100, endRadius: UIScreen.screenWidth - 150))
@@ -77,10 +95,8 @@ struct PokemonDetailsView: View {
                 gradientColor = pokemon.types![0].type.typeColor
                 
                 //                favPokemon.loadAllFavourites()
-                
-                if favPokemon.listPokemons.contains(pokemon) {
-                    favourited.toggle()
-                }
+                selectedPokemon = pokemon
+                predicate()
             }
             .toolbar(content: {
                 ToolbarItem(placement: .navigation) {
@@ -96,30 +112,21 @@ struct PokemonDetailsView: View {
                     
                     Button {
                         
-//                        let pokeData = favPokemon.listPokemons
-//
-//                        do {
-//                            let decoder = JSONDecoder()
-//                            let favourites = try decoder.decode([Pokemon].self, from: pokeData)
-//
-//                            if favourites.pokemon.name.contains(pokemon) {
-//                                print("already favourited this pokemon")
-//                            } else {
-//
-//                                let newFavPokemon = pokemon
-//                                favPokemon.listPokemons.append(newFavPokemon)
-//                            }
-//                        } catch {
-//                            print("unable to decode")
-//                        }
-                        
-                        
+                        if favPokemon.listPokemons.contains(selectedPokemon!) {
+                            selectedShow = pokemon
+                            alertTitle = "Already in Favourites!"
+                            alertMessage = "\(pokemon.name), exists in Favourites!"
+                            return
+                            
+                        } else {
+                            selectedShow = pokemon
+                            alertTitle = "To Favourites 🚀!"
+                            alertMessage = "Added \(pokemon.name) to favourites!"
 
-                    
-                        let newFavPokemon = pokemon
-                        favPokemon.listPokemons.append(newFavPokemon)
-                    
-                    // add function to add to favourites
+                            let newFavPokemon = pokemon
+                            favPokemon.listPokemons.append(newFavPokemon)
+                        }
+                        // add function to add to favourites
                 } label: {
                     //                        Label("Fav", systemImage: "star")
                     Image(systemName: favourited ? "star" : "star.fill")
@@ -131,26 +138,51 @@ struct PokemonDetailsView: View {
                     
                     // add to team function to be added here
                     if (teamBuilder.teamPokemons.count < 6) {
-                        let newTeamPokemon = pokemon
-                        teamBuilder.teamPokemons.append(newTeamPokemon)
+                        if teamBuilder.teamPokemons.contains(selectedPokemon!) {
+                            
+                            selectedShow = pokemon
+                            alertTitle = "Already in Team!"
+                            alertMessage = "\(pokemon.name), exists in Team!"
+                        } else {
+                        
+                            let newTeamPokemon = pokemon
+                            teamBuilder.teamPokemons.append(newTeamPokemon)
+                            
+                            selectedShow = pokemon
+                            alertTitle = "Added to Team 🜙!"
+                            alertMessage = "\(pokemon.name), Added!"
+                        }
                     } else {
                         print("already have 6 members")
+                        
+                        selectedShow = pokemon
+                        alertTitle = "Team is complete!!"
+                        alertMessage = "6 Pokemons is MAX, don't be greedy!"
                     }
                     
                 } label: {
                     Image(systemName: "person.fill.questionmark")
                         .foregroundColor(.white)
                 }
-            }
-                     })
+                }
+            })
         }
     }
+
     // funcs here
-    
+    func predicate() {
+        if pokedexImageSetting.imageOrder == .Original {
+            imageUrl = pokemon.sprites!.frontDefault
+        } else if pokedexImageSetting.imageOrder == .Official {
+            imageUrl = (pokemon.sprites?.other?.officialArtwork?.frontDefault)!
+        } else if pokedexImageSetting.imageOrder == .Futuristic {
+            imageUrl = (pokemon.sprites?.other?.home?.frontDefault)!
+        }
+    }
 }
 
 struct PokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []), favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel(), favourited: false)
+        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []), favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel(), favourited: false).environmentObject(PokedexImageSetting())
     }
 }

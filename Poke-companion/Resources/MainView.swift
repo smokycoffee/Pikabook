@@ -26,7 +26,7 @@ struct MainView: View {
                         .foregroundColor(.white)
                 }
                 .tag(1)
-            TeamBuilderView()
+            TeamBuilderView().environmentObject(self.pokedexImageSetting)
                 .tabItem {
                     Image(systemName: "person.fill.questionmark")
                         .backgroundStyle(.white)

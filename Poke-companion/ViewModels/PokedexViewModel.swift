@@ -18,12 +18,14 @@ class PokedexViewModel: ObservableObject {
     
     @Published var searchResults = [Pokemon]()
     
+    
     var cancellables: Set<AnyCancellable> = []
     
-    let limit = 151
+//    let limit = 59
+    let limit = 649
     
     var page = 0
-        
+    
     /// Fetch a pokemon from URL
     /// - Parameter urlString: URL of the pokemon
     /// - Returns: A publisher with output PokemonDetailResponse
@@ -67,63 +69,18 @@ class PokedexViewModel: ObservableObject {
     }
     
     func testPokemons() {
-//        let data = UserDefaults.standard.get(forKey: "pokemonList")
-//        if data == nil || data!.count < 200 {
-//
-//            getPokemonListWithDetails()
-//                .sink { (completion) in
-//                    print("done")
-//                } receiveValue: { (pokemons) in
-//                    self.pokemonListArray = pokemons
-//                    UserDefaults.standard.set(pokemons, forKey: "pokemonList")
-        //                    print("data from pokeapi")
-        //                    self.page += 1
-        //                }
-        //                .store(in: &cancellables)
-        //        } else {
-        //            self.pokemonListArray = data!
-        //            print("data from userDefaults")
-        //        }
-        getPokemonListWithDetails()
-            .sink { (completion) in
-                print("done")
-            } receiveValue: { (pokemons) in
-                self.pokemonListArray = pokemons.sorted(by: {
-                    $0.id < $1.id
-                })
-                self.page += 1
-            }
-            .store(in: &cancellables)
-
-//        do {
-//            var object: [Pokemon]? = try DataCache.instance.readCodable(forKey: "myKey")
-//
-//            if object == nil {
-//                getPokemonListWithDetails()
-//                    .sink { (completion) in
-//                        print("done")
-//                    } receiveValue: { (pokemons) in
-//                        self.pokemonListArray = pokemons
-//                        object = self.pokemonListArray
-//                        print("data from pokeapi")
-//                        self.page += 1
-//                        do {
-//                            try DataCache.instance.write(codable: object, forKey: "myKey")
-//                        } catch {
-//                            print("Write error \(error.localizedDescription)")
-//                        }
-//                    }
-//                    .store(in: &cancellables)
-//            } else {
-//                print("data from datacache")
-//                self.pokemonListArray = object!
-//            }
-//        } catch {
-//            print("Read error \(error.localizedDescription)")
-//        }
-        
-        
-        
+            getPokemonListWithDetails()
+                .sink { (completion) in
+                    print("done")
+                } receiveValue: {  (pokemons) in
+                    
+                    self.pokemonListArray.append(contentsOf: pokemons.sorted(by: {
+                        $0.id < $1.id
+                    }))
+                    
+                    self.page += 1
+                }
+                .store(in: &cancellables)
     }
     
     //MARK: Testing api beyond
