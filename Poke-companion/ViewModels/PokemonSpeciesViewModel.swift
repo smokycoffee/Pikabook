@@ -16,8 +16,7 @@ class PokemonSpeciesViewModel: ObservableObject {
     @Published var pokemonEvolutionChainURL: String?
     @Published var pokemonEvolutions = [Pokemon]()
     @Published var pokemonEvolutionChain = [EvolutionChains]()
-    
-    @Published var testt = [PokedexResults]()
+    @Published var flavorText: FlavorTextEntry?
     
     var cancellables: Set<AnyCancellable> = []
     
@@ -36,6 +35,8 @@ class PokemonSpeciesViewModel: ObservableObject {
                 pokemonEvolutionChainURL = pokemon.evolutionChain.url
                 fetchEvolutionChain(for: pokemonEvolutionChainURL!)
                 dataToView.append(pokemon)
+                flavorText = pokemon.flavorTextEntries[0]
+//                print(flavorText)
             }
             .store(in: &cancellables)
     }

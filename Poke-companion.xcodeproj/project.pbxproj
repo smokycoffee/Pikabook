@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E2202C9B2923044600104E2C /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2202C9A2923044500104E2C /* Api.swift */; };
 		E223C9292900AF020050AD94 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E223C9282900AF020050AD94 /* Extensions.swift */; };
+		E2401F83298022D400298ED0 /* GenerationsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2401F82298022D400298ED0 /* GenerationsEnum.swift */; };
+		E2401F862980768C00298ED0 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = E2401F852980768C00298ED0 /* ActivityIndicatorView */; };
 		E24A298128F9D4510019429A /* Poke_companionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A298028F9D4510019429A /* Poke_companionApp.swift */; };
 		E24A298328F9D4510019429A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A298228F9D4510019429A /* MainView.swift */; };
 		E24A298528F9D4520019429A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E24A298428F9D4520019429A /* Assets.xcassets */; };
@@ -50,6 +52,7 @@
 /* Begin PBXFileReference section */
 		E2202C9A2923044500104E2C /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		E223C9282900AF020050AD94 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E2401F82298022D400298ED0 /* GenerationsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationsEnum.swift; sourceTree = "<group>"; };
 		E24A297D28F9D4510019429A /* Poke-companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Poke-companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E24A298028F9D4510019429A /* Poke_companionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poke_companionApp.swift; sourceTree = "<group>"; };
 		E24A298228F9D4510019429A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E27E4E85290821FB00FAA964 /* CachedAsyncImage in Frameworks */,
+				E2401F862980768C00298ED0 /* ActivityIndicatorView in Frameworks */,
 				E24EBA612926BABF00473F3D /* DataCache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				E223C9282900AF020050AD94 /* Extensions.swift */,
-				E299774229771B0C0063E080 /* PokedexImageSetting.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -189,6 +192,8 @@
 		E27379A528F9F4E00013303B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E299774229771B0C0063E080 /* PokedexImageSetting.swift */,
+				E2401F82298022D400298ED0 /* GenerationsEnum.swift */,
 				E2B47EFB28FAF32100F2882F /* PokedexViewModel.swift */,
 				E2CA875B2916A24E00A442B3 /* PokemonSpeciesViewModel.swift */,
 				E28A747B2960AA160066AB78 /* DropViewDelegate.swift */,
@@ -274,6 +279,7 @@
 			packageProductDependencies = (
 				E27E4E84290821FB00FAA964 /* CachedAsyncImage */,
 				E24EBA602926BABF00473F3D /* DataCache */,
+				E2401F852980768C00298ED0 /* ActivityIndicatorView */,
 			);
 			productName = "Poke-companion";
 			productReference = E24A297D28F9D4510019429A /* Poke-companion.app */;
@@ -306,6 +312,7 @@
 			packageReferences = (
 				E27E4E83290821FB00FAA964 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 				E24EBA5F2926BABF00473F3D /* XCRemoteSwiftPackageReference "DataCache" */,
+				E2401F842980768C00298ED0 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
 			);
 			productRefGroup = E24A297E28F9D4510019429A /* Products */;
 			projectDirPath = "";
@@ -336,6 +343,7 @@
 			files = (
 				E2F8776A291F0810008E26C5 /* MovesView.swift in Sources */,
 				E27379B228F9F6B50013303B /* SettingsView.swift in Sources */,
+				E2401F83298022D400298ED0 /* GenerationsEnum.swift in Sources */,
 				E255700F29075D16002D5095 /* Pokemon.swift in Sources */,
 				E27379AC28F9F6400013303B /* PokedexView.swift in Sources */,
 				E27379B028F9F6630013303B /* TeamBuilderView.swift in Sources */,
@@ -493,7 +501,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"Poke-companion/Preview Content\"";
 				DEVELOPMENT_TEAM = K9L457R99N;
 				ENABLE_PREVIEWS = YES;
@@ -527,7 +535,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"Poke-companion/Preview Content\"";
 				DEVELOPMENT_TEAM = K9L457R99N;
 				ENABLE_PREVIEWS = YES;
@@ -579,6 +587,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E2401F842980768C00298ED0 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E24EBA5F2926BABF00473F3D /* XCRemoteSwiftPackageReference "DataCache" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/huynguyencong/DataCache.git";
@@ -598,6 +614,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E2401F852980768C00298ED0 /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2401F842980768C00298ED0 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
+			productName = ActivityIndicatorView;
+		};
 		E24EBA602926BABF00473F3D /* DataCache */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E24EBA5F2926BABF00473F3D /* XCRemoteSwiftPackageReference "DataCache" */;

@@ -16,7 +16,7 @@ struct MovesCellView: View {
             Spacer()
         }
         .padding()
-        .background(Color(.random))
+        .background(Color(.random).opacity(0.4))
         .cornerRadius(10)
     }
 }

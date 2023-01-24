@@ -29,23 +29,6 @@ enum PokedexImageType: Int, CaseIterable {
         case .Futuristic: return "Futuristic"
         }
     }
-    
-    // pokemon.sprites?.frontDefault // original
-    // pokemon.sprites?.other?.officialArtwork?.frontDefault // official
-    
-    // pokemon.sprites?.other?.home?.frontDefault // futuristic?
-    
-    
-//    func predicate() -> (Pokemon) -> URL? {
-//        switch self {
-//        case .Original:
-//            return {URL(string: $0.sprites?.frontDefault ?? "ss")}
-//        case .Official:
-//            return {URL(string: $0.sprites?.other?.officialArtwork?.frontDefault ?? "ss" )}
-//        case .Futuristic:
-//            return {URL(string: $0.sprites?.other?.home?.frontDefault ?? "ss")}
-//        }
-//    }
 }
 
 final class PokedexImageSetting: ObservableObject {

@@ -29,6 +29,9 @@ struct PokemonDetailsView: View {
     @State private var imageUrl = ""
     @EnvironmentObject var pokedexImageSetting: PokedexImageSetting
     
+    @ObservedObject private var pokemonSpeciesVM = PokemonSpeciesViewModel()
+
+    
     @State var pokemons: [Pokemon]?
     
     var body: some View {
@@ -81,22 +84,21 @@ struct PokemonDetailsView: View {
                         .frame(height: UIScreen.screenHeight/2)
                 }
             }
-//            .alert("Added \(pokemon.name) to favourites", isPresented: $showingAlertFav) {
-//                        Button("OK", role: .cancel) { }
-//                    }
             .alert(item: $selectedShow) { pokemon in
                 Alert(title: Text(alertTitle), message: Text(alertMessage))
             }
-
             .ignoresSafeArea(.all, edges: .all)
             .navigationBarBackButtonHidden(true)
             .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.8), gradientColor], center: .center, startRadius: 100, endRadius: UIScreen.screenWidth - 150))
             .onAppear {
                 gradientColor = pokemon.types![0].type.typeColor
-                
                 //                favPokemon.loadAllFavourites()
+                pokemonSpeciesVM.fetchPokemonSpecies(for: pokemon.species?.url ?? "ss")
+
                 selectedPokemon = pokemon
                 predicate()
+                
+                print(pokemonSpeciesVM.flavorText)
             }
             .toolbar(content: {
                 ToolbarItem(placement: .navigation) {
@@ -109,9 +111,7 @@ struct PokemonDetailsView: View {
                     }
                 }
                 ToolbarItemGroup {
-                    
                     Button {
-                        
                         if favPokemon.listPokemons.contains(selectedPokemon!) {
                             selectedShow = pokemon
                             alertTitle = "Already in Favourites!"
@@ -179,6 +179,8 @@ struct PokemonDetailsView: View {
             imageUrl = (pokemon.sprites?.other?.home?.frontDefault)!
         }
     }
+    
+    
 }
 
 struct PokemonDetailsView_Previews: PreviewProvider {

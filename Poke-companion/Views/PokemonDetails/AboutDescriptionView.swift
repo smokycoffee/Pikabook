@@ -34,7 +34,14 @@ struct AboutDescriptionView: View {
                     
                     Spacer()
                     
-                    Text("types here")
+                    HStack {
+                        ForEach(pokemon.types!, id: \.self) { i in
+                            Rectangle()
+                                .fill(i.type.typeColor.opacity(0.4))
+                                .cornerRadius(5)
+                                .frame(width: 20, height: 20)
+                        }
+                    }
                     
                     Spacer()
                     

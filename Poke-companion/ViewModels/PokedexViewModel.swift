@@ -15,16 +15,24 @@ class PokedexViewModel: ObservableObject {
     @Published var pokemonDataToView = [Pokemon]()
     @Published var pokemonURL = [PokedexResults]()
     @Published var pokemonListArray = [Pokemon]()
-    
     @Published var searchResults = [Pokemon]()
-    
     
     var cancellables: Set<AnyCancellable> = []
     
-//    let limit = 59
-    let limit = 649
+    @Published var selectedGeneration: GenerationsType = .generationOne
     
+    let limit = 649
     var page = 0
+    
+    enum State {
+            case isLoading
+            case done
+        }
+    
+    @Published var generationLimit = 151
+    @Published var offsetLimit = 0
+    
+    @Published var state: State = .isLoading
     
     /// Fetch a pokemon from URL
     /// - Parameter urlString: URL of the pokemon
@@ -54,8 +62,8 @@ class PokedexViewModel: ObservableObject {
     /// - Returns: A publisher with output an array of PokemonDetailResponse
     func getPokemonListWithDetails() -> AnyPublisher<[Pokemon], Error> {
         
-        let offset = page * limit
-        return getPokemonList(urlString: "https://pokeapi.co/api/v2/pokemon?limit=\(limit)&offset=\(offset)")
+//        let offset = page * limit
+        return getPokemonList(urlString: "https://pokeapi.co/api/v2/pokemon?limit=\(generationLimit)&offset=\(offsetLimit)")
             .tryMap(\.results)
             .flatMap {
                 Publishers
@@ -69,6 +77,8 @@ class PokedexViewModel: ObservableObject {
     }
     
     func testPokemons() {
+        state = .isLoading
+        
             getPokemonListWithDetails()
                 .sink { (completion) in
                     print("done")
@@ -77,7 +87,7 @@ class PokedexViewModel: ObservableObject {
                     self.pokemonListArray.append(contentsOf: pokemons.sorted(by: {
                         $0.id < $1.id
                     }))
-                    
+                    self.state = .done
                     self.page += 1
                 }
                 .store(in: &cancellables)

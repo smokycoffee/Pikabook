@@ -14,7 +14,7 @@ struct MainView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            PokedexView()
+            PokedexView().environmentObject(GenerationsTypeSetting())
                 .tabItem {
                     Image("pokemon")
                     Text("Pokédex")
