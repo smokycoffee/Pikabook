@@ -30,23 +30,25 @@ struct FavouritesView: View {
             }
             .listStyle(.inset)
             .sheet(item: $selectedPokemon, content: { poke in
-                PokemonDetailsView(pokemon: poke, favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel())
+                PokemonDetailsView(pokemon: poke, favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel(), pokemonSpeciesVM: PokemonSpeciesViewModel())
                     .presentationDetents([.large])
             })
             .onAppear {
                 favPokemons.loadAllFavourites()
             }
             .navigationTitle("Favourites")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        UserDefaults.standard.removeObject(forKey: "favPokemon")
+                        favPokemons.listPokemons = []
+                    } label: {
+                        Text("Remove all")
+                            .foregroundColor(.primary)
+                    }
+                }
+            }
         }
-        
-        //        .onAppear {
-        //            if let savedPokemon = UserDefaults.standard.data(forKey: "favPokemon"){
-        //                if let decodedPokemon = try? JSONDecoder().decode([Pokemon].self, from: savedPokemon){
-//                    favPokemons.listPokemons = decodedPokemon
-//                    return
-//                }
-//            }
-//        }
     }
     func RemovePerson(at offsets: IndexSet){
         favPokemons.listPokemons.remove(atOffsets: offsets)

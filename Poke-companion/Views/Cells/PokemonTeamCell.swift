@@ -18,12 +18,14 @@ struct PokemonTeamCell: View {
         ZStack {
             Rectangle()
                 .fill(pokemon.types![0].type.typeColor.opacity(0.5))
-                .frame(height: 110)
+                .frame(height: 100)
                 .cornerRadius(10)
             
             VStack {
                 Text(pokemon.name.capitalized)
-                    .font(.system(.callout, design: .monospaced))
+                    .font(.system(.caption, design: .monospaced))
+                    .bold()
+                    .padding(.top, 10)
                 
                 CachedAsyncImage(url: URL(string: imageUrl ?? "ss"), urlCache: .imageCache) { phase in
                     switch phase {
@@ -36,23 +38,24 @@ struct PokemonTeamCell: View {
                             .scaledToFit()
                             .frame(width: 70, height: 70)
                     case .failure:
-                            Image(systemName: "questionmark")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 70, height: 70)
-                                .foregroundColor(.gray)
-                        @unknown default:
-                            EmptyView()
-                        }
+                        Image(systemName: "questionmark")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 70, height: 70)
+                            .foregroundColor(.gray)
+                    @unknown default:
+                        EmptyView()
                     }
-                    
-                    Spacer()
                 }
-                .padding(.top)
+                
+                Spacer()
             }
-            .onAppear {
-                predicate()
-            }
+        }
+        .cornerRadius(10)
+        .frame(height: 100)
+        .onAppear {
+            predicate()
+        }
     }
     
     func predicate() {

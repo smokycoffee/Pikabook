@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CachedAsyncImage
+import ActivityIndicatorView
 
 struct PokemonDetailsView: View {
     
@@ -29,10 +30,10 @@ struct PokemonDetailsView: View {
     @State private var imageUrl = ""
     @EnvironmentObject var pokedexImageSetting: PokedexImageSetting
     
-    @ObservedObject private var pokemonSpeciesVM = PokemonSpeciesViewModel()
+    @ObservedObject var pokemonSpeciesVM: PokemonSpeciesViewModel
 
     
-    @State var pokemons: [Pokemon]?
+//    @State var pokemons: [Pokemon]?
     
     var body: some View {
         NavigationView {
@@ -69,7 +70,10 @@ struct PokemonDetailsView: View {
                                 EmptyView()
                             }
                         }
-                        Text("Bulbasaur can be seen napping in bright sunlight.\nThere is a seed on its back. By soaking up the sun’s rays,\nthe seed grows progressively larger.")
+//                        Text("Bulbasaur can be seen napping in bright sunlight.\nThere is a seed on its back. By soaking up the sun’s rays,\nthe seed grows progressively larger.")
+                            
+                    
+                        Text(pokemonSpeciesVM.flavorText)
                             .font(.system(.footnote))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 8)
@@ -97,8 +101,6 @@ struct PokemonDetailsView: View {
 
                 selectedPokemon = pokemon
                 predicate()
-                
-                print(pokemonSpeciesVM.flavorText)
             }
             .toolbar(content: {
                 ToolbarItem(placement: .navigation) {
@@ -114,14 +116,14 @@ struct PokemonDetailsView: View {
                     Button {
                         if favPokemon.listPokemons.contains(selectedPokemon!) {
                             selectedShow = pokemon
-                            alertTitle = "Already in Favourites!"
-                            alertMessage = "\(pokemon.name), exists in Favourites!"
+                            alertTitle = "You've already added! 😖"
+                            alertMessage = "\(pokemon.name.capitalizingFirstLetter()), says no to duplicates!"
                             return
                             
                         } else {
                             selectedShow = pokemon
                             alertTitle = "To Favourites 🚀!"
-                            alertMessage = "Added \(pokemon.name) to favourites!"
+                            alertMessage = "Moved \(pokemon.name.capitalizingFirstLetter()) to favourites!"
 
                             let newFavPokemon = pokemon
                             favPokemon.listPokemons.append(newFavPokemon)
@@ -149,15 +151,14 @@ struct PokemonDetailsView: View {
                             teamBuilder.teamPokemons.append(newTeamPokemon)
                             
                             selectedShow = pokemon
-                            alertTitle = "Added to Team 🜙!"
-                            alertMessage = "\(pokemon.name), Added!"
+                            alertTitle = "Added to Team 🤘!"
+                            alertMessage = "\(pokemon.name.capitalizingFirstLetter()), I choose you! 🤌"
                         }
                     } else {
-                        print("already have 6 members")
                         
                         selectedShow = pokemon
                         alertTitle = "Team is complete!!"
-                        alertMessage = "6 Pokemons is MAX, don't be greedy!"
+                        alertMessage = "6 Pokemons MAX, don't be greedy! 💀"
                     }
                     
                 } label: {
@@ -185,6 +186,6 @@ struct PokemonDetailsView: View {
 
 struct PokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []), favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel(), favourited: false).environmentObject(PokedexImageSetting())
+        PokemonDetailsView(pokemon: Pokemon(id: 1, name: "Charizard", baseExperience: 50, height: 20, isDefault: false, order: 1, weight: 1, abilities: [], forms: [], gameIndices: [], heldItems: [], locationAreaEncounters: "Kanto", moves: [], species: nil, sprites: nil, stats: [], types: [], pastTypes: []), favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel(), favourited: false, pokemonSpeciesVM: PokemonSpeciesViewModel()).environmentObject(PokedexImageSetting())
     }
 }

@@ -16,15 +16,14 @@ class PokemonSpeciesViewModel: ObservableObject {
     @Published var pokemonEvolutionChainURL: String?
     @Published var pokemonEvolutions = [Pokemon]()
     @Published var pokemonEvolutionChain = [EvolutionChains]()
-    @Published var flavorText: FlavorTextEntry?
+    @Published var flavorText = ""
     
     var cancellables: Set<AnyCancellable> = []
+   var tempVar = [String]()
     
     func fetchPokemonSpecies(for pokemonSpecies: String) {
         let url = URL(string: pokemonSpecies)!
-        
         let decoder = JSONDecoder()
-        
         URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
             .decode(type: PokemonSpecies.self, decoder: decoder)
@@ -35,8 +34,14 @@ class PokemonSpeciesViewModel: ObservableObject {
                 pokemonEvolutionChainURL = pokemon.evolutionChain.url
                 fetchEvolutionChain(for: pokemonEvolutionChainURL!)
                 dataToView.append(pokemon)
-                flavorText = pokemon.flavorTextEntries[0]
-//                print(flavorText)
+                for poke in dataToView {
+                    for text in poke.flavorTextEntries {
+                        if text.language.name == "en" {
+                            tempVar.append(text.flavorText)
+                        }
+                    }
+                }
+                flavorText = tempVar.randomElement()!
             }
             .store(in: &cancellables)
     }

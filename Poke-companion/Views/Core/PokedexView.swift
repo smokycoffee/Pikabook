@@ -47,6 +47,7 @@ struct PokedexView: View {
                     List(pokedexData, id: \.id) { poke in
                         ZStack {
                             PokedexCellView(pokemon: poke)
+                                .environmentObject(PokemonSpeciesViewModel())
                                 .onTapGesture {
                                     self.selectedPokemon = poke
                                 }
@@ -64,7 +65,7 @@ struct PokedexView: View {
                                 Spacer()
                                 Button {
                                     withAnimation(.easeInOut) {
-                                        proxy.scrollTo(1)
+                                        proxy.scrollTo(pokedexData[0].id)
                                     }
                                 } label: {
                                     Image(systemName: "chevron.up.circle.fill")
@@ -79,7 +80,7 @@ struct PokedexView: View {
                     })
                     .listStyle(.inset)
                     .sheet(item: $selectedPokemon, content: { poke in
-                        PokemonDetailsView(pokemon: poke, favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel())
+                        PokemonDetailsView(pokemon: poke, favPokemon: FavouritePokemons(), teamBuilder: TeamBuilderViewModel(), pokemonSpeciesVM: PokemonSpeciesViewModel())
                             .presentationDetents([.large])
                     })
                     .navigationTitle(title)

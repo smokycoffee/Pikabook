@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TeamBuilderView: View {
+    @ObservedObject var teamPokemons = TeamBuilderViewModel()
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -15,8 +17,19 @@ struct TeamBuilderView: View {
                 
                 Spacer()
             }
-            .navigationTitle("Teams")
+            .navigationTitle("My Team")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        UserDefaults.standard.removeObject(forKey: "teamPokemonOne")
+                        teamPokemons.teamPokemons = []
+                    } label: {
+                        Text("Reset team")
+                            .foregroundColor(.primary)
+                    }
+                }
+            }
         }
     }
 }

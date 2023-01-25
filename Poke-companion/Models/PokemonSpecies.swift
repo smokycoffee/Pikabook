@@ -76,9 +76,10 @@ struct EvolutionChain: Codable {
 }
 
 // MARK: - FlavorTextEntry
-struct FlavorTextEntry: Codable {
+struct FlavorTextEntry: Codable, Identifiable, Hashable {
     let flavorText: String
     let language, version: Colour
+    let id = UUID()
 
     enum CodingKeys: String, CodingKey {
         case flavorText = "flavor_text"

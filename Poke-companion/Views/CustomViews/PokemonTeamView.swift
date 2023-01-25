@@ -11,14 +11,14 @@ struct PokemonTeamView: View {
     
     let columns = Array(repeating: GridItem(.flexible() ,spacing: 30), count: 3)
     
-    @StateObject var teamPokemons = TeamBuilderViewModel()
+    @ObservedObject var teamPokemons = TeamBuilderViewModel()
     @State private var selectedPokemon: Pokemon?
     @State private var showActionSheet = false
     
     var body: some View {
             VStack {
-                Text("My Team")
-                    .font(.system(.title3, design: .rounded, weight: .medium))
+//                Text("My Team")
+//                    .font(.system(.title3, design: .rounded, weight: .medium))
                 LazyVGrid(columns: columns) {
                     ForEach(teamPokemons.teamPokemons) { poke in
                         PokemonTeamCell(pokemon: poke)
@@ -34,6 +34,10 @@ struct PokemonTeamView: View {
                                 }
                             }
                             .onDrag({
+                                let haptic = UIImpactFeedbackGenerator(style: .medium)
+                                haptic.prepare()
+                                haptic.impactOccurred()
+
                                 teamPokemons.currentPokemon = poke
                                 return NSItemProvider(object: String(poke.name) as NSString)
                             })
