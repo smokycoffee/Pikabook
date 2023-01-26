@@ -17,7 +17,7 @@ struct MainView: View {
             PokedexView().environmentObject(GenerationsTypeSetting())
                 .tabItem {
                     Image("pokemon")
-                    Text("Pokédex")
+                    Text("Poké book")
                 }
                 .tag(0)
             FavouritesView()
@@ -39,16 +39,16 @@ struct MainView: View {
                     Text("Settings")
                 }
                 .tag(3)
-                .accentColor(.white)
+//                .accentColor(.white)
         }
-//        .frame(height: 150)
+        .tint(.white)
         .accentColor(Color(red: 219/255, green: 200/255, blue: 172/255))
         .onAppear {
             let appearance = UITabBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
             appearance.backgroundColor = UIColor(red: 183/255, green: 62/255, blue: 62/255, alpha: 1)
-            appearance.shadowColor = .white
-            
+//            appearance.shadowColor = .white
+
             // Use this appearance when scrolling behind the TabView:
             UITabBar.appearance().standardAppearance = appearance
             // Use this appearance when scrolled all the way up:

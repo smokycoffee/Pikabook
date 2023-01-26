@@ -31,7 +31,6 @@ struct PokemonDetailsView: View {
     @EnvironmentObject var pokedexImageSetting: PokedexImageSetting
     
     @ObservedObject var pokemonSpeciesVM: PokemonSpeciesViewModel
-
     
 //    @State var pokemons: [Pokemon]?
     
@@ -93,7 +92,7 @@ struct PokemonDetailsView: View {
             }
             .ignoresSafeArea(.all, edges: .all)
             .navigationBarBackButtonHidden(true)
-            .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.8), gradientColor], center: .center, startRadius: 100, endRadius: UIScreen.screenWidth - 150))
+            .background(RadialGradient(colors: [gradientColor, gradientColor.opacity(0.9), gradientColor], center: .center, startRadius: 100, endRadius: UIScreen.screenWidth - 150).opacity(0.7))
             .onAppear {
                 gradientColor = pokemon.types![0].type.typeColor
                 //                favPokemon.loadAllFavourites()
@@ -116,14 +115,14 @@ struct PokemonDetailsView: View {
                     Button {
                         if favPokemon.listPokemons.contains(selectedPokemon!) {
                             selectedShow = pokemon
-                            alertTitle = "You've already added! 😖"
+                            alertTitle = "You've already added! 🙈"
                             alertMessage = "\(pokemon.name.capitalizingFirstLetter()), says no to duplicates!"
                             return
                             
                         } else {
                             selectedShow = pokemon
                             alertTitle = "To Favourites 🚀!"
-                            alertMessage = "Moved \(pokemon.name.capitalizingFirstLetter()) to favourites!"
+                            alertMessage = "Duplicated \(pokemon.name.capitalizingFirstLetter()) in favourites!"
 
                             let newFavPokemon = pokemon
                             favPokemon.listPokemons.append(newFavPokemon)
@@ -143,7 +142,7 @@ struct PokemonDetailsView: View {
                         if teamBuilder.teamPokemons.contains(selectedPokemon!) {
                             
                             selectedShow = pokemon
-                            alertTitle = "Already in Team!"
+                            alertTitle = "You've already add me!!"
                             alertMessage = "\(pokemon.name), exists in Team!"
                         } else {
                         

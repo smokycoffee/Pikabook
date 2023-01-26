@@ -17,7 +17,6 @@ struct MovesView: View {
                 VStack {
                     ScrollView {
                         VStack(alignment: .leading) {
-                            
                             ForEach(pokemon.moves) { moves in
                                 MovesCellView(pokemon: moves)
                                     .padding(.horizontal)

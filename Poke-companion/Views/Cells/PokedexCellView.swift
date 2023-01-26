@@ -23,7 +23,7 @@ struct PokedexCellView: View {
                 .padding(.horizontal)
             HStack {
                 VStack(alignment: .leading){
-                    Text(pokemon.name.capitalizingFirstLetter())
+                    Text(pokemon.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " "))
                         .font(.system(.title3, design: .monospaced))
                         .bold()
                         .padding(.top, 10)

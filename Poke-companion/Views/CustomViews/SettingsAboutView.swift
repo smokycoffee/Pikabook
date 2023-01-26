@@ -9,10 +9,9 @@ import SwiftUI
 
 struct SettingsAboutView: View {
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack {
-                    Text("Poké Book")
+                    Text("Pokébook")
                         .font(.system(.title, design: .default, weight: .bold))
                         .foregroundColor(.primary)
                     Divider()
@@ -28,7 +27,7 @@ struct SettingsAboutView: View {
                     }
                     Divider()
                     Group {
-                        Text("I built Poké Book aimed to be one stop partner to look at stats whilst you're playing pokemon regardless of any pokemon generation. (much features to implement to achieve it 😆)")
+                        Text("I built Pokébook aimed to be one stop partner to look at stats whilst you're playing pokemon regardless of any pokemon generation. (much features to implement to achieve it 😆)")
                             .multilineTextAlignment(.center)
                         
                         Divider()
@@ -49,7 +48,7 @@ struct SettingsAboutView: View {
                         
                         HStack {
                             Text("• ")
-                            Text("**Team** - Tap pokemon in grid or **SUPER** long press to 'delete' pokemone! \n tap **medium** duration to drag and drop to realign to oder your team as you WISH! 😎 🆒")
+                            Text("**Team** - Tap pokemon inside grid or **SUPER** long press to 'delete' pokemone! \n tap **medium** duration to drag and drop to realign to oder your team as you WISH! 😎 🆒")
                             Spacer()
                         }
                         .padding(.top, 10)
@@ -70,7 +69,7 @@ struct SettingsAboutView: View {
                 }
                 .padding(.horizontal)
             }
-        }
+        
     }
 }
 

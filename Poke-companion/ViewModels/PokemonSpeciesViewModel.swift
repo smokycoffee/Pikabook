@@ -19,7 +19,7 @@ class PokemonSpeciesViewModel: ObservableObject {
     @Published var flavorText = ""
     
     var cancellables: Set<AnyCancellable> = []
-   var tempVar = [String]()
+    var tempVar = [String]()
     
     func fetchPokemonSpecies(for pokemonSpecies: String) {
         let url = URL(string: pokemonSpecies)!
@@ -91,9 +91,9 @@ class PokemonSpeciesViewModel: ObservableObject {
             .sink { completion in
             } receiveValue: { [unowned self] pokemon in
                 pokemonEvolutions.append(pokemon)
-//                print(pokemon.stats)
             }
             .store(in: &cancellables)
     }
+    
     
 }

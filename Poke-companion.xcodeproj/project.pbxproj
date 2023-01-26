@@ -17,6 +17,7 @@
 		E24A298828F9D4520019429A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E24A298728F9D4520019429A /* Preview Assets.xcassets */; };
 		E24EBA612926BABF00473F3D /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = E24EBA602926BABF00473F3D /* DataCache */; };
 		E255700F29075D16002D5095 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255700E29075D16002D5095 /* Pokemon.swift */; };
+		E25641242982BD30000D473E /* UpcomingFeaturesAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25641232982BD30000D473E /* UpcomingFeaturesAboutView.swift */; };
 		E26AD0652921A41A006FE268 /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26AD0642921A41A006FE268 /* BarChartCell.swift */; };
 		E27379AC28F9F6400013303B /* PokedexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27379AB28F9F6400013303B /* PokedexView.swift */; };
 		E27379B028F9F6630013303B /* TeamBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27379AF28F9F6630013303B /* TeamBuilderView.swift */; };
@@ -30,6 +31,8 @@
 		E28A747829609DB80066AB78 /* PokemonTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A747729609DB80066AB78 /* PokemonTeamView.swift */; };
 		E28A747A2960A7590066AB78 /* PokemonTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A74792960A7590066AB78 /* PokemonTeamCell.swift */; };
 		E28A747C2960AA160066AB78 /* DropViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A747B2960AA160066AB78 /* DropViewDelegate.swift */; };
+		E28E9C4329830C6B00A46783 /* PokeEncounterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E9C4229830C6B00A46783 /* PokeEncounterVM.swift */; };
+		E28E9C4529830F1E00A46783 /* PokemonEncounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E9C4429830F1E00A46783 /* PokemonEncounter.swift */; };
 		E299774329771B0C0063E080 /* PokedexImageSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E299774229771B0C0063E080 /* PokedexImageSetting.swift */; };
 		E2AE3EB1290C8B83005A78F5 /* PokemonSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AE3EB0290C8B83005A78F5 /* PokemonSpecies.swift */; };
 		E2B18C97295DFC8300DA8C22 /* MovesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B18C96295DFC8300DA8C22 /* MovesCellView.swift */; };
@@ -60,6 +63,7 @@
 		E24A298428F9D4520019429A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E24A298728F9D4520019429A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E255700E29075D16002D5095 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		E25641232982BD30000D473E /* UpcomingFeaturesAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingFeaturesAboutView.swift; sourceTree = "<group>"; };
 		E26AD0642921A41A006FE268 /* BarChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCell.swift; sourceTree = "<group>"; };
 		E27379AB28F9F6400013303B /* PokedexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexView.swift; sourceTree = "<group>"; };
 		E27379AF28F9F6630013303B /* TeamBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderView.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 		E28A747729609DB80066AB78 /* PokemonTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamView.swift; sourceTree = "<group>"; };
 		E28A74792960A7590066AB78 /* PokemonTeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamCell.swift; sourceTree = "<group>"; };
 		E28A747B2960AA160066AB78 /* DropViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropViewDelegate.swift; sourceTree = "<group>"; };
+		E28E9C4229830C6B00A46783 /* PokeEncounterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeEncounterVM.swift; sourceTree = "<group>"; };
+		E28E9C4429830F1E00A46783 /* PokemonEncounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEncounter.swift; sourceTree = "<group>"; };
 		E299774229771B0C0063E080 /* PokedexImageSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexImageSetting.swift; sourceTree = "<group>"; };
 		E2AE3EB0290C8B83005A78F5 /* PokemonSpecies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSpecies.swift; sourceTree = "<group>"; };
 		E2B18C96295DFC8300DA8C22 /* MovesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovesCellView.swift; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 				E255700E29075D16002D5095 /* Pokemon.swift */,
 				E2761799290C7B1B0094973D /* EvolutionChains.swift */,
 				E2AE3EB0290C8B83005A78F5 /* PokemonSpecies.swift */,
+				E28E9C4429830F1E00A46783 /* PokemonEncounter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +208,7 @@
 				E28A747B2960AA160066AB78 /* DropViewDelegate.swift */,
 				E2D943BB297458F20067C9AA /* FavouritePokemons.swift */,
 				E2D943BD297471F80067C9AA /* TeamBuilderViewModel.swift */,
+				E28E9C4229830C6B00A46783 /* PokeEncounterVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -259,6 +267,7 @@
 				E2F87772291F0B99008E26C5 /* TabsAppBar.swift */,
 				E28A747729609DB80066AB78 /* PokemonTeamView.swift */,
 				E283C7BF2981A34600B1101E /* SettingsAboutView.swift */,
+				E25641232982BD30000D473E /* UpcomingFeaturesAboutView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -364,8 +373,10 @@
 				E2D943BE297471F80067C9AA /* TeamBuilderViewModel.swift in Sources */,
 				E2B47EFA28FAEEE700F2882F /* PokemonDetailsView.swift in Sources */,
 				E2F87771291F0B52008E26C5 /* SelectedTabSemiCircle.swift in Sources */,
+				E28E9C4329830C6B00A46783 /* PokeEncounterVM.swift in Sources */,
 				E223C9292900AF020050AD94 /* Extensions.swift in Sources */,
 				E276179A290C7B1B0094973D /* EvolutionChains.swift in Sources */,
+				E28E9C4529830F1E00A46783 /* PokemonEncounter.swift in Sources */,
 				E2B47EFC28FAF32100F2882F /* PokedexViewModel.swift in Sources */,
 				E27379B428F9F6EA0013303B /* FavouritesView.swift in Sources */,
 				E2CA875C2916A24E00A442B3 /* PokemonSpeciesViewModel.swift in Sources */,
@@ -377,6 +388,7 @@
 				E27379B828FA163B0013303B /* Pokedex.swift in Sources */,
 				E24A298128F9D4510019429A /* Poke_companionApp.swift in Sources */,
 				E299774329771B0C0063E080 /* PokedexImageSetting.swift in Sources */,
+				E25641242982BD30000D473E /* UpcomingFeaturesAboutView.swift in Sources */,
 				E2D943BC297458F20067C9AA /* FavouritePokemons.swift in Sources */,
 				E28A747829609DB80066AB78 /* PokemonTeamView.swift in Sources */,
 			);
@@ -505,12 +517,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Poke-companion/Preview Content\"";
 				DEVELOPMENT_TEAM = K9L457R99N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Poké Book";
+				INFOPLIST_KEY_CFBundleDisplayName = "Pokébook";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -522,7 +534,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Tsenguun.Poke-companion";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -540,12 +552,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Poke-companion/Preview Content\"";
 				DEVELOPMENT_TEAM = K9L457R99N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Poké Book";
+				INFOPLIST_KEY_CFBundleDisplayName = "Pokébook";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -557,7 +569,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Tsenguun.Poke-companion";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

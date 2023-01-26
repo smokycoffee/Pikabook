@@ -17,8 +17,9 @@ struct AboutDescriptionView: View {
     
     @State private var imageUrl = ""
     @EnvironmentObject var pokedexImageSetting: PokedexImageSetting
-
     
+    @StateObject private var encounterVM = PokeEncounterVM()
+
     var body: some View {
         GeometryReader { _ in
             VStack(alignment: .leading) {
@@ -37,7 +38,7 @@ struct AboutDescriptionView: View {
                     HStack {
                         ForEach(pokemon.types!, id: \.self) { i in
                             Rectangle()
-                                .fill(i.type.typeColor.opacity(0.4))
+                                .fill(i.type.typeColor.opacity(0.7))
                                 .cornerRadius(5)
                                 .frame(width: 20, height: 20)
                         }
@@ -57,14 +58,30 @@ struct AboutDescriptionView: View {
                 .frame(height: 30)
                 .padding(.bottom, 10)
                 
+                
+                HStack(spacing: 0) {
+                    Text("Ability:")
+                        .font(.system(.body, design: .default, weight: .semibold))
+//                        .frame(width: 90, alignment: .leading)
+                        .frame(width: UIScreen.screenWidth / 3, alignment: .trailing)
+
+                    
+                    ForEach(pokemon.abilities) { ability in
+                        Text(ability.ability.name.capitalized.replacingOccurrences(of: "-", with: " ") + ", ")
+                    }
+                    .padding(.horizontal, 5)
+                }
+                .padding(.vertical, 2)
+                
                 HStack(spacing: 0) {
                     Text("Egg Group:")
                         .font(.system(.body, design: .default, weight: .semibold))
-                        .frame(width: 90, alignment: .leading)
+//                        .frame(width: 90, alignment: .leading)
+                        .frame(width: UIScreen.screenWidth / 3, alignment: .trailing)
                     
                     ForEach(pokemonSpeciesVM.dataToView) { poke in
                         ForEach(poke.eggGroups) { type in
-                            Text(type.name)
+                            Text(type.name.capitalized.replacingOccurrences(of: "-", with: " "))
                             if type != poke.eggGroups.last {
                                 Text(",")
                                     .padding(.trailing, 2)
@@ -73,32 +90,27 @@ struct AboutDescriptionView: View {
                     }
                     .padding(.horizontal, 5)
                 }
-                
+                .padding(.vertical, 2)
+
                 HStack(spacing: 0) {
-                    Text("Ability:")
+                    Text("Encounters:")
                         .font(.system(.body, design: .default, weight: .semibold))
-                        .frame(width: 90, alignment: .leading)
-                    
-                    ForEach(pokemon.abilities) { ability in
-                        Text(ability.ability.name + ", ")
-                    }
-                    .padding(.horizontal, 5)
+//                        .frame(width: 90, alignment: .leading)
+                        .frame(width: UIScreen.screenWidth / 3, alignment: .trailing)
+                    Text(encounterVM.encounter?.locationArea?.name ?? "error")
+                        .padding(.horizontal, 5)
                 }
                 .padding(.vertical, 2)
                 
-                HStatLayout(typeTitle: "Encounters:", assignment: "Kanto", titleWidth: 100)
-                    .padding(.vertical, 2)
-                
-                
                 Text("Evolutions:")
-                    .font(.system(.body, design: .default, weight: .semibold))
+                    .font(.system(.body, design: .default, weight: .regular))
                     .padding(.bottom, 5)
+                    .padding(.top, 20)
                 
                 HStack(alignment: .center) {
                     Spacer()
                     ForEach(pokemonSpeciesVM.pokemonEvolutions) { poke in
                         Spacer()
-                        
                         
                         CachedAsyncImage(url: URL(string: poke.sprites?.other?.officialArtwork?.frontDefault ?? "ss" ), urlCache: .imageCache) { phase in                                                                                 // causing duplicates cuz using the same url 3
                             switch phase {                                                               // make it such that it uses the poke closure so it
@@ -129,6 +141,7 @@ struct AboutDescriptionView: View {
                         }
                         Spacer()
                     }
+                    
                     Spacer()
                 }
                 .frame(maxWidth: UIScreen.screenWidth)
@@ -142,7 +155,7 @@ struct AboutDescriptionView: View {
                     pokemonSpeciesVM.fetchPokemonSpecies(for: pokemon.species?.url ?? "ss")
                     loaded = true
                 }
-                
+                encounterVM.fetchLocationEncounter(for: pokemon.locationAreaEncounters!)
                 predicate()
             }
         }
@@ -191,23 +204,6 @@ struct VStatLayout: View {
             .frame(width: 100)
             Text(placeholder)
                 .font(.system(.caption, design: .rounded, weight: .regular))
-        }
-    }
-}
-
-struct HStatLayout: View {
-    
-    let typeTitle: String
-    let assignment: String
-    var titleWidth: CGFloat
-    
-    var body: some View {
-        HStack(spacing: 0) {
-            Text(typeTitle)
-                .font(.system(.body, design: .default, weight: .semibold))
-                .frame(width: titleWidth, alignment: .leading)
-            Text(assignment) // change this
-                .font(.system(.body, design: .default, weight: .regular))
         }
     }
 }

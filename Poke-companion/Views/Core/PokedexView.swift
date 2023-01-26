@@ -132,25 +132,25 @@ struct PokedexView: View {
         if selectedGenerationSetting.genOrder == .generationOne {
             pokemonVM.generationLimit = 151
             pokemonVM.offsetLimit = 0
-            title = "1st gen pokemons"
+            title = "1st gen pokémons"
         } else if selectedGenerationSetting.genOrder == .generationTwo {
             pokemonVM.generationLimit = 100
             pokemonVM.offsetLimit = 151
-            title = "2nd gen pokemons"
+            title = "2nd gen pokémons"
         } else if selectedGenerationSetting.genOrder == .generationThree {
             pokemonVM.generationLimit = 135
             pokemonVM.offsetLimit = 251
-            title = "3rd gen pokemons"
+            title = "3rd gen pokémons"
             
         } else if selectedGenerationSetting.genOrder == .generationFour {
             pokemonVM.generationLimit = 107
             pokemonVM.offsetLimit = 386
-            title = "4th gen pokemons"
+            title = "4th gen pokémons"
             
         } else if selectedGenerationSetting.genOrder == .generationFive {
             pokemonVM.generationLimit = 156
             pokemonVM.offsetLimit = 493
-            title = "5th gen pokemons"
+            title = "5th gen pokémons"
         }
     }
 }

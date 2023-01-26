@@ -21,9 +21,6 @@ class PokedexViewModel: ObservableObject {
     
     @Published var selectedGeneration: GenerationsType = .generationOne
     
-    let limit = 649
-    var page = 0
-    
     enum State {
             case isLoading
             case done
@@ -88,7 +85,6 @@ class PokedexViewModel: ObservableObject {
                         $0.id < $1.id
                     }))
                     self.state = .done
-                    self.page += 1
                 }
                 .store(in: &cancellables)
     }
@@ -111,7 +107,6 @@ class PokedexViewModel: ObservableObject {
             } receiveValue: { pokmons in
                 //                print(pokmons.name)
                 self.pokemonListArray.append(pokmons)
-                self.page += 1
             }
             .store(in: &cancellables)
     }

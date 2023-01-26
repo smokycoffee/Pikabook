@@ -61,6 +61,13 @@ struct SettingsView: View {
                                 .foregroundColor(.primary)
                                 .font(.system(size: 16))
                         }
+                        NavigationLink {
+                            UpcomingFeaturesAboutView()
+                        } label: {
+                            Label("Planned features (future updates).", systemImage: "list.star")
+                                .foregroundColor(.primary)
+                                .font(.system(size: 16))
+                        }
                         Button {
                             requestReview()
                         } label: {
