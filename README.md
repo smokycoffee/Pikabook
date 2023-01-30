@@ -2,6 +2,12 @@
 
 Pokemon reference app built with SwiftUI and Combine for the most part.
 
+## Pikabook demo part 1
+https://github.com/smokycoffee/Pikabook/blob/main/Pikabook%20part%201.mp4
+
+## Pikabook demo part 2
+https://github.com/smokycoffee/Pikabook/blob/main/Pikabook%20part%202.mp4
+
 <table>
   <tr>
     <td>Pokedex view</td>
