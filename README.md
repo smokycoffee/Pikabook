@@ -2,6 +2,9 @@
 
 Pokemon reference app built with SwiftUI and Combine for the most part.
 
+### Testflight link
+https://testflight.apple.com/join/LNg1E9fB
+
 ## Pikabook demo part 1
 https://github.com/smokycoffee/Pikabook/blob/main/Pikabook%20part%201.mp4
 
