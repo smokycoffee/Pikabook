@@ -78,7 +78,7 @@ class PokedexViewModel: ObservableObject {
         
             getPokemonListWithDetails()
                 .sink { (completion) in
-                    print("done")
+//                    print("done")
                 } receiveValue: {  (pokemons) in
                     
                     self.pokemonListArray.append(contentsOf: pokemons.sorted(by: {

@@ -2,7 +2,7 @@
 //  PokedexView.swift
 //  Poke-companion
 //
-//  Created by Tsenguun on 14/10/22.
+//  Created by Panda on 14/10/22.
 //
 
 import SwiftUI
@@ -14,14 +14,10 @@ struct PokedexView: View {
     @StateObject private var pokemonSpeciesVM = PokemonSpeciesViewModel()
     
     @State var selectedPokemon: Pokemon?
-
     @State var loaded = false
-    
     @State var testPokemonList = [Pokemon]()
     @State private var searchText = ""
-    
     @State private var selectedPokemonGeneration = GenerationsType.generationOne
-    
     @EnvironmentObject var selectedGenerationSetting: GenerationsTypeSetting
     
     @State var loadingAnimation = false
@@ -40,7 +36,7 @@ struct PokedexView: View {
             ScrollViewReader { proxy in
                 switch pokemonVM.state {
                 case .isLoading:
-                    ActivityIndicatorView(isVisible: $loadingAnimation, type: .arcs(count: 3, lineWidth: 2))
+                    ActivityIndicatorView(isVisible: $loadingAnimation, type: .arcs(count: 10, lineWidth: 1))
                         .foregroundColor(Color(UIColor.random))
                         .frame(width: 100, height: 100, alignment: .center)
                 case .done:
@@ -132,25 +128,25 @@ struct PokedexView: View {
         if selectedGenerationSetting.genOrder == .generationOne {
             pokemonVM.generationLimit = 151
             pokemonVM.offsetLimit = 0
-            title = "1st gen pokémons"
+            title = "1st gen pokemons"
         } else if selectedGenerationSetting.genOrder == .generationTwo {
             pokemonVM.generationLimit = 100
             pokemonVM.offsetLimit = 151
-            title = "2nd gen pokémons"
+            title = "2nd gen pokemons"
         } else if selectedGenerationSetting.genOrder == .generationThree {
             pokemonVM.generationLimit = 135
             pokemonVM.offsetLimit = 251
-            title = "3rd gen pokémons"
+            title = "3rd gen pokemons"
             
         } else if selectedGenerationSetting.genOrder == .generationFour {
             pokemonVM.generationLimit = 107
             pokemonVM.offsetLimit = 386
-            title = "4th gen pokémons"
+            title = "4th gen pokemons"
             
         } else if selectedGenerationSetting.genOrder == .generationFive {
             pokemonVM.generationLimit = 156
             pokemonVM.offsetLimit = 493
-            title = "5th gen pokémons"
+            title = "5th gen pokemons"
         }
     }
 }

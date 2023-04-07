@@ -25,8 +25,6 @@ class PokeEncounterVM: ObservableObject {
             .sink { completion in
             } receiveValue: { [unowned self] pokemon in
                 encounter = pokemon
-                print(encounter?.locationArea?.name)
-//                print(encounter?.name ?? "error")
             }
             .store(in: &cancellables)
     }

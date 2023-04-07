@@ -21,6 +21,7 @@ struct SelectedTabSemiCircle: View {
 
 struct SelectedTabSemiCircle_Previews: PreviewProvider {
     static var previews: some View {
-        SelectedTabSemiCircle(highlighted: .white)
+        SelectedTabSemiCircle(highlighted: .red).previewLayout(.sizeThatFits)
+            .padding()
     }
 }

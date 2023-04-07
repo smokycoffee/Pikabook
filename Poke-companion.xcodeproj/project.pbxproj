@@ -48,7 +48,6 @@
 		E2F87766291F07C9008E26C5 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F87765291F07C9008E26C5 /* AsyncImageView.swift */; };
 		E2F87768291F07FF008E26C5 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F87767291F07FF008E26C5 /* StatsView.swift */; };
 		E2F8776A291F0810008E26C5 /* MovesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F87769291F0810008E26C5 /* MovesView.swift */; };
-		E2F8776D291F0851008E26C5 /* GenerationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8776C291F0851008E26C5 /* GenerationsView.swift */; };
 		E2F87771291F0B52008E26C5 /* SelectedTabSemiCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F87770291F0B52008E26C5 /* SelectedTabSemiCircle.swift */; };
 		E2F87773291F0B99008E26C5 /* TabsAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F87772291F0B99008E26C5 /* TabsAppBar.swift */; };
 /* End PBXBuildFile section */
@@ -93,7 +92,6 @@
 		E2F87765291F07C9008E26C5 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		E2F87767291F07FF008E26C5 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		E2F87769291F0810008E26C5 /* MovesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovesView.swift; sourceTree = "<group>"; };
-		E2F8776C291F0851008E26C5 /* GenerationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationsView.swift; sourceTree = "<group>"; };
 		E2F87770291F0B52008E26C5 /* SelectedTabSemiCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTabSemiCircle.swift; sourceTree = "<group>"; };
 		E2F87772291F0B99008E26C5 /* TabsAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsAppBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,7 +229,6 @@
 				E2F87761291F049D008E26C5 /* AboutDescriptionView.swift */,
 				E2F87767291F07FF008E26C5 /* StatsView.swift */,
 				E2F87769291F0810008E26C5 /* MovesView.swift */,
-				E2F8776C291F0851008E26C5 /* GenerationsView.swift */,
 			);
 			path = PokemonDetails;
 			sourceTree = "<group>";
@@ -368,7 +365,6 @@
 				E2B47EF828FAD73C00F2882F /* PokedexCellView.swift in Sources */,
 				E2B47EFE28FAF65B00F2882F /* ErrorAlerts.swift in Sources */,
 				E24A298328F9D4510019429A /* MainView.swift in Sources */,
-				E2F8776D291F0851008E26C5 /* GenerationsView.swift in Sources */,
 				E2F87764291F05F6008E26C5 /* ControlTabsView.swift in Sources */,
 				E2D943BE297471F80067C9AA /* TeamBuilderViewModel.swift in Sources */,
 				E2B47EFA28FAEEE700F2882F /* PokemonDetailsView.swift in Sources */,
@@ -517,7 +513,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Poke-companion/Preview Content\"";
 				DEVELOPMENT_TEAM = K9L457R99N;
 				ENABLE_PREVIEWS = YES;
@@ -552,7 +548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Poke-companion/Preview Content\"";
 				DEVELOPMENT_TEAM = K9L457R99N;
 				ENABLE_PREVIEWS = YES;

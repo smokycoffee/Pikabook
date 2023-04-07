@@ -55,13 +55,11 @@ struct PokemonDetailsView: View {
                             case .success(let image):
                                 image
                                     .resizable()
-                                //                                .interpolation(.none)
                                     .scaledToFit()
                                     .frame(maxWidth: 200)
                             case .failure:
                                 Image(systemName: "questionmark")
                                     .resizable()
-                                //                                .interpolation(.none)
                                     .scaledToFit()
                                     .frame(maxWidth: 200)
                                     .foregroundColor(.gray)
@@ -69,8 +67,6 @@ struct PokemonDetailsView: View {
                                 EmptyView()
                             }
                         }
-//                        Text("Bulbasaur can be seen napping in bright sunlight.\nThere is a seed on its back. By soaking up the sun’s rays,\nthe seed grows progressively larger.")
-                            
                     
                         Text(pokemonSpeciesVM.flavorText)
                             .font(.system(.footnote))
